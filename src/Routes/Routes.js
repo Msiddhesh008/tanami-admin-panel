@@ -75,6 +75,9 @@ import EditPartner from "../Pages/Partners/EditPartners";
 import newsLetter from "../Pages/NewLetter/NewsLetter";
 import NewsLetter from "../Pages/NewLetter/NewsLetter";
 import Investment from "../Pages/Investment/Investment";
+import ExchangeRate from "../Pages/ExchangeRate/ExchangeRate";
+import AssetClan from "../Pages/AssetClan/AssetClan";
+import AddInvestment from "../Pages/Investment/AddInvestment";
 
 export const RouteLink = [
   { path: "/", Component: WelcomePage },
@@ -206,7 +209,14 @@ export const RouteLink = [
 
 
   // =============[ Tanami ]================
+  // ===========Master================
+  // ===========Investment==============
   { path: "/investment", Component: Investment },
+  { path: "/investment/add-investment", Component: AddInvestment },
+  { path: "/investment", Component: Investment },
+
+  { path: "/exchange-rate", Component: ExchangeRate },
+  { path: "/asset-clan", Component: AssetClan },
 
 
 

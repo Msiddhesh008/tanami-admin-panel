@@ -65,8 +65,8 @@ const DashboardLayout = () => {
     switch (path) {
       case "/":
         return "👋🏻 Hi, Admin";
-        case "/investment":
-          return "Investment";
+      case "/investment":
+        return "Sponsor";
       case "/blogs-articles":
         return "Blogs and Articles";
       case "/videos":
@@ -116,9 +116,6 @@ const DashboardLayout = () => {
     }
   };
 
-
-  
-
   return (
     <Box
       style={{
@@ -132,7 +129,6 @@ const DashboardLayout = () => {
       }}
       className="d-flex"
       pe={0.5}
-      
     >
       <aside
         className="h-100 position-relative sideBar  pe-1"
@@ -142,12 +138,16 @@ const DashboardLayout = () => {
           width: isDrawerOpen || openDrawerClick ? 225 : 70,
           transition: "width 0.3s ease-in-out", // Smooth transition for width change
           overflow: "hidden", // Hide overflow to prevent content overflow during transition
-          backgroundColor:"#0041180A",
+          backgroundColor: "#0041180A",
           // backgroundColor: "#002F0F",
         }}
       >
         <div
-          className={`d-flex  ${isDrawerOpen || openDrawerClick ? "justify-content-start" : "justify-content-center"}  p-3 pt-3 pb-4 position-relative `}
+          className={`d-flex  ${
+            isDrawerOpen || openDrawerClick
+              ? "justify-content-start"
+              : "justify-content-center"
+          }  p-3 pt-3 pb-4 position-relative `}
           height={"10%"}
         >
           {isDrawerOpen || openDrawerClick ? (
@@ -171,7 +171,7 @@ const DashboardLayout = () => {
 
         <div
           className="ps-2  scroll-bar "
-          style={{ height: "80%", overflowY: "scroll", overflowX:"hidden" }}
+          style={{ height: "80%", overflowY: "scroll", overflowX: "hidden" }}
         >
           {nav.map(({ title, path, Icon }, index) => (
             <Box
@@ -215,7 +215,10 @@ const DashboardLayout = () => {
                   </span>
                 </NavLink>
               ) : (
-                <span className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold">
+                <span
+                  className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold"
+                  // style={{ textDecoration: "underline" }}
+                >
                   {title}
                 </span>
               )}
@@ -285,7 +288,7 @@ const DashboardLayout = () => {
       </aside>
 
       <main
-        className={`h-100   ${path === "/" ? "ps-0" : "ps-3" }  `}
+        className={`h-100   ${path === "/" ? "ps-0" : "ps-3"}  `}
         style={{
           width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 225 : 70}px)`,
           transition: "width 0.3s ease-in-out",
@@ -320,7 +323,7 @@ const DashboardLayout = () => {
           <span className="fs-5">{getTitle()}</span>
         </header> */}
 
-        <HeaderMain logOutHandler={logOutHandler} icon title={getTitle()}/>
+        <HeaderMain logOutHandler={logOutHandler} icon title={getTitle()} />
 
         <AppContent />
       </main>

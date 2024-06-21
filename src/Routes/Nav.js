@@ -13,6 +13,8 @@ import { GrDocumentVerified } from "react-icons/gr";
 import { FaQuestionCircle } from "react-icons/fa";
 import { MdOutlineSettingsApplications } from "react-icons/md";
 import { MdOutlineUnsubscribe } from "react-icons/md";
+import { MdCurrencyExchange } from "react-icons/md";
+import { RiFundsLine } from "react-icons/ri";
 
 export const nav = [
   // {
@@ -21,14 +23,24 @@ export const nav = [
   //   Icon: FiHome,
   // },
   {
-    title: "MAIN MENU",
+    title: "MASTER",
     path: null,
   },
   {
-    title: "Investment",
+    title: "Sponsor view",
     path: "/investment",
     Icon: HiOutlineNewspaper,
   },
+  // {
+  //   title: "Excahnge Rate",
+  //   path: "/exchange-rate",
+  //   Icon: MdCurrencyExchange,
+  // },
+  // {
+  //   title: "Asset Clan",
+  //   path: "/asset-clan",
+  //   Icon: RiFundsLine,
+  // },
   // {
   //   title: "Banners",
   //   path: "/banner",
