@@ -1,109 +1,161 @@
-import { FaHome, FaTable } from "react-icons/fa";
-import { FiHome } from "react-icons/fi";
-import { RiBloggerLine } from "react-icons/ri";
-import { LuVideo } from "react-icons/lu";
 import { HiOutlineNewspaper } from "react-icons/hi";
-import { IoMdPaper } from "react-icons/io";
-import { MdOutlineEvent } from "react-icons/md";
-import { CgCommunity } from "react-icons/cg";
-import { AiOutlineIdcard } from "react-icons/ai";
-import { LuMonitorPause } from "react-icons/lu";
-import { MdOutlinePrivacyTip } from "react-icons/md";
-import { GrDocumentVerified } from "react-icons/gr";
-import { FaQuestionCircle } from "react-icons/fa";
-import { MdOutlineSettingsApplications } from "react-icons/md";
-import { MdOutlineUnsubscribe } from "react-icons/md";
-import { MdCurrencyExchange } from "react-icons/md";
-import { RiFundsLine } from "react-icons/ri";
+import { TbBrandMedium } from "react-icons/tb";
+import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { RiExchangeBoxLine } from "react-icons/ri";
+import { VscSymbolClass } from "react-icons/vsc";
+import { FiUsers } from "react-icons/fi";
+
 
 export const nav = [
-  // {
-  //   title: "Home",
-  //   path: "/",
-  //   Icon: FiHome,
-  // },
   {
-    title: "MASTER",
-    path: null,
+    title: "MAIN MENU",
+    type: "title",
   },
   {
-    title: "Sponsor view",
-    path: "/investment",
+    title: "Master",
+    submenu: [
+      {
+        title: "Sponser",
+        path: "/sponser",
+        icon: RiMoneyDollarBoxLine
+      },
+      {
+        title: "Exchange rate",
+        path: "/exchange-rate",
+        icon: RiExchangeBoxLine
+      },
+      {
+        title: "Asset classes",
+        path: "/view",
+        icon: VscSymbolClass
+      },
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
+  },
+  {
+    title: "User",
+    submenu: [
+      {
+        title: "Sponser",
+        path: "/loop",
+        icon: TbBrandMedium
+      },
+      {
+        title: "Class",
+        path: "/class",
+        icon: TbBrandMedium
+      },
+      {
+        title: "View",
+        path: "/view",
+        icon: TbBrandMedium
+      },
+    ],
+    type: "accordion",
+    Icon: FiUsers,
+  },
+  {
+    title: "Single Link",
+    type: "single",
+    path: "/",
     Icon: HiOutlineNewspaper,
   },
   // {
-  //   title: "Excahnge Rate",
-  //   path: "/exchange-rate",
-  //   Icon: MdCurrencyExchange,
+  //   title: "SPONSER",
+  //   type: "title",
   // },
   // {
-  //   title: "Asset Clan",
-  //   path: "/asset-clan",
-  //   Icon: RiFundsLine,
-  // },
-  // {
-  //   title: "Banners",
-  //   path: "/banner",
-  //   Icon: AiOutlineIdcard,
-  // },
-  // {
-  //   title: "Blogs",
-  //   path: "/blogs-articles",
-  //   Icon: RiBloggerLine,
-  // },
-  // {
-  //   title: "Videos",
-  //   path: "/videos",
-  //   Icon: LuVideo,
-  // },
-  // {
-  //   title: "News",
-  //   path: "/news",
+  //   title: "Single Link",
+  //   type: "single",
+  //   path: "/",
   //   Icon: HiOutlineNewspaper,
   // },
-  // {
-  //   title: "Events",
-  //   path: "/events",
-  //   Icon: MdOutlineEvent,
-  // },
-  // {
-  //   title: "Whitepaper",
-  //   path: "/whitepaper",
-  //   Icon: IoMdPaper,
-  // },
-  // {
-  //   title: "Community",
-  //   path: "/community",
-  //   Icon: CgCommunity,
-  // },
-  // {
-  //   title: "Usecase",
-  //   path: "/usecase",
-  //   Icon: LuMonitorPause,
-  // },
-  // {
-  //   title: "Terms & Conditions",
-  //   path: "/terms",
-  //   Icon: GrDocumentVerified,
-  // },
-  // {
-  //   title: "Privacy Policy",
-  //   path: "/policy",
-  //   Icon: MdOutlinePrivacyTip,
-  // },
-  // {
-  //   title: "FAQ",
-  //   path: "/faq",
-  //   Icon: FaQuestionCircle,
-  // },
-  // {
-  //   title: "Partners Card",
-  //   path: "/partners",
-  //   Icon: MdOutlineSettingsApplications,
-  // },
-  // {
-  //   title: "News Letter",
-  //   path: "/newsLetter",
-  //   Icon: MdOutlineUnsubscribe,
-  // },
+];
+
+
+
+export const nestedNav = [
+  {
+    title: "MAIN MENU",
+    type: "accordion",
+    accArray: [
+      {
+        title: "Master",
+        submenu: [
+          {
+            title: "Sponser",
+            path: "/sponser",
+            icon: RiMoneyDollarBoxLine
+          },
+          {
+            title: "Exchange rate",
+            path: "/exchange-rate",
+            icon: RiExchangeBoxLine
+          },
+          {
+            title: "Asset classes",
+            path: "/view",
+            icon: VscSymbolClass
+          },
+        ],
+        type: "accordion",
+        Icon: TbBrandMedium,
+      },
+      {
+        title: "User",
+        submenu: [
+          {
+            title: "Sponser",
+            path: "/loop",
+            icon: TbBrandMedium
+          },
+          {
+            title: "Class",
+            path: "/class",
+            icon: TbBrandMedium
+          },
+          {
+            title: "View",
+            path: "/view",
+            icon: TbBrandMedium
+          },
+        ],
+        type: "accordion",
+        Icon: HiOutlineNewspaper,
+      },
+    ]
+  },
+  {
+    title: "User",
+    submenu: [
+      {
+        title: "Sponser",
+        path: "/loop",
+        icon: TbBrandMedium
+      },
+      {
+        title: "Class",
+        path: "/class",
+        icon: TbBrandMedium
+      },
+      {
+        title: "View",
+        path: "/view",
+        icon: TbBrandMedium
+      },
+    ],
+    type: "accordion",
+    Icon: FiUsers,
+  },
+  {
+    title: "SPONSER",
+    type: "title",
+  },
+  {
+    title: "Single Link",
+    type: "single",
+    path: "/",
+    Icon: HiOutlineNewspaper,
+  },
 ];

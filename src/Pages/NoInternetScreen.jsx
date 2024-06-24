@@ -1,10 +1,9 @@
 import { Box, Image, Text } from '@chakra-ui/react'
-import noInternet from "../assets/Error.svg"
+import noInternet from "../assets/noInternet.jpg"
 
 const NoInternetScreen = () => {
   return (
     <Box
-    w={'100vw'}
     h={'100vh'}
     display={'flex'}
     justifyContent={'center'}
@@ -13,7 +12,7 @@ const NoInternetScreen = () => {
     gap={5}
     >
         <Image src={noInternet} w={300} />
-        <Text color={'blue.800'} as={'span'} className='fw-bold'>No Internet !</Text>
+        {/* <Text color={'blue.800'} as={'span'} className='fw-bold'>No Internet !</Text> */}
     </Box>
 
   )
