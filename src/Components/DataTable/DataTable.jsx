@@ -1,8 +1,9 @@
 import React from "react";
 import { Table, TableContainer, Tbody, Td, Th, Thead, Tr, Skeleton, TableCaption, Tfoot } from "@chakra-ui/react";
 import EmptySearchList from "../EmptySearchList";
+import Pagination from "../Pagination";
 
-const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage }) => {
+const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage, totalPages }) => {
   const columnWidth = data && data[0] ? `${(100 / Object.keys(data[0]).length).toFixed(2)}%` : "auto";
   return (
     <TableContainer overflowX={"hidden"} className="h-auto mb-3 w-100">
@@ -10,8 +11,9 @@ const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage }) => {
         <EmptySearchList message={emptyMessage} />
       ) : (
         <Table   size="sm">
-        <TableCaption>Rubix v1.0.0</TableCaption>
-          <Thead   backgroundColor="purple.50">
+        {/* <TableCaption><Pagination totalItems={totalPages} /></TableCaption> */}
+        <TableCaption>Tanami v1.0</TableCaption>
+          <Thead   backgroundColor="gray.50">
             <Tr>
               {tableHeadRow.map((heading, index) => (
                 <Th key={index} p={3} w={columnWidth}>
@@ -23,7 +25,7 @@ const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage }) => {
           </Thead>
           <Tbody className="web-text-small">
             {isLoading
-              ? Array.from({ length: 12 }).map((_, index) => (
+              ? Array?.from({ length: 10 }).map((_, index) => (
                   <Tr key={index}>
                     {tableHeadRow.map((_, i) => (
                       <Td key={i} style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }} className="web-text-small" w={columnWidth}>

@@ -34,11 +34,18 @@ import {
   WrapItem,
   Popover,
   Tag,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
 } from "@chakra-ui/react";
 import GlobalStateContext from "../Contexts/GlobalStateContext";
 import Cookies from "js-cookie"; // Import the Cookies library
 import Header from "../Components/Header";
 import HeaderMain from "../Components/HeaderMain";
+import { IoMdSwap } from "react-icons/io";
+import { RiExchangeBoxLine, RiMoneyDollarBoxLine } from "react-icons/ri";
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
@@ -48,6 +55,7 @@ const DashboardLayout = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDrawerClick, setOpenDrawerClick] = useState(true);
   const { setIsAuthenticate } = useContext(GlobalStateContext);
+  const [slideFromRight, setSlideFormRight] = useState(false);
 
   const openDrawerOnClick = () => {
     setOpenDrawerClick(!openDrawerClick);
@@ -65,24 +73,19 @@ const DashboardLayout = () => {
     switch (path) {
       case "/":
         return "👋🏻 Hi, Admin";
-        case "/investment":
-          return "Investment";
-      case "/blogs-articles":
-        return "Blogs and Articles";
-      case "/videos":
-        return "Videos";
-      case "/news":
-        return "News";
-      case "/events":
-        return "Events";
-      case "/whitepaper":
-        return "Whitepaper";
-      case "/community/":
-        return "Community";
-      case "/community":
-        return "Community";
-      case "/community/view/":
-        return "Community";
+      case "/sponser":
+      case "/sponser/add-sponser":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0" /> Sponser
+          </span>
+        );
+      case "/exchange-rate":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" /> Echange rate
+          </span>
+        );
       case "/community/add-comunity":
         return (
           <Text color={"teal.800"} className="d-flex align-items-center">
@@ -97,7 +100,7 @@ const DashboardLayout = () => {
           return (
             <span className="d-flex align-items-center">
               <Link to={"/community/"}>
-                <ArrowBackIcon className="me-2 fs-3 link p-1 rounded-1" />
+                <ArrowBackIcon className="me-2  fs-3 link p-1 rounded-1" />
               </Link>
               Community
             </span>
@@ -116,9 +119,6 @@ const DashboardLayout = () => {
     }
   };
 
-
-  
-
   return (
     <Box
       style={{
@@ -126,204 +126,501 @@ const DashboardLayout = () => {
         width: "100vw",
         position: "relative",
         overflow: "hidden",
-
-        // backgroundColor:"#101015"
-        // backgroundColor:"#000000"
       }}
       className="d-flex"
       pe={0.5}
-      
     >
-      <aside
-        className="h-100 position-relative sideBar  pe-1"
-        // onMouseOver={() => setIsDrawerOpen(true)}
-        // onMouseLeave={() => setIsDrawerOpen(false)}
-        style={{
-          width: isDrawerOpen || openDrawerClick ? 225 : 70,
-          transition: "width 0.3s ease-in-out", // Smooth transition for width change
-          overflow: "hidden", // Hide overflow to prevent content overflow during transition
-          backgroundColor:"#0041180A",
-          // backgroundColor: "#002F0F",
+      <Box
+        bottom={4}
+        right={!slideFromRight ? 4 : "auto"}
+        left={slideFromRight ? 4 : "auto"}
+        backgroundColor={"#fff"}
+        rounded={"full"}
+        p={2}
+        w={8}
+        h={8}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        color={"#004118"}
+        fontWeight={"800"}
+        cursor={"pointer"}
+        position={"absolute"}
+        transition={"0.5s"}
+        boxShadow={"md"}
+        onClick={() => setSlideFormRight(!slideFromRight)}
+        _hover={{
+          opacity: 1,
         }}
+        zIndex={999}
       >
-        <div
-          className={`d-flex  ${isDrawerOpen || openDrawerClick ? "justify-content-start" : "justify-content-center"}  p-3 pt-3 pb-4 position-relative `}
-          height={"10%"}
-        >
-          {isDrawerOpen || openDrawerClick ? (
-            <img
-              style={{
-                width: 120,
-              }}
-              src={logo}
-              alt="Logo"
-            />
-          ) : (
-            <img
-              style={{
-                width: 30,
-              }}
-              src={logoMini}
-              alt="Logo"
-            />
-          )}
-        </div>
+        <IoMdSwap />
+      </Box>
 
-        <div
-          className="ps-2  scroll-bar "
-          style={{ height: "80%", overflowY: "scroll", overflowX:"hidden" }}
-        >
-          {nav.map(({ title, path, Icon }, index) => (
-            <Box
-              // color={"whitesmoke"}
-              color={"gray.600"}
-              key={index}
-              className=" mb-1 w-100 d-flex  "
-            >
-              {path ? (
-                <NavLink
-                  style={{
-                    height: "auto",
-                  }}
-                  className={`${
-                    isDrawerOpen || openDrawerClick
-                      ? "p-1 web-text-medium ps-3"
-                      : "p-2 ps-1 web-text-xlarge justify-content-center"
-                  }  rounded-1  link  d-flex align-items-center gap-2 w-100   `}
-                  to={path}
-                >
-                  <span
-                    style={{
-                      display:
-                        isDrawerOpen || openDrawerClick ? "flex" : "flex",
-                      alignItems: "center",
-                      paddingBottom: 0,
-                    }}
-                  >
-                    <Icon className="web-text-large" />
-                  </span>
-                  <span
-                    style={{
-                      display:
-                        isDrawerOpen || openDrawerClick ? "flex" : "none",
-                      alignItems: "center",
-                      padding: 3,
-                      overflow: "hidden",
-                    }}
-                  >
-                    {title}
-                  </span>
-                </NavLink>
-              ) : (
-                <span className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold">
-                  {title}
-                </span>
-              )}
-            </Box>
-          ))}
-        </div>
-
-        {/* <section
-          className="d-flex justify-content-center border-top  p-2 "
-          style={{
-            position: "absolute",
-            left: 0,
-            bottom: 0,
-            width: "100%",
-          }}
-        >
-          <Popover placement="top">
-            <Portal>
-              <PopoverContent maxW="220px" className="ms-2">
-                <PopoverArrow />
-                <PopoverBody className="web-text-medium pointer link">
-                  Profile
-                </PopoverBody>
-                <Link to={"/help-and-support"}>
-                  <PopoverBody className="web-text-medium pointer ">
-                    Help & Support
-                  </PopoverBody>
-                </Link>
-                <PopoverFooter
-                  onClick={logOutHandler}
-                  className="web-text-medium pointer link"
-                >
-                  Log Out
-                </PopoverFooter>
-              </PopoverContent>
-            </Portal>
-            <PopoverTrigger>
-              <Box
-                // onClick={logOutHandler}
-                className="d-flex pointer  align-items-center"
-              >
-                <Avatar
-                  size="xs"
-                  name="Dan Abrahmov"
-                  src="https://bit.ly/dan-abramov"
-                />
-                <Box
-                  color={"whitesmoke"}
-                  style={{
-                    opacity: isDrawerOpen || openDrawerClick ? 1 : 0,
-                    display: isDrawerOpen || openDrawerClick ? "flex" : "none",
-                    transition: "opacity 0.3s ease-in-out",
-                  }}
-                  className=" overflow-hidden ms-3  flex-column "
-                >
-                  <Text as={"span"} className="web-text-small">
-                    Hello, developer admin
-                  </Text>
-                  <Text as={"span"} className="web-text-xsmall">
-                    siddhesh@rubix.com
-                  </Text>
-                </Box>
-              </Box>
-            </PopoverTrigger>
-          </Popover>
-        </section> */}
-      </aside>
-
-      <main
-        className={`h-100   ${path === "/" ? "ps-0" : "ps-3" }  `}
-        style={{
-          width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 225 : 70}px)`,
-          transition: "width 0.3s ease-in-out",
-          position: "relative",
-          // boxShadow:
-          //   "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
-        }}
-      >
-        <Button
-          colorScheme={"forestGreen"}
-          rounded={"lg"}
+      {slideFromRight ? null : (
+        <aside
+          className="h-100 position-relative sideBar  pe-1"
           // onMouseOver={() => setIsDrawerOpen(true)}
           // onMouseLeave={() => setIsDrawerOpen(false)}
-          onClick={openDrawerOnClick}
           style={{
-            width: 18,
-            height: 26,
-            position: "absolute",
-            left: -28,
-            bottom: 80,
-            zIndex: 6,
+            width: isDrawerOpen || openDrawerClick ? 225 : 74,
+            transition: "width 0.3s ease-in-out", // Smooth transition for width change
+            overflow: "hidden", // Hide overflow to prevent content overflow during transition
+            backgroundColor: "#0041180A",
+            position: "relative",
+            // backgroundColor: "#002F0F",
           }}
         >
-          {isDrawerOpen || openDrawerClick ? (
-            <ArrowLeftIcon className="web-text-small" />
-          ) : (
-            <ArrowRightIcon className="web-text-small " />
-          )}
-        </Button>
+          <div
+            className={`d-flex  ${
+              isDrawerOpen || openDrawerClick
+                ? "justify-content-start"
+                : "justify-content-center"
+            }  p-3 pt-3 pb-4 position-relative `}
+            height={"10%"}
+          >
+            {isDrawerOpen || openDrawerClick ? (
+              <img
+                style={{
+                  width: 120,
+                }}
+                src={logo}
+                alt="Logo"
+              />
+            ) : (
+              <img
+                style={{
+                  width: 30,
+                }}
+                src={logoMini}
+                alt="Logo"
+              />
+            )}
+          </div>
 
+          <Box
+            className="ps-2 scroll-bar"
+            style={{ height: "80%", overflowY: "scroll", overflowX: "hidden" }}
+          >
+            <Accordion m={0} allowToggle>
+              {nav.map(({ title, type, Icon, submenu, path }, index) => {
+                if (type === "accordion") {
+                  return (
+                    <AccordionItem key={index} border={"none"}>
+                      <AccordionButton
+                        style={{ height: "auto" }}
+                        className={`${
+                          isDrawerOpen || openDrawerClick
+                            ? "p-2 web-text-medium ps-3 justify-content-between"
+                            : "p-2 ps-1 web-text-xlarge justify-content-center"
+                        } rounded-1 link d-flex align-items-center gap-2 w-100 mb-1`}
+                      >
+                        <Box
+                          as="span"
+                          display={"flex"}
+                          gap={2}
+                          alignItems={"center"}
+                        >
+                          {Icon && <Icon className="web-text-large" />}
+                          <Text
+                            as={"span"}
+                            display={
+                              isDrawerOpen || openDrawerClick ? "flex" : "none"
+                            }
+                            alignItems="center"
+                            overflow="hidden"
+                          >
+                            {title}
+                          </Text>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                      <AccordionPanel
+                        p={0}
+                        pb={1}
+                        display={"flex"}
+                        flexDirection={"column"}
+                        gap={1}
+                      >
+                        {submenu?.map(
+                          (
+                            { title: subMenuTitle, path: link, icon: SubIcon },
+                            i
+                          ) => (
+                            <Box
+                              key={i}
+                              style={{ height: "auto", position: "relative" }}
+                              className={`${
+                                isDrawerOpen || openDrawerClick
+                                  ? " web-text-medium ps-4"
+                                  : " web-text-xlarge  justify-content-center"
+                              }  d-flex align-items-center  p-0`}
+                            >
+                              <Box
+                                backgroundColor={"gray.300"}
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  width: 2,
+                                  left: 20,
+                                  height:
+                                    i === submenu?.length - 1 ? "55%" : "120%",
+                                  borderRadius: "0 0 10px 10px",
+                                }}
+                              />
+                              <Box
+                                backgroundColor={"gray.300"}
+                                style={{
+                                  position: "absolute",
+                                  width: 8,
+                                  left: 20,
+                                  height: 2,
+                                }}
+                              />
+
+                              <NavLink
+                                className={`${
+                                  isDrawerOpen || openDrawerClick
+                                    ? "p-2 ps-1 ms-1 web-text-medium "
+                                    : "p-2 ps-0 ms-0 zindex-3 ms-4 web-text-xlarge justify-content-center"
+                                } rounded-1 link d-flex align-items-center gap-2 w-100 `}
+                                to={link}
+                              >
+                                {SubIcon && (
+                                  <SubIcon
+                                    className="web-text-large ms-2"
+                                    style={{ zIndex: 111 }}
+                                  />
+                                )}
+                                <Text
+                                  as={"span"}
+                                  display={
+                                    isDrawerOpen || openDrawerClick
+                                      ? "flex"
+                                      : "none"
+                                  }
+                                  alignItems="center"
+                                  overflow="hidden"
+                                >
+                                  {subMenuTitle}
+                                </Text>
+                              </NavLink>
+                            </Box>
+                          )
+                        )}
+                      </AccordionPanel>
+                    </AccordionItem>
+                  );
+                } else if (type === "title") {
+                  return (
+                    <Text
+                      as={"span"}
+                      key={index}
+                      className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold"
+                      padding={0}
+                    >
+                      {title}
+                    </Text>
+                  );
+                } else if (type === "single") {
+                  return (
+                    <NavLink
+                      key={index}
+                      style={{ height: "auto", position: "relative" }}
+                      className={`${
+                        isDrawerOpen || openDrawerClick
+                          ? "p-2 web-text-medium"
+                          : "p-2 ps-0 web-text-xlarge justify-content-start"
+                      } rounded-1 link d-flex align-items-center gap-2 w-100`}
+                      to={path}
+                    >
+                      {Icon && <Icon className="web-text-large ms-2" />}
+                      <Text
+                        as={"span"}
+                        display={
+                          isDrawerOpen || openDrawerClick ? "flex" : "none"
+                        }
+                        alignItems="center"
+                        overflow="hidden"
+                      >
+                        {title}
+                      </Text>
+                    </NavLink>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </Accordion>
+          </Box>
+
+          <Button
+            colorScheme={"forestGreen"}
+            rounded={"lg"}
+            // onMouseOver={() => setIsDrawerOpen(true)}
+            // onMouseLeave={() => setIsDrawerOpen(false)}
+            onClick={openDrawerOnClick}
+            style={{
+              width: 18,
+              height: 26,
+              position: "absolute",
+              right: 0,
+              bottom: 28,
+              zIndex: 333,
+            }}
+          >
+            {isDrawerOpen || openDrawerClick ? (
+              <ArrowLeftIcon className="web-text-small" />
+            ) : (
+              <ArrowRightIcon className="web-text-small " />
+            )}
+          </Button>
+        </aside>
+      )}
+
+      <main
+        className={`h-100   ${slideFromRight ? "pe-3" : "ps-3"}  `}
+        style={{
+          width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 225 : 74}px)`,
+          transition: "width 0.3s ease-in-out",
+        }}
+      >
         {/* <header className="p-2 ps-0 pt-3 fw-400  border-bottom">
           <span className="fs-5">{getTitle()}</span>
         </header> */}
 
-        <HeaderMain logOutHandler={logOutHandler} icon title={getTitle()}/>
+        <HeaderMain
+          slideDirecttion={slideFromRight}
+          logOutHandler={logOutHandler}
+          icon
+          title={getTitle()}
+        />
 
         <AppContent />
       </main>
+
+      {/* =======[ Left ]============ */}
+
+      {slideFromRight ? (
+        <aside
+          className="h-100 position-relative sideBar  pe-1"
+          // onMouseOver={() => setIsDrawerOpen(true)}
+          // onMouseLeave={() => setIsDrawerOpen(false)}
+          style={{
+            width: isDrawerOpen || openDrawerClick ? 225 : 74,
+            transition: "width 0.3s ease-in-out", // Smooth transition for width change
+            overflow: "hidden", // Hide overflow to prevent content overflow during transition
+            backgroundColor: "#0041180A",
+            position: "relative",
+            // backgroundColor: "#002F0F",
+          }}
+        >
+          <div
+            className={`d-flex  ${
+              isDrawerOpen || openDrawerClick
+                ? "justify-content-end"
+                : "justify-content-center"
+            }  p-3 pt-3 pb-4 position-relative `}
+            height={"10%"}
+          >
+            {isDrawerOpen || openDrawerClick ? (
+              <img
+                style={{
+                  width: 120,
+                }}
+                src={logo}
+                alt="Logo"
+              />
+            ) : (
+              <img
+                style={{
+                  width: 30,
+                }}
+                src={logoMini}
+                alt="Logo"
+              />
+            )}
+          </div>
+
+          <Box
+            className="ps-2 scroll-bar"
+            style={{ height: "80%", overflowY: "scroll", overflowX: "hidden" }}
+          >
+            <Accordion m={0} allowToggle>
+              {nav.map(({ title, type, Icon, submenu, path }, index) => {
+                if (type === "accordion") {
+                  return (
+                    <AccordionItem key={index} border={"none"}>
+                      <AccordionButton
+                        style={{ height: "auto" }}
+                        className={`${
+                          isDrawerOpen || openDrawerClick
+                            ? "p-2 web-text-medium ps-3 justify-content-between"
+                            : "p-2 ps-1 web-text-xlarge justify-content-center"
+                        } rounded-1 link d-flex align-items-center gap-2 w-100 mb-1`}
+                      >
+                        <Box
+                          as="span"
+                          display={"flex"}
+                          gap={2}
+                          alignItems={"center"}
+                        >
+                          {Icon && <Icon className="web-text-large" />}
+                          <Text
+                            as={"span"}
+                            display={
+                              isDrawerOpen || openDrawerClick ? "flex" : "none"
+                            }
+                            alignItems="center"
+                            overflow="hidden"
+                          >
+                            {title}
+                          </Text>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                      <AccordionPanel
+                        p={0}
+                        pb={1}
+                        display={"flex"}
+                        flexDirection={"column"}
+                        gap={1}
+                      >
+                        {submenu?.map(
+                          (
+                            { title: subMenuTitle, path: link, icon: SubIcon },
+                            i
+                          ) => (
+                            <Box
+                              key={i}
+                              style={{ height: "auto", position: "relative" }}
+                              className={`${
+                                isDrawerOpen || openDrawerClick
+                                  ? " web-text-medium ps-4"
+                                  : " web-text-xlarge  justify-content-center"
+                              }  d-flex align-items-center  p-0`}
+                            >
+                              <Box
+                                backgroundColor={"gray.300"}
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  width: 2,
+                                  left: 20,
+                                  height:
+                                    i === submenu?.length - 1 ? "55%" : "120%",
+                                  borderRadius: "0 0 10px 10px",
+                                }}
+                              />
+                              <Box
+                                backgroundColor={"gray.300"}
+                                style={{
+                                  position: "absolute",
+                                  width: 8,
+                                  left: 20,
+                                  height: 2,
+                                }}
+                              />
+
+                              <NavLink
+                                className={`${
+                                  isDrawerOpen || openDrawerClick
+                                    ? "p-2 ps-1 ms-1 web-text-medium "
+                                    : "p-2 ps-0 ms-0 zindex-3 ms-4 web-text-xlarge justify-content-center"
+                                } rounded-1 link d-flex align-items-center gap-2 w-100 `}
+                                to={link}
+                              >
+                                {SubIcon && (
+                                  <SubIcon
+                                    className="web-text-large ms-2"
+                                    style={{ zIndex: 111 }}
+                                  />
+                                )}
+                                <Text
+                                  as={"span"}
+                                  display={
+                                    isDrawerOpen || openDrawerClick
+                                      ? "flex"
+                                      : "none"
+                                  }
+                                  alignItems="center"
+                                  overflow="hidden"
+                                >
+                                  {subMenuTitle}
+                                </Text>
+                              </NavLink>
+                            </Box>
+                          )
+                        )}
+                      </AccordionPanel>
+                    </AccordionItem>
+                  );
+                } else if (type === "title") {
+                  return (
+                    <Text
+                      as={"span"}
+                      key={index}
+                      className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold"
+                      padding={0}
+                    >
+                      {title}
+                    </Text>
+                  );
+                } else if (type === "single") {
+                  return (
+                    <NavLink
+                      key={index}
+                      style={{ height: "auto", position: "relative" }}
+                      className={`${
+                        isDrawerOpen || openDrawerClick
+                          ? "p-2 web-text-medium"
+                          : "p-2 ps-0 web-text-xlarge justify-content-start"
+                      } rounded-1 link d-flex align-items-center gap-2 w-100`}
+                      to={path}
+                    >
+                      {Icon && <Icon className="web-text-large ms-2" />}
+                      <Text
+                        as={"span"}
+                        display={
+                          isDrawerOpen || openDrawerClick ? "flex" : "none"
+                        }
+                        alignItems="center"
+                        overflow="hidden"
+                      >
+                        {title}
+                      </Text>
+                    </NavLink>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </Accordion>
+          </Box>
+
+          <Button
+            colorScheme={"forestGreen"}
+            rounded={"lg"}
+            // onMouseOver={() => setIsDrawerOpen(true)}
+            // onMouseLeave={() => setIsDrawerOpen(false)}
+            onClick={openDrawerOnClick}
+            style={{
+              width: 18,
+              height: 26,
+              position: "absolute",
+              left: 0,
+              bottom: 28,
+              zIndex: 333,
+            }}
+          >
+            {isDrawerOpen || openDrawerClick ? (
+              <ArrowRightIcon className="web-text-small " />
+            ) : (
+              <ArrowLeftIcon className="web-text-small" />
+            )}
+          </Button>
+        </aside>
+      ) : null}
     </Box>
   );
 };
