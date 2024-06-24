@@ -1,5 +1,4 @@
 
-import Investment from "../Pages/Investment/Investment";
 import ExchangeRate from "../Pages/Master/ExchangeRate/ExchangeRate";
 import AddSponser from "../Pages/Master/Sponser/AddSponser";
 import Sponser from "../Pages/Master/Sponser/Sponsers";
@@ -11,6 +10,6 @@ export const RouteLink = [
 
 
 
-  
+
   { path: "/exchange-rate", Component: ExchangeRate },
 ];
