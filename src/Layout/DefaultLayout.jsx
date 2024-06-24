@@ -375,6 +375,10 @@ const DashboardLayout = () => {
               <ArrowRightIcon className="web-text-small " />
             )}
           </Button>
+
+
+          
+      <Box id="google_translate_element" display="block" className="bg-danger" />
         </aside>
       )}
 

@@ -1,5 +1,7 @@
-import { Box, Image } from "@chakra-ui/react"
+import { Box, Image, Text } from "@chakra-ui/react"
 import error from "../assets/Error.svg"
+// import robot from "../assets/404.png"
+import robot from "../assets/robot.png"
 const NotFound = () => {
   return (
     
@@ -9,10 +11,10 @@ const NotFound = () => {
     justifyContent={'center'}
     alignItems={'center'}
     flexDirection={'column'}
-    gap={5}
+    gap={8}
     >
-        <Image src={error} w={300} />
-        {/* <Text color={'blue.800'} as={'span'} className='fw-bold'>No Internet !</Text> */}
+        <Image src={robot} w={"171px"} />
+        {/* <Text color={'green.800'} as={'span'} fontSize={'small'}>The requested URL was not found on this server.</Text> */}
     </Box>
   )
 }

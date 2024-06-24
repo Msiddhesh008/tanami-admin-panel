@@ -1,23 +1,20 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import noInternet from "../assets/Error.svg"
+// import noInternet from "../assets/Error.svg"
+import robot from "../assets/robot.png"
 
 const UnderConstruction = ({title}) => {
   return (
     <Box
-    w={'100vw'}
     h={'100vh'}
     display={'flex'}
     justifyContent={'center'}
-    alignItems={'statr'}
+    alignItems={'center'}
     flexDirection={'column'}
-    ms={"30vw"}
     gap={8}
     >
-      <Box w={300} className='d-flex justify-content-start align-items-center flex-column gap-2'>
-        <Image src={noInternet} w={300} />
-        <Text color={'purple.900'} as={'span'} className='fw-bold'>{title} Comming soon...</Text>
-        </Box>
+        <Image src={robot} w={"171px"} />
+        {/* <Text color={'green.800'} as={'span'} fontSize={'small'}>The requested URL was not found on this server.</Text> */}
     </Box>
   )
 }

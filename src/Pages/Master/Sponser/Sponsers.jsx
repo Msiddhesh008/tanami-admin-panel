@@ -110,11 +110,11 @@ const Sponser = () => {
       // />
 
       item?.status ? (
-        <Badge   bg={'transparent'} color="green.500">
+        <Badge variant='outline' colorScheme='green'>
           Passed
         </Badge>
       ) : (
-        <Badge bg={'transparent'}  color="red.500">
+        <Badge variant={'outline'}  colorScheme="red">
           Not passes
         </Badge>
       ),

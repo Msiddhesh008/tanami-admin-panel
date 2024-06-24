@@ -65,6 +65,7 @@ const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttio
             >
               <Avatar
                 size="sm"
+    boxSize={37}
                 name="Dan Abrahmov"
                 src={profile}
               />
