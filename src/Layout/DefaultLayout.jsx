@@ -407,7 +407,7 @@ const DashboardLayout = () => {
           // onMouseOver={() => setIsDrawerOpen(true)}
           // onMouseLeave={() => setIsDrawerOpen(false)}
           style={{
-            width: isDrawerOpen || openDrawerClick ? 225 : 74,
+            width: isDrawerOpen || openDrawerClick ? 232 : 74,
             transition: "width 0.3s ease-in-out", // Smooth transition for width change
             overflow: "hidden", // Hide overflow to prevent content overflow during transition
             backgroundColor: "#0041180A",
