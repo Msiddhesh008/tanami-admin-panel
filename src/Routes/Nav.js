@@ -1,6 +1,6 @@
 import { HiOutlineNewspaper } from "react-icons/hi";
-import { TbBrandMedium } from "react-icons/tb";
-import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { TbBrandMedium, TbReportMoney } from "react-icons/tb";
+import { RiBankLine, RiFileUserLine, RiMoneyDollarBoxLine } from "react-icons/ri";
 import { RiExchangeBoxLine } from "react-icons/ri";
 import { VscSymbolClass } from "react-icons/vsc";
 import { FiUsers } from "react-icons/fi";
@@ -15,6 +15,9 @@ import { BiMoneyWithdraw } from "react-icons/bi";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { MdBrowserUpdated } from "react-icons/md";
 import { AiOutlineUserDelete } from "react-icons/ai";
+import { MdNotificationsNone } from "react-icons/md";
+import { SiAcademia } from "react-icons/si";
+import { LuContact } from "react-icons/lu";
 
 export const nav = [
   {
@@ -138,34 +141,34 @@ export const nav = [
     title: "Admin",
     submenu: [
       {
-        title: "Ban / Unban Investor",
+        title: "Bank / Urban Investor",
         path: "/Pending Request",
-        icon:RiMoneyDollarBoxLine
+        icon:TbReportMoney
       },
       {
-        title: "Acadamy",
-        path: "/Acadamy",
-        icon:RiExchangeBoxLine
+        title: "Academy",
+        path: "/Academy",
+        icon:SiAcademia
       },
       {
         title: "Notification",
         path: "/Notification",
-        icon:RiExchangeBoxLine
+        icon:MdNotificationsNone
       },
       {
         title: "Contact Details",
         path: "/Contact Details",
-        icon:RiExchangeBoxLine
+        icon:LuContact
       },
       {
         title: "Users",
         path: "/Users",
-        icon:RiExchangeBoxLine
+        icon:RiFileUserLine
       },
       {
         title: "Bank Details",
         path: "/Bank Details",
-        icon:RiExchangeBoxLine
+        icon:RiBankLine
       }
     ],
     type: "accordion",
