@@ -458,14 +458,16 @@ const DashboardLayout = () => {
                             ? "p-2 web-text-medium ps-3 justify-content-between"
                             : "p-2 ps-1 web-text-xlarge justify-content-center"
                         } rounded-1 link d-flex align-items-center gap-2 w-100 mb-1`}
+                        flexDirection={'row-reverse'}
                       >
                         <Box
                           as="span"
                           display={"flex"}
                           gap={2}
                           alignItems={"center"}
+                          flexDirection={'row-reverse'}
                         >
-                          {Icon && <Icon className="web-text-large" />}
+                          {Icon && <Icon className="web-text-large" /> }
                           <Text
                             as={"span"}
                             display={
@@ -491,12 +493,12 @@ const DashboardLayout = () => {
                             { title: subMenuTitle, path: link, icon: SubIcon },
                             i
                           ) => (
-                            <Box
+                            <Box 
                               key={i}
                               style={{ height: "auto", position: "relative" }}
                               className={`${
                                 isDrawerOpen || openDrawerClick
-                                  ? " web-text-medium ps-4"
+                                  ? " web-text-medium ps-0 pe-4"
                                   : " web-text-xlarge  justify-content-center"
                               }  d-flex align-items-center  p-0`}
                             >
@@ -506,7 +508,7 @@ const DashboardLayout = () => {
                                   position: "absolute",
                                   top: 0,
                                   width: 2,
-                                  left: 20,
+                                  right: 20,
                                   height:
                                     i === submenu?.length - 1 ? "55%" : "120%",
                                   borderRadius: "0 0 10px 10px",
@@ -517,22 +519,23 @@ const DashboardLayout = () => {
                                 style={{
                                   position: "absolute",
                                   width: 8,
-                                  left: 20,
+                                  right: 20,
                                   height: 2,
                                 }}
                               />
 
-                              <NavLink
+                              <NavLink flexDirection={'row-reverse'}
                                 className={`${
                                   isDrawerOpen || openDrawerClick
-                                    ? "p-2 ps-1 ms-1 web-text-medium "
+                                    ? "p-2 ps-1 me-1 web-text-medium "
                                     : "p-2 ps-0 ms-0 zindex-3 ms-4 web-text-xlarge justify-content-center"
-                                } rounded-1 link d-flex align-items-center gap-2 w-100 `}
+                                } rounded-1 link d-flex align-items-center gap-2 w-100 flex-direction-row-reverse`}
                                 to={link}
+                                style={{flexDirection:"row-reverse"}}
                               >
                                 {SubIcon && (
                                   <SubIcon
-                                    className="web-text-large ms-2"
+                                    className="web-text-large ms-0"
                                     style={{ zIndex: 111 }}
                                   />
                                 )}
@@ -560,8 +563,10 @@ const DashboardLayout = () => {
                     <Text
                       as={"span"}
                       key={index}
-                      className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold"
+                      className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold me-2"
                       padding={0}
+                      display={'flex'}
+                      justifyContent={'end'}
                     >
                       {title}
                     </Text>
@@ -570,16 +575,17 @@ const DashboardLayout = () => {
                   return (
                     <NavLink
                       key={index}
-                      style={{ height: "auto", position: "relative" }}
+                      style={{ height: "auto", position: "relative" ,flexDirection:"row-reverse"}}
                       className={`${
                         isDrawerOpen || openDrawerClick
                           ? "p-2 web-text-medium"
                           : "p-2 ps-0 web-text-xlarge justify-content-start"
                       } rounded-1 link d-flex align-items-center gap-2 w-100`}
                       to={path}
+                      
                     >
                       {Icon && <Icon className="web-text-large ms-2" />}
-                      <Text
+                      <Text 
                         as={"span"}
                         display={
                           isDrawerOpen || openDrawerClick ? "flex" : "none"

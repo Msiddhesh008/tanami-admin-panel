@@ -213,7 +213,7 @@ const Sponser = () => {
       />
 
       <CustomAlertDialog
-      onClose={()=> setDeleteAlert(false)}
+       onClose={()=> setDeleteAlert(false)}
         isOpen={deleteAlert}
         message={"Are you sure you want to delete sponers?"}
         alertHandler={handleDelete}
