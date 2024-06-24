@@ -159,7 +159,7 @@ const DashboardLayout = () => {
 
       {slideFromRight ? null : (
         <aside
-          className="h-100 position-relative sideBar  pe-1"
+          className="h-100  position-relative sideBar  pe-1"
           // onMouseOver={() => setIsDrawerOpen(true)}
           // onMouseLeave={() => setIsDrawerOpen(false)}
           style={{
@@ -316,8 +316,8 @@ const DashboardLayout = () => {
                     <Text
                       as={"span"}
                       key={index}
-                      className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold"
-                      padding={0}
+                      className="web-text-xxsmall fw-600  text-secondary fw-bold"
+                      
                     >
                       {title}
                     </Text>

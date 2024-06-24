@@ -18,7 +18,7 @@ import { AiOutlineUserDelete } from "react-icons/ai";
 
 export const nav = [
   {
-    title: "MAIN MENU",
+    title: "MASTER MENU",
     type: "title",
   },
   {
@@ -175,16 +175,6 @@ export const nav = [
   //   title: "Single Link",
   //   type: "single",
   //   path: "/logout",
-  //   Icon: HiOutlineNewspaper,
-  // },
-  // {
-  //   title: "SPONSER",
-  //   type: "title",
-  // },
-  // {
-  //   title: "Single Link",
-  //   type: "single",
-  //   path: "/",
   //   Icon: HiOutlineNewspaper,
   // },
 ];
