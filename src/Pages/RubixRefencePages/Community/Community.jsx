@@ -62,7 +62,7 @@ import CommunityBannerCard from "./CommunityBannerCard";
 import Header from "../../Components/Header";
 import { TABLE_PAGINATION } from "../../Constants/Paginations";
 import ToastBox from "../../Components/ToastBox";
-import TabularView from "../../Components/TabularView/TabularView";
+import TabularView from "../../../Components/TabularView/TabularView";
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Community = () => {
