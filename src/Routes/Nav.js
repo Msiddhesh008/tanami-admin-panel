@@ -1,18 +1,18 @@
 import { HiOutlineNewspaper } from "react-icons/hi";
-import { TbBrandMedium, TbReportMoney } from "react-icons/tb";
+import { TbBrandMedium, TbChartHistogram, TbReportMoney } from "react-icons/tb";
 import { RiBankLine, RiFileUserLine, RiMoneyDollarBoxLine } from "react-icons/ri";
 import { RiExchangeBoxLine } from "react-icons/ri";
-import { VscSymbolClass } from "react-icons/vsc";
+import { VscGitPullRequestGoToChanges, VscSymbolClass } from "react-icons/vsc";
 import { FiUsers } from "react-icons/fi";
 
-import { MdOutlineAddChart } from "react-icons/md";
+import { MdOutlineAddChart, MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineChartSquareBar } from "react-icons/hi";
 import { TbListDetails } from "react-icons/tb";
 import { TbTransactionDollar } from "react-icons/tb";
 import { TbCalendarDollar } from "react-icons/tb";
 import { TbDeviceDesktopDollar } from "react-icons/tb";
 import { BiMoneyWithdraw } from "react-icons/bi";
-import { GrDocumentUpdate } from "react-icons/gr";
+import { GrDocumentUpdate, GrManual } from "react-icons/gr";
 import { MdBrowserUpdated } from "react-icons/md";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdNotificationsNone } from "react-icons/md";
@@ -89,12 +89,12 @@ export const nav = [
       {
         title: "Pending Request",
         path: "/Pending Request",
-        icon:RiMoneyDollarBoxLine
+        icon:VscGitPullRequestGoToChanges
       },
       {
         title: "View History",
         path: "/View History",
-        icon:RiExchangeBoxLine
+        icon:TbChartHistogram
       }
     ],
     type: "accordion",
@@ -106,12 +106,12 @@ export const nav = [
       {
         title: "Pending Request",
         path: "/Pending Request",
-        icon:RiMoneyDollarBoxLine
+        icon:VscGitPullRequestGoToChanges
       },
       {
         title: "View History",
         path: "/View History",
-        icon:RiExchangeBoxLine
+        icon:TbChartHistogram
       }
     ],
     type: "accordion",
@@ -123,12 +123,12 @@ export const nav = [
       {
         title: "Pending Request",
         path: "/Pending Request",
-        icon:RiMoneyDollarBoxLine
+        icon:VscGitPullRequestGoToChanges
       },
       {
         title: "View History",
         path: "/View History",
-        icon:RiExchangeBoxLine
+        icon:TbChartHistogram
       }
     ],
     type: "accordion",
@@ -148,7 +148,7 @@ export const nav = [
       {
         title: "Academy",
         path: "/Academy",
-        icon:SiAcademia
+        icon:GrManual
       },
       {
         title: "Notification",
@@ -172,7 +172,7 @@ export const nav = [
       }
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: MdOutlineAdminPanelSettings,
   },
   // {
   //   title: "Single Link",
