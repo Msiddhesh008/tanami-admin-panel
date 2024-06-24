@@ -3,6 +3,7 @@ import Investment from "../Pages/Investment/Investment";
 import ExchangeRate from "../Pages/Master/ExchangeRate/ExchangeRate";
 import AddSponser from "../Pages/Master/Sponser/AddSponser";
 import Sponser from "../Pages/Master/Sponser/Sponsers";
+import UnderConstruction from "../Pages/UnderConstruction";
 
 export const RouteLink = [
   // =============[ Tanami ]================
@@ -12,5 +13,5 @@ export const RouteLink = [
 
 
   
-  { path: "/exchange-rate", Component: ExchangeRate },
+  { path: "/exchange-rate", Component: UnderConstruction },
 ];

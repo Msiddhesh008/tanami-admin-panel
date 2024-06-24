@@ -68,12 +68,12 @@ export const nav = [
     submenu: [
       {
         title: "Investor Details",
-        path: "/View Investor Transactions",
+        path: "/Investor Details",
         icon:TbListDetails
       },
       {
         title: "Investor Transactions",
-        path: "/View IO",
+        path: "/Investor Transactions",
         icon:TbTransactionDollar
       },
     ],
@@ -88,12 +88,12 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
+        path: "/Pending",
         icon:RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/View History",
+        path: "/History",
         icon:RiExchangeBoxLine
       }
     ],
@@ -105,7 +105,7 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
+        path: "/Request",
         icon:RiMoneyDollarBoxLine
       },
       {
@@ -122,12 +122,12 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
+        path: "/Pendin",
         icon:RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/View History",
+        path: "/Vie",
         icon:RiExchangeBoxLine
       }
     ],
