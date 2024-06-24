@@ -21,7 +21,7 @@ import { LuContact } from "react-icons/lu";
 
 export const nav = [
   {
-    title: "MAIN MENU",
+    title: "MASTER MENU",
     type: "title",
   },
   {
@@ -68,12 +68,12 @@ export const nav = [
     submenu: [
       {
         title: "Investor Details",
-        path: "/View Investor Transactions",
+        path: "/Investor Details",
         icon:TbListDetails
       },
       {
         title: "Investor Transactions",
-        path: "/View IO",
+        path: "/Investor Transactions",
         icon:TbTransactionDollar
       },
     ],
@@ -178,16 +178,6 @@ export const nav = [
   //   title: "Single Link",
   //   type: "single",
   //   path: "/logout",
-  //   Icon: HiOutlineNewspaper,
-  // },
-  // {
-  //   title: "SPONSER",
-  //   type: "title",
-  // },
-  // {
-  //   title: "Single Link",
-  //   type: "single",
-  //   path: "/",
   //   Icon: HiOutlineNewspaper,
   // },
 ];

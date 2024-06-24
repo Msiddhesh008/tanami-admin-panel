@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { IoMdDownload } from "react-icons/io";
 import * as XLSX from "xlsx";
 import { useGetNewsLetterEmailQuery } from "../Services/api.service";
+import profile from "../assets/proavatar.webp"
 
 const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttion }) => {
 
@@ -65,7 +66,7 @@ const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttio
               <Avatar
                 size="sm"
                 name="Dan Abrahmov"
-                src="https://bit.ly/dan-abramov"
+                src={profile}
               />
               <Box
                 color={"gray.800"}
