@@ -2,7 +2,7 @@ import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import noInternet from "../assets/Error.svg"
 
-const UnderConstruction = () => {
+const UnderConstruction = ({title}) => {
   return (
     <Box
     w={'100vw'}
@@ -16,7 +16,7 @@ const UnderConstruction = () => {
     >
       <Box w={300} className='d-flex justify-content-start align-items-center flex-column gap-2'>
         <Image src={noInternet} w={300} />
-        <Text color={'purple.900'} as={'span'} className='fw-bold'>Comming soon...</Text>
+        <Text color={'purple.900'} as={'span'} className='fw-bold'>{title} Comming soon...</Text>
         </Box>
     </Box>
   )
