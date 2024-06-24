@@ -5,6 +5,16 @@ import { RiExchangeBoxLine } from "react-icons/ri";
 import { VscSymbolClass } from "react-icons/vsc";
 import { FiUsers } from "react-icons/fi";
 
+import { MdOutlineAddChart } from "react-icons/md";
+import { HiOutlineChartSquareBar } from "react-icons/hi";
+import { TbListDetails } from "react-icons/tb";
+import { TbTransactionDollar } from "react-icons/tb";
+import { TbCalendarDollar } from "react-icons/tb";
+import { TbDeviceDesktopDollar } from "react-icons/tb";
+import { BiMoneyWithdraw } from "react-icons/bi";
+import { GrDocumentUpdate } from "react-icons/gr";
+import { MdBrowserUpdated } from "react-icons/md";
+import { AiOutlineUserDelete } from "react-icons/ai";
 
 export const nav = [
   {
@@ -22,12 +32,12 @@ export const nav = [
       {
         title: "Investment Type",
         path: "/investment-type",
-        icon:RiExchangeBoxLine
+        icon: VscSymbolClass
       },
       {
         title: "Exchange Rate",
         path: "/view",
-        icon:VscSymbolClass
+        icon:RiExchangeBoxLine
       },
     ],
     type: "accordion",
@@ -39,16 +49,16 @@ export const nav = [
       {
         title: "Create IO",
         path: "/Create IO",
-        icon:RiMoneyDollarBoxLine
+        icon:MdOutlineAddChart
       },
       {
         title: "View IO",
         path: "/View IO",
-        icon:RiExchangeBoxLine
+        icon:HiOutlineChartSquareBar
       },
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: TbDeviceDesktopDollar,
   },
   {
     title: "Investor Management",
@@ -56,16 +66,16 @@ export const nav = [
       {
         title: "Investor Details",
         path: "/View Investor Transactions",
-        icon:RiMoneyDollarBoxLine
+        icon:TbListDetails
       },
       {
         title: "Investor Transactions",
         path: "/View IO",
-        icon:RiExchangeBoxLine
+        icon:TbTransactionDollar
       },
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: TbCalendarDollar,
   },
   {
     title: "INVESTORS REQUEST",
@@ -85,7 +95,7 @@ export const nav = [
       }
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: BiMoneyWithdraw,
   },
   {
     title: "Investor Upgradation",
@@ -102,7 +112,7 @@ export const nav = [
       }
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: MdBrowserUpdated,
   },
   {
     title: "Account Deletion",
@@ -119,7 +129,7 @@ export const nav = [
       }
     ],
     type: "accordion",
-    Icon: TbBrandMedium,
+    Icon: AiOutlineUserDelete,
   },
   {
     title: "MANAGE ADMIN",
