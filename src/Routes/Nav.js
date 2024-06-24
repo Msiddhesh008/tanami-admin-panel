@@ -15,17 +15,17 @@ export const nav = [
     title: "Master",
     submenu: [
       {
-        title: "Sponser",
+        title: "Sponser Master",
         path: "/sponser",
         icon:RiMoneyDollarBoxLine
       },
       {
-        title: "Exchange rate",
-        path: "/exchange-rate",
+        title: "Investment Type",
+        path: "/investment-type",
         icon:RiExchangeBoxLine
       },
       {
-        title: "Asset classes",
+        title: "Exchange Rate",
         path: "/view",
         icon:VscSymbolClass
       },
@@ -34,33 +34,139 @@ export const nav = [
     Icon: TbBrandMedium,
   },
   {
-    title: "User",
+    title: "IO Management",
     submenu: [
       {
-        title: "Sponser",
-        path: "/loop",
-        icon:TbBrandMedium
+        title: "Create IO",
+        path: "/Create IO",
+        icon:RiMoneyDollarBoxLine
       },
       {
-        title: "Class",
-        path: "/class",
-        icon:TbBrandMedium
-      },
-      {
-        title: "View",
-        path: "/view",
-        icon:TbBrandMedium
+        title: "View IO",
+        path: "/View IO",
+        icon:RiExchangeBoxLine
       },
     ],
     type: "accordion",
-    Icon: FiUsers,
+    Icon: TbBrandMedium,
   },
   {
-    title: "Single Link",
-    type: "single",
-    path: "/",
-    Icon: HiOutlineNewspaper,
+    title: "Investor Management",
+    submenu: [
+      {
+        title: "Investor Details",
+        path: "/View Investor Transactions",
+        icon:RiMoneyDollarBoxLine
+      },
+      {
+        title: "Investor Transactions",
+        path: "/View IO",
+        icon:RiExchangeBoxLine
+      },
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
   },
+  {
+    title: "INVESTORS REQUEST",
+    type: "title",
+  }, {
+    title: "Withdrawal",
+    submenu: [
+      {
+        title: "Pending Request",
+        path: "/Pending Request",
+        icon:RiMoneyDollarBoxLine
+      },
+      {
+        title: "View History",
+        path: "/View History",
+        icon:RiExchangeBoxLine
+      }
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
+  },
+  {
+    title: "Investor Upgradation",
+    submenu: [
+      {
+        title: "Pending Request",
+        path: "/Pending Request",
+        icon:RiMoneyDollarBoxLine
+      },
+      {
+        title: "View History",
+        path: "/View History",
+        icon:RiExchangeBoxLine
+      }
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
+  },
+  {
+    title: "Account Deletion",
+    submenu: [
+      {
+        title: "Pending Request",
+        path: "/Pending Request",
+        icon:RiMoneyDollarBoxLine
+      },
+      {
+        title: "View History",
+        path: "/View History",
+        icon:RiExchangeBoxLine
+      }
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
+  },
+  {
+    title: "MANAGE ADMIN",
+    type: "title",
+  },{
+    title: "Admin",
+    submenu: [
+      {
+        title: "Ban / Unban Investor",
+        path: "/Pending Request",
+        icon:RiMoneyDollarBoxLine
+      },
+      {
+        title: "Acadamy",
+        path: "/Acadamy",
+        icon:RiExchangeBoxLine
+      },
+      {
+        title: "Notification",
+        path: "/Notification",
+        icon:RiExchangeBoxLine
+      },
+      {
+        title: "Contact Details",
+        path: "/Contact Details",
+        icon:RiExchangeBoxLine
+      },
+      {
+        title: "Users",
+        path: "/Users",
+        icon:RiExchangeBoxLine
+      },
+      {
+        title: "Bank Details",
+        path: "/Bank Details",
+        icon:RiExchangeBoxLine
+      }
+    ],
+    type: "accordion",
+    Icon: TbBrandMedium,
+  },
+  // {
+  //   title: "Single Link",
+  //   type: "single",
+  //   path: "/logout",
+  //   Icon: HiOutlineNewspaper,
+  // },
   // {
   //   title: "SPONSER",
   //   type: "title",

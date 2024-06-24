@@ -163,7 +163,7 @@ const DashboardLayout = () => {
           // onMouseOver={() => setIsDrawerOpen(true)}
           // onMouseLeave={() => setIsDrawerOpen(false)}
           style={{
-            width: isDrawerOpen || openDrawerClick ? 225 : 74,
+            width: isDrawerOpen || openDrawerClick ? 232 : 74,
             transition: "width 0.3s ease-in-out", // Smooth transition for width change
             overflow: "hidden", // Hide overflow to prevent content overflow during transition
             backgroundColor: "#0041180A",
@@ -200,7 +200,7 @@ const DashboardLayout = () => {
 
           <Box
             className="ps-2 scroll-bar"
-            style={{ height: "80%", overflowY: "scroll", overflowX: "hidden" }}
+            style={{ height: "85%", overflowY: "scroll", overflowX: "hidden" }}
           >
             <Accordion m={0} allowToggle>
               {nav.map(({ title, type, Icon, submenu, path }, index) => {
@@ -381,7 +381,7 @@ const DashboardLayout = () => {
       <main
         className={`h-100   ${slideFromRight ? "pe-3" : "ps-3"}  `}
         style={{
-          width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 225 : 74}px)`,
+          width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 232 : 74}px)`,
           transition: "width 0.3s ease-in-out",
         }}
       >
