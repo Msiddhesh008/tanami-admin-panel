@@ -30,7 +30,7 @@ export const nav = [
       {
         title: "Sponser Master",
         path: "/sponser",
-        icon:RiMoneyDollarBoxLine
+        icon: RiMoneyDollarBoxLine
       },
       {
         title: "Investment Type",
@@ -39,8 +39,8 @@ export const nav = [
       },
       {
         title: "Exchange Rate",
-        path: "/view",
-        icon:RiExchangeBoxLine
+        path: "/exchange-rate",
+        icon: RiExchangeBoxLine
       },
     ],
     type: "accordion",
@@ -51,13 +51,13 @@ export const nav = [
     submenu: [
       {
         title: "Create IO",
-        path: "/Create IO",
-        icon:MdOutlineAddChart
+        path: "/create",
+        icon: MdOutlineAddChart
       },
       {
         title: "View IO",
-        path: "/View IO",
-        icon:HiOutlineChartSquareBar
+        path: "/view",
+        icon: HiOutlineChartSquareBar
       },
     ],
     type: "accordion",
@@ -68,13 +68,13 @@ export const nav = [
     submenu: [
       {
         title: "Investor Details",
-        path: "/Investor Details",
-        icon:TbListDetails
+        path: "/investor-details",
+        icon: TbListDetails
       },
       {
         title: "Investor Transactions",
-        path: "/Investor Transactions",
-        icon:TbTransactionDollar
+        path: "/investor-transactions",
+        icon: TbTransactionDollar
       },
     ],
     type: "accordion",
@@ -88,13 +88,13 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
-        icon:VscGitPullRequestGoToChanges
+        path: "/pending-request",
+        icon: RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/View History",
-        icon:TbChartHistogram
+        path: "/view-history",
+        icon: RiExchangeBoxLine
       }
     ],
     type: "accordion",
@@ -105,13 +105,13 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
-        icon:VscGitPullRequestGoToChanges
+        path: "/investor-request",
+        icon: RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/View History",
-        icon:TbChartHistogram
+        path: "/upgrade-history",
+        icon: RiExchangeBoxLine
       }
     ],
     type: "accordion",
@@ -122,13 +122,13 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/Pending Request",
-        icon:VscGitPullRequestGoToChanges
+        path: "/deletion-request",
+        icon: RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/View History",
-        icon:TbChartHistogram
+        path: "/deletion-history",
+        icon: RiExchangeBoxLine
       }
     ],
     type: "accordion",
@@ -137,38 +137,38 @@ export const nav = [
   {
     title: "MANAGE ADMIN",
     type: "title",
-  },{
+  }, {
     title: "Admin",
     submenu: [
       {
         title: "Bank / Urban Investor",
-        path: "/Pending Request",
-        icon:TbReportMoney
+        path: "/bank-investor",
+        icon: TbReportMoney
       },
       {
         title: "Academy",
-        path: "/Academy",
-        icon:GrManual
+        path: "/academy",
+        icon: SiAcademia
       },
       {
         title: "Notification",
-        path: "/Notification",
-        icon:MdNotificationsNone
+        path: "/notification",
+        icon: MdNotificationsNone
       },
       {
         title: "Contact Details",
-        path: "/Contact Details",
-        icon:LuContact
+        path: "/contact",
+        icon: LuContact
       },
       {
         title: "Users",
-        path: "/Users",
-        icon:RiFileUserLine
+        path: "/users",
+        icon: RiFileUserLine
       },
       {
         title: "Bank Details",
-        path: "/Bank Details",
-        icon:RiBankLine
+        path: "/bank-details",
+        icon: RiBankLine
       }
     ],
     type: "accordion",
@@ -195,17 +195,17 @@ export const nestedNav = [
           {
             title: "Sponser",
             path: "/sponser",
-            icon:RiMoneyDollarBoxLine
+            icon: RiMoneyDollarBoxLine
           },
           {
             title: "Exchange rate",
             path: "/exchange-rate",
-            icon:RiExchangeBoxLine
+            icon: RiExchangeBoxLine
           },
           {
             title: "Asset classes",
             path: "/view",
-            icon:VscSymbolClass
+            icon: VscSymbolClass
           },
         ],
         type: "accordion",
@@ -217,17 +217,17 @@ export const nestedNav = [
           {
             title: "Sponser",
             path: "/loop",
-            icon:TbBrandMedium
+            icon: TbBrandMedium
           },
           {
             title: "Class",
             path: "/class",
-            icon:TbBrandMedium
+            icon: TbBrandMedium
           },
           {
             title: "View",
             path: "/view",
-            icon:TbBrandMedium
+            icon: TbBrandMedium
           },
         ],
         type: "accordion",
@@ -235,24 +235,23 @@ export const nestedNav = [
       },
     ]
   },
-  ,
   {
     title: "User",
     submenu: [
       {
         title: "Sponser",
         path: "/loop",
-        icon:TbBrandMedium
+        icon: TbBrandMedium
       },
       {
         title: "Class",
         path: "/class",
-        icon:TbBrandMedium
+        icon: TbBrandMedium
       },
       {
         title: "View",
         path: "/view",
-        icon:TbBrandMedium
+        icon: TbBrandMedium
       },
     ],
     type: "accordion",

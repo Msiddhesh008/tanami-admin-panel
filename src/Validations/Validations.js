@@ -795,3 +795,17 @@ export const addFaq = Yup.object().shape({
   //   }
   // })
 });
+
+
+// Tanami Schema
+
+export const investmentSchema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  address: Yup.string().required("Type is required"),
+  mobile: Yup.string().required("Total Fund is required"),
+  bankDetails: Yup.string().required("Total Investor is required"),
+  bankAccount: Yup.string().required("Predicted Income is required"),
+  status: Yup.string()
+    .oneOf(["available", "upcoming", "closed"], "Invalid status")
+    .required("Status is required"),
+});
