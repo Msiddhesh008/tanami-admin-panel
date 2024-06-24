@@ -229,6 +229,7 @@ const DashboardLayout = () => {
                             }
                             alignItems="center"
                             overflow="hidden"
+                            textAlign={"left"}
                           >
                             {title}
                           </Text>
