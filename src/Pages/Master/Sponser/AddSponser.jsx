@@ -20,24 +20,18 @@ import { TiWarning } from "react-icons/ti";
 import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 import FormField from "../../../Components/FormField";
+import { v4 as uuidv4 } from "uuid";
 
 const schema = yup.object().shape({
   sponserName: yup.string().required("Sponser name is required"),
   mobileNo: yup.string().required("Mobile no is required"),
   sponserAddress: yup.string().required("Sponser address is required"),
 
-
-
-
-
   bankName: yup.string().required("Bank Name is required"),
   accountNumber: yup.string().required("Account Number is required"),
   swiftCode: yup.string().required("SWIFT/BIC Code is required"),
   bankEmail: yup.string().email("Invalid email format"),
 
-
-
-  
   // routingNumber: yup.string().required("Routing Number is required"),
   // iban: yup.string().required("IBAN is required"),
   // accountType: yup.string().required("Account Type is required"),
@@ -50,8 +44,15 @@ const schema = yup.object().shape({
 
 
 
+export function debounce(func, delay) {
+  let debounceTimer;
+  return function(...args) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(this, args), delay);
+  };
+}
 const AddSponser = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { sponser, setSponser } = useContext(GlobalStateContext);
   const {
     control,
@@ -64,8 +65,16 @@ const AddSponser = () => {
   console.log(errors);
 
   const onSubmit = (data) => {
-    setSponser([{...data, status: true}, ...sponser]);
-    navigate('/sponser');
+    setSponser([
+      {
+        ...data,
+        status: true,
+        id: uuidv4(),
+        createdAt: new Date().toISOString(),
+      },
+      ...sponser,
+    ]);
+    navigate("/sponser");
   };
 
   return (
@@ -75,56 +84,54 @@ const AddSponser = () => {
           Personal Details
         </Heading>
         <Box display={"flex"} gap={0}>
-            <Box
-              width={"50%"}
-              p={5}
-              display={"flex"}
-              flexDirection={"column"}
-              gap={4}
-            >
-              <FormField
-                label="Sponser name"
-                name="sponserName"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-              <FormField
-                label="Mobile no"
-                name="mobileNo"
-                type="tel"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-              <FormField
-                label="Sponser address"
-                name="sponserAddress"
-                type="textarea"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-            </Box>
+          <Box
+            width={"50%"}
+            p={5}
+            display={"flex"}
+            flexDirection={"column"}
+            gap={4}
+          >
+            <FormField
+              label="Sponser name"
+              name="sponserName"
+              control={control}
+              errors={errors}
+              isRequired={true}
+            />
+            <FormField
+              label="Mobile no"
+              name="mobileNo"
+              type="tel"
+              control={control}
+              errors={errors}
+              isRequired={true}
+            />
+            <FormField
+              label="Sponser address"
+              name="sponserAddress"
+              type="textarea"
+              control={control}
+              errors={errors}
+              isRequired={true}
+            />
+          </Box>
 
-            <Box
-              width={"50%"}
-              p={5}
-              display={"flex"}
-              flexDirection={"column"}
-              gap={4}
-            >
-              <FormField
-                label="اسم الراعي"
-                name="اسم الراعي"
-              
-                control={control}
-                errors={errors}
-                isRequired={true}
-                arabic={true}
-              /></Box>
-
-          
+          <Box
+            width={"50%"}
+            p={5}
+            display={"flex"}
+            flexDirection={"column"}
+            gap={4}
+          >
+            <FormField
+              label="اسم الراعي"
+              name="اسم الراعي"
+              control={control}
+              errors={errors}
+              isRequired={true}
+              arabic={true}
+            />
+          </Box>
         </Box>
 
         <Divider />
@@ -232,18 +239,23 @@ const AddSponser = () => {
                 errors={errors}
               />
 
-{/* <Button size={"sm"} rounded={"sm"} type="submit" colorScheme="green">
+              {/* <Button size={"sm"} rounded={"sm"} type="submit" colorScheme="green">
           Submit
         </Button> */}
             </Box>
           )}
-          
         </Box>
 
-          <Box display={'flex'} justifyContent={"flex-end"} p={4}>
-          <Button size={"sm"} width={"50%"} rounded={"sm"} type="submit" colorScheme="green">
-          Submit
-        </Button> 
+        <Box display={"flex"} justifyContent={"flex-start"} p={4}>
+          <Button
+            size={"sm"}
+            width={"50%"}
+            rounded={"sm"}
+            type="submit"
+            colorScheme="green"
+          >
+            Submit
+          </Button>
         </Box>
       </form>
     </Box>

@@ -42,15 +42,15 @@ const customTheme = extendTheme({
   
   },
   components: {
-    Switch: {
-      baseStyle: {
-        track: {
-          _checked: {
-            bg: 'forestGreen.500', // using your custom color here
-          },
-        },
-      },
-    },
+    // Switch: {
+    //   baseStyle: {
+    //     track: {
+    //       _checked: {
+    //         bg: 'forestGreen.500', // using your custom color here
+    //       },
+    //     },
+    //   },
+    // },
   },
 });
 

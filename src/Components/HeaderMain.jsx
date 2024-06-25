@@ -32,7 +32,6 @@ const HeaderMain = ({
 }) => {
   const { colorMode, toggleColorMode } = useContext(GlobalStateContext);
 
-  console.log(colorMode);
 
   return (
     <Box

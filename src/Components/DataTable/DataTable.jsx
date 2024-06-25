@@ -110,11 +110,11 @@ const DataTable = ({
                           textOverflow: "ellipsis",
                         }}
                         className="web-text-small"
-                        onClick={
-                          i === tableHeadRow.length - 1 || i === 0
-                            ? null
-                            : () => navigate(`edit-sponser/${item.id}`) // Define the onClick handler for other cells
-                        }
+                        // onClick={
+                        //   i === tableHeadRow.length - 1 || i === 0
+                        //     ? null
+                        //     : () => navigate(`edit-sponser/${item.id}`) // Define the onClick handler for other cells
+                        // }
                       >
                         {item[heading]}
                       </Td>

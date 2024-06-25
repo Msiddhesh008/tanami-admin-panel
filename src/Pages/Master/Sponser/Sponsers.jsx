@@ -14,6 +14,7 @@ import {
   Switch,
   Tag,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
@@ -24,10 +25,13 @@ import { AddIcon, EmailIcon } from "@chakra-ui/icons";
 import Pagination from "../../../Components/Pagination";
 import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../../Components/CustomAlertDialog";
+import ToastBox from "../../../Components/ToastBox";
+import { debounce } from "./AddSponser";
 
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const Sponser = () => {
+  const toast = useToast()
   const { sponser, setSponser,slideFromRight } = useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +41,6 @@ const Sponser = () => {
   const [mouseEnteredId, setMouseEnteredId] = useState("");
 
 
-  console.log(mouseEnteredId);
 
   useEffect(() => {
     // Simulate loading
@@ -58,10 +61,21 @@ const Sponser = () => {
     "Created At",
   ];
 
-  const handleUpdateStatus = (id) => {
-    console.log(`Status updated for id: ${id}`);
-    // Add your status update logic here
-  };
+  const handleUpdateStatus = debounce((id) => {
+    
+    setSponser((prevSponser) =>
+      prevSponser.map((sponsor) =>
+        sponsor.id === id ? { ...sponsor, status: !sponsor.status } : sponsor
+      )
+    );
+    toast({
+      render: () => (
+        <ToastBox
+          message={"Status changed succesfully.!"}
+        />
+      ),
+    });
+  },300) ;
 
   // ====================================================[Table Filter]================================================================
   const filteredData = sponser.filter((item) => {
@@ -108,22 +122,24 @@ const Sponser = () => {
       </Box>
     ),
     Status:
-      // <Switch
-      //   size={"sm"}
-      //   colorScheme="teal"
-      //   onChange={() => handleUpdateStatus(item.id)}
-      //   isChecked={item.status}
-      // />
+      <Switch
+        size={"sm"}
+        color="green"
+        onChange={() => handleUpdateStatus(item.id)}
+        isChecked={item.status}
+      />
 
-      item?.status ? (
-        <Badge bg={'transparent'} color={"#05c46b"}>
-          Passed
-        </Badge>
-      ) : (
-        <Badge bg={'transparent'} color={"#f53b57"}>
-          Not passes
-        </Badge>
-      ),
+      // item?.status ? (
+      //   <Badge bg={'transparent'} color={"#05c46b"}>
+      //     Passed
+      //   </Badge>
+      // ) : (
+      //   <Badge bg={'transparent'} color={"#f53b57"}>
+      //     Not passes
+      //   </Badge>
+      // ),
+      
+      ,
     "Created At": (
       <span className="d-flex justify-content-between align-items-center">
         <Text as={"span"} color={"gray.600"} className=" fw-bold">
@@ -172,7 +188,7 @@ const Sponser = () => {
 
 
   return (
-    <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"}>
+    <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={38}>
       <Box bg="white.500">
         <HStack
           display={"flex"}

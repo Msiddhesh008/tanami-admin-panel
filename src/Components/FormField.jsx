@@ -28,6 +28,7 @@ const FormField = ({
               size={"sm"}
               {...field}
               {...props}
+              placeholder={label}
               textAlign={arabic ? "right" : "left"}
             />
           ) : (
@@ -37,6 +38,7 @@ const FormField = ({
               type={type}
               {...field}
               {...props}
+              placeholder={label}
               textAlign={arabic ? "right" : "left"}
             />
           );
