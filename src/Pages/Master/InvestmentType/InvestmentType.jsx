@@ -1,22 +1,20 @@
-import { Box, Image, Text } from "@chakra-ui/react"
+import { Box, Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
 // import error from "../assets/Error.svg"
-import robot from "../../../assets/robot.png"
+import robot from "../../../assets/robot.png";
+import InvestmentCard from "../../../Components/InvestmentCard/InvestmentCard";
 // import robot from "../assets/robot.png"
 const InvestmentType = () => {
   return (
-    
     <Box
-    h={'100vh'}
-    display={'flex'}
-    justifyContent={'center'}
-    alignItems={'center'}
-    flexDirection={'column'}
-    gap={8}
+      h={"100vh"}
+      w={'100%'}
+      p={'20px'}
+      overflow="scroll"
     >
-        <Image src={robot} w={"171px"} />
-        {/* <Text color={'green.800'} as={'span'} fontSize={'small'}>The requested URL was not found on this server.</Text> */}
+      {/* <Image src={robot} w={"171px"} /> */}
+      <InvestmentCard />
     </Box>
-  )
-}
+  );
+};
 
-export default InvestmentType
+export default InvestmentType;
