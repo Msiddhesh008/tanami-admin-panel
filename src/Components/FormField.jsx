@@ -10,12 +10,13 @@ const FormField = ({
     type = "text",
     errors,
     isRequired,
+    arabic,
     ...props
   }) => (
     // <FormControl isInvalid={errors[name]}>
     // <FormControl isRequired={isRequired}>
     <FormControl >
-      <FormLabel fontSize={"sm"}>{label}</FormLabel>
+      <FormLabel textAlign={arabic ? "right" : "left"} fontSize={"sm"}>{label}</FormLabel>
       <Controller
         control={control}
         name={name}
@@ -27,6 +28,7 @@ const FormField = ({
               size={"sm"}
               {...field}
               {...props}
+              textAlign={arabic ? "right" : "left"}
             />
           ) : (
             <Input
@@ -35,6 +37,7 @@ const FormField = ({
               type={type}
               {...field}
               {...props}
+              textAlign={arabic ? "right" : "left"}
             />
           );
         }}

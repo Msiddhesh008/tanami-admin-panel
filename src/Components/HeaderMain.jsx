@@ -11,33 +11,47 @@ import {
   PopoverTrigger,
   Portal,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoMdDownload } from "react-icons/io";
 import * as XLSX from "xlsx";
 import { useGetNewsLetterEmailQuery } from "../Services/api.service";
-import profile from "../assets/proavatar.webp"
+import profile from "../assets/proavatar.webp";
+import GlobalStateContext from "../Contexts/GlobalStateContext";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttion }) => {
+const HeaderMain = ({
+  link,
+  btnTitle,
+  title,
+  icon,
+  logOutHandler,
+  slideDirecttion,
+}) => {
+  const { colorMode, toggleColorMode } = useContext(GlobalStateContext);
 
+  console.log(colorMode);
 
   return (
     <Box
-      backgroundColor={"#fff"}
-      className={` pt-2 pb-2   fw-400 border-bottom d-flex ${slideDirecttion ? "flex-row-reverse ps-2" : ""}  justify-content-between align-items-center`}
+      className={` pt-2 pb-2   fw-400 border-bottom d-flex ${
+        slideDirecttion ? "flex-row-reverse ps-2" : ""
+      }  justify-content-between align-items-center`}
     >
       <Text
         as={"span"}
         fontWeight={"500"}
-        color={"forestGreen.500"}
+        // color={"forestGreen.500"}
         className="fs-6 "
       >
         {/* <icon /> */}
         {title}
       </Text>
 
-      <Box me={4} className="d-flex justify-content-center ">
+      
+      <Box me={4} gap={2} className="d-flex justify-content-center ">
         <Popover placement="bottom">
           <Portal>
             <PopoverContent maxW="200px" className="">
@@ -65,12 +79,11 @@ const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttio
             >
               <Avatar
                 size="sm"
-    boxSize={37}
+                boxSize={37}
                 name="Dan Abrahmov"
                 src={profile}
               />
               <Box
-                color={"gray.800"}
                 style={{
                   display: "flex",
                 }}
@@ -86,6 +99,10 @@ const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttio
             </Box>
           </PopoverTrigger>
         </Popover>
+
+        {/* <Box onClick={() => toggleColorMode()} as="span" p={2} rounded={'lg'} className="link pointer">
+          {colorMode === "light"?  <MdOutlineDarkMode /> :<MdOutlineLightMode />}
+        </Box> */}
       </Box>
     </Box>
   );

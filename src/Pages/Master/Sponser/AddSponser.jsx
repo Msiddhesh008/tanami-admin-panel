@@ -25,18 +25,27 @@ const schema = yup.object().shape({
   sponserName: yup.string().required("Sponser name is required"),
   mobileNo: yup.string().required("Mobile no is required"),
   sponserAddress: yup.string().required("Sponser address is required"),
-  accountHolderName: yup.string().required("Account Holder's Name is required"),
+
+
+
+
+
   bankName: yup.string().required("Bank Name is required"),
   accountNumber: yup.string().required("Account Number is required"),
-  bankBranch: yup.string().required("Bank Branch is required"),
-  branchAddress: yup.string().required("Branch Address is required"),
-  ifscCode: yup.string().required("IFSC Code is required"),
   swiftCode: yup.string().required("SWIFT/BIC Code is required"),
-  routingNumber: yup.string().required("Routing Number is required"),
-  iban: yup.string().required("IBAN is required"),
-  accountType: yup.string().required("Account Type is required"),
-  bankPhoneNumber: yup.string().required("Bank Phone Number is required"),
   bankEmail: yup.string().email("Invalid email format"),
+
+
+
+  
+  // routingNumber: yup.string().required("Routing Number is required"),
+  // iban: yup.string().required("IBAN is required"),
+  // accountType: yup.string().required("Account Type is required"),
+  // bankPhoneNumber: yup.string().required("Bank Phone Number is required"),
+  // bankBranch: yup.string().required("Bank Branch is required"),
+  // branchAddress: yup.string().required("Branch Address is required"),
+  // ifscCode: yup.string().required("IFSC Code is required"),
+  // accountHolderName: yup.string().required("Account Holder's Name is required"),
 });
 
 
@@ -66,7 +75,6 @@ const AddSponser = () => {
           Personal Details
         </Heading>
         <Box display={"flex"} gap={0}>
-          {Array(2).fill(
             <Box
               width={"50%"}
               p={5}
@@ -98,16 +106,7 @@ const AddSponser = () => {
                 isRequired={true}
               />
             </Box>
-          )}
-        </Box>
 
-        <Divider />
-
-        <Heading as="h6" size="xs" mt={4}>
-          Bank Details
-        </Heading>
-        <Box display={"flex"} gap={0}>
-          {Array(2).fill(
             <Box
               width={"50%"}
               p={5}
@@ -116,12 +115,39 @@ const AddSponser = () => {
               gap={4}
             >
               <FormField
+                label="اسم الراعي"
+                name="اسم الراعي"
+              
+                control={control}
+                errors={errors}
+                isRequired={true}
+                arabic={true}
+              /></Box>
+
+          
+        </Box>
+
+        <Divider />
+
+        <Heading as="h6" size="xs" mt={4}>
+          Bank Details
+        </Heading>
+        <Box display={"flex"} gap={0}>
+          {Array(1).fill(
+            <Box
+              width={"50%"}
+              p={5}
+              display={"flex"}
+              flexDirection={"column"}
+              gap={4}
+            >
+              {/* <FormField
                 label="Account Holder's Name"
                 name="accountHolderName"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
+              /> */}
               <FormField
                 label="Bank Name"
                 name="bankName"
@@ -136,27 +162,27 @@ const AddSponser = () => {
                 errors={errors}
                 isRequired={true}
               />
-              <FormField
+              {/* <FormField
                 label="Bank Branch"
                 name="bankBranch"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 label="Branch Address"
                 name="branchAddress"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 label="IFSC Code"
                 name="ifscCode"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
+              /> */}
               <FormField
                 label="SWIFT/BIC Code"
                 name="swiftCode"
@@ -164,21 +190,21 @@ const AddSponser = () => {
                 errors={errors}
                 isRequired={true}
               />
-              <FormField
+              {/* <FormField
                 label="Routing Number"
                 name="routingNumber"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 label="IBAN"
                 name="iban"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 label="Type of Account"
                 name="accountType"
                 control={control}
@@ -191,14 +217,14 @@ const AddSponser = () => {
                     <option value="business">Business</option>
                   </Select>
                 }
-              />
-              <FormField
+              /> */}
+              {/* <FormField
                 label="Bank Phone Number"
                 name="bankPhoneNumber"
                 control={control}
                 errors={errors}
                 isRequired={true}
-              />
+              /> */}
               <FormField
                 label="Bank Email (optional)"
                 name="bankEmail"

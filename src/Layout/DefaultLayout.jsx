@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../assets/logo2.png";
+import logoDark from "../assets/logo.png";
 import logoMini from "../assets/logo-min.png";
+import logoMiniDark from "../assets/favicon.png";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../Redux/Slice/auth";
 import Button02 from "../Components/Buttons/Button02";
@@ -63,6 +65,7 @@ import { HiOutlineChartSquareBar } from "react-icons/hi";
 import { GrManual } from "react-icons/gr";
 import { LuContact } from "react-icons/lu";
 import shield from "../assets/shield.png"
+import SplashScreen from "../Pages/SplashScreen";
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
@@ -71,8 +74,20 @@ const DashboardLayout = () => {
   const path = location.pathname;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDrawerClick, setOpenDrawerClick] = useState(true);
-  const { setIsAuthenticate } = useContext(GlobalStateContext);
+  const { setIsAuthenticate, colorMode, toggleColorMode } = useContext(GlobalStateContext);
   const [slideFromRight, setSlideFormRight] = useState(false);
+  const [isSplashVisible, setSplashVisible] = useState(true);
+
+
+  useEffect(() => {
+    // Set a timer to hide the splash screen after 3 seconds
+    const timer = setTimeout(() => {
+      setSplashVisible(false);
+    }, 2000); // 3000ms = 3 seconds
+
+    // Cleanup the timer
+    return () => clearTimeout(timer);
+  }, []);
 
   const openDrawerOnClick = () => {
     setOpenDrawerClick(!openDrawerClick);
@@ -85,172 +100,166 @@ const DashboardLayout = () => {
     navigate("/login");
   };
 
+  console.log();
+
   // // Function to get the title based on the route
   const getTitle = () => {
-    switch (path) {
+    switch (true) {
       case "/":
         return "👋🏻 Hi, Admin";
-      case "/sponser":
-      case "/sponser/add-sponser":
+      case path.startsWith("/sponser"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0" /> Sponser
           </span>
         );
-      case "/investment-type":
+      case path.startsWith("/investment-type"):
         return (
           <span className="d-flex align-items-end gap-2">
             <VscSymbolClass className="h4 m-0" /> Investment Type
           </span>
         );
-      case "/exchange-rate":
+      case path.startsWith("/exchange-rate"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
             Echange rate
           </span>
         );
-      case "/create-io":
+      case path.startsWith("/create-io"):
         return (
           <span className="d-flex align-items-end gap-2">
             <MdOutlineAddChart className="h4 m-0 fw-normal" />
             Create IO
           </span>
         );
-      case "/view-io":
+      case path.startsWith("/view-io"):
         return (
           <span className="d-flex align-items-end gap-2">
             <HiOutlineChartSquareBar className="h4 m-0 fw-normal" />
             View IO
           </span>
         );
-      case "/investor-details":
+      case path.startsWith("/investor-details"):
         return (
           <span className="d-flex align-items-end gap-2">
             <TbListDetails className="h4 m-0 fw-normal" />
             Investor Details
           </span>
         );
-      case "/investor-transactions":
+      case path.startsWith("/investor-transactions"):
         return (
           <span className="d-flex align-items-end gap-2">
             <TbTransactionDollar className="h4 m-0 fw-normal" />
             Investor Transactions
           </span>
         );
-      case "/withdraw-request":
+      case path.startsWith("/withdraw-request"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
             Withdrawal pending request
           </span>
         );
-      case "/withdraw-history":
+      case path.startsWith("/withdraw-history"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
             Withdrawal request
           </span>
         );
-
-      case "/investor-request":
+      case path.startsWith("/investor-request"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
             Investor pending request
           </span>
         );
-      case "/investor-history":
+      case path.startsWith("/investor-history"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
             Investor request
           </span>
         );
-
-      case "/deletion-request":
+      case path.startsWith("/deletion-request"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
             Deletion pending request
           </span>
         );
-      case "/deletion-history":
+      case path.startsWith("/deletion-history"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
             Deletion request
           </span>
         );
-
-      case "/bank-investor":
+      case path.startsWith("/bank-investor"):
         return (
           <span className="d-flex align-items-end gap-2">
             <TbReportMoney className="h4 m-0 fw-normal" />
             Ban / Unban Investor
           </span>
         );
-
-      case "/academy":
+      case path.startsWith("/academy"):
         return (
           <span className="d-flex align-items-end gap-2">
             <GrManual className="h4 m-0 fw-normal" />
             Academy
           </span>
         );
-
-      case "/notification":
+      case path.startsWith("/notification"):
         return (
           <span className="d-flex align-items-end gap-2">
             <MdNotificationsNone className="h4 m-0 fw-normal" />
             Notification
           </span>
         );
-
-      case "/contact":
+      case path.startsWith("/contact"):
         return (
           <span className="d-flex align-items-end gap-2">
             <LuContact className="h4 m-0 fw-normal" />
             Contact Details
           </span>
         );
-
-      case "/users":
+      case path.startsWith("/users"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiFileUserLine className="h4 m-0 fw-normal" />
             Users
           </span>
         );
-      case "/bank-details":
+      case path.startsWith("/bank-details"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiBankLine className="h4 m-0 fw-normal" />
             Bank Details
           </span>
         );
-      case "/deletion-request":
+      case path.startsWith("/deletion-request"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
             Deletion pending request
           </span>
         );
-      case "/deletion-history":
+      case path.startsWith("/deletion-history"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
             Deletion request
           </span>
         );
-      case "/deletion-request":
+      case path.startsWith("/deletion-request"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
             Deletion pending request
           </span>
         );
-      case "/deletion-history":
+      case path.startsWith("/deletion-history"):
         return (
           <span className="d-flex align-items-end gap-2">
             <RiExchangeBoxLine className="h4 m-0 fw-normal" />
@@ -281,6 +290,10 @@ const DashboardLayout = () => {
         return "Tanami";
     }
   };
+
+  if (isSplashVisible) {
+    return <SplashScreen />;
+  }
 
   return (
     <Box
@@ -343,19 +356,20 @@ const DashboardLayout = () => {
             height={"10%"}
           >
             {isDrawerOpen || openDrawerClick ? (
-              <img
+
+              <Image
                 style={{
                   width: 120,
                 }}
-                src={logo}
+                src={colorMode === "light"?logo : logoDark }
                 alt="Logo"
               />
             ) : (
-              <img
+              <Image
                 style={{
                   width: 30,
                 }}
-                src={logoMini}
+                src={colorMode === "light"?logoMini : logoMiniDark }
                 alt="Logo"
               />
             )}
@@ -385,7 +399,7 @@ const DashboardLayout = () => {
                           alignItems={"center"}
                         >
                           {/* {Icon && title === "Admin" ? <Image w={15} src={shield} /> : <Icon className={`web-text-large`} />} */}
-                          {Icon &&  <Icon color={title === "Admin" ? "#004118" :""} fontSize={title === "Admin" ? "18px" :"15px"}/>}
+                          {Icon &&  <Icon  fontSize={title === "Admin" ? "18px" :"15px"}/>}
                           <Text
                             as={"span"}
                             display={

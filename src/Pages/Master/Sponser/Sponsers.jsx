@@ -33,6 +33,11 @@ const Sponser = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [deleteAlert, setDeleteAlert] = useState(false);
   const [actionId, setActionId] = useState(false);
+  const [mouseEntered, setMouseEntered] = useState(false);
+  const [mouseEnteredId, setMouseEnteredId] = useState("");
+
+
+  console.log(mouseEnteredId);
 
   useEffect(() => {
     // Simulate loading
@@ -78,6 +83,7 @@ const Sponser = () => {
   });
 
   const extractedArray = filteredData?.map((item) => ({
+    id: item?.id,
     "Sponser name": (
       <Text
         as={"span"}
@@ -110,11 +116,11 @@ const Sponser = () => {
       // />
 
       item?.status ? (
-        <Badge variant='outline' colorScheme='green'>
+        <Badge bg={'transparent'} color={"#05c46b"}>
           Passed
         </Badge>
       ) : (
-        <Badge variant={'outline'}  colorScheme="red">
+        <Badge bg={'transparent'} color={"#f53b57"}>
           Not passes
         </Badge>
       ),
@@ -129,10 +135,10 @@ const Sponser = () => {
           </MenuButton>
           <Portal>
             <MenuList minWidth="80px">
-              <RouterLink to={`edit/${item.id}`}>
+              <RouterLink to={`edit-sponser/${item.id}`}>
                 <MenuItem className="web-text-medium">Edit</MenuItem>
               </RouterLink>
-              <RouterLink to={`view/${item.id}`}>
+              <RouterLink to={`view-sponser/${item.id}`}>
                 <MenuItem className="web-text-medium">View</MenuItem>
               </RouterLink>
               <MenuItem
@@ -183,6 +189,7 @@ const Sponser = () => {
             placeholder="Search..."
             size="sm"
             rounded="sm"
+            focusBorderColor="green.500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -209,7 +216,16 @@ const Sponser = () => {
         tableHeadRow={tableHeadRow}
         data={extractedArray}
         isLoading={isLoading}
+        viewActionId={actionId}
+        setViewActionId={setActionId}
         // totalPages={10}
+
+
+
+
+        
+        setMouseEnteredId={setMouseEnteredId}
+        setMouseEntered={setMouseEntered}
       />
 
       <CustomAlertDialog

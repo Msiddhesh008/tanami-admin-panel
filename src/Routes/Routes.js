@@ -19,15 +19,24 @@ import InvestorTransactions from "../Pages/Investor_Management/InvestorTransacti
 import ExchangeRate from "../Pages/Master/ExchangeRate/ExchangeRate";
 import InvestmentType from "../Pages/Master/InvestmentType/InvestmentType";
 import AddSponser from "../Pages/Master/Sponser/AddSponser";
+import EditSponser from "../Pages/Master/Sponser/EditSponser";
 import Sponser from "../Pages/Master/Sponser/Sponsers";
+import ViewSponser from "../Pages/Master/Sponser/ViewSponser";
 import PendingRequest from "../Pages/WithDrawal/PendingRequest";
 import ViewHistory from "../Pages/WithDrawal/ViewHistory";
 
 export const RouteLink = [
   // =============[ Tanami ]================
   // ===============[ Management]===============
+  { path: "/", Component: Sponser },
   { path: "/sponser", Component: Sponser },
   { path: "/sponser/add-sponser", Component: AddSponser },
+  { path: "/sponser/view-sponser/:id", Component: ViewSponser },
+  { path: "/sponser/edit-sponser/:id", Component: EditSponser },
+
+
+
+
   { path: "/exchange-rate", Component: ExchangeRate },
   { path: "/investment-type", Component: InvestmentType },
 

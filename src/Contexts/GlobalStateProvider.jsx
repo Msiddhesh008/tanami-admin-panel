@@ -1,6 +1,7 @@
 // GlobalStateContext.js
 import React, { useState } from "react";
 import GlobalStateContext from "./GlobalStateContext";
+import { useColorMode } from "@chakra-ui/react";
 
 function generateUID() {
   // Generates a random 8-character alphanumeric string
@@ -12,8 +13,9 @@ const GlobalStateProvider = ({ children }) => {
   const [memberIfo, setMemberInfo] = useState();
   const [communityMembers, setCommityMembers] = useState();
 
-    const [sponser, setSponser] = useState([
-      {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [sponser, setSponser] = useState([
+    {
       id: 1,
       sponserName: "John Doe",
       mobileNo: "1234567890",
@@ -212,7 +214,8 @@ const GlobalStateProvider = ({ children }) => {
       bankEmail: "henry.ingram@example.com",
       status: false,
       createdAt: "6",
-    },{
+    },
+    {
       id: 11,
       sponserName: "Grace Hall",
       mobileNo: "1111111111",
@@ -265,6 +268,8 @@ const GlobalStateProvider = ({ children }) => {
         setCommityMembers,
         sponser,
         setSponser,
+        colorMode,
+        toggleColorMode,
       }}
     >
       {children}
