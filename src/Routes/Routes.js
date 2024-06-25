@@ -7,9 +7,12 @@ import BankInvestor from "../Pages/Admin/BankInvestor";
 import Contact from "../Pages/Admin/Contact";
 import Notification from "../Pages/Admin/Notification";
 import Users from "../Pages/Admin/Users";
-import Create from "../Pages/IO_Management/Create";
-import View from "../Pages/IO_Management/View";
+import CreateIO from "../Pages/IO_Management/CreateIO";
+import Create from "../Pages/IO_Management/CreateIO";
+import ViewIO from "../Pages/IO_Management/ViewIO";
+import View from "../Pages/IO_Management/ViewIO";
 import InvestorPendingRequest from "../Pages/InvestorUpgrade/InvestorPendingRequest";
+import UpgradeHistory from "../Pages/InvestorUpgrade/UpgradeHistory";
 import upgradeHistory from "../Pages/InvestorUpgrade/UpgradeHistory";
 import InvestorDetails from "../Pages/Investor_Management/InvestorDetails";
 import InvestorTransactions from "../Pages/Investor_Management/InvestorTransactions";
@@ -29,19 +32,19 @@ export const RouteLink = [
   { path: "/investment-type", Component: InvestmentType },
 
   // ===============[ IO Management]===============
-  { path: "/create", Component: Create },
-  { path: "/view", Component: View },
+  { path: "/create-io", Component: CreateIO },
+  { path: "/view-io", Component: ViewIO },
 
   // ===============[ Investor Management]===============
   { path: "/investor-details", Component: InvestorDetails },
   { path: "/investor-transactions", Component: InvestorTransactions },
 
   // ===============[ Withdrawal]===============
-  { path: "/pending-request", Component: PendingRequest },
-  { path: "/view-history", Component: ViewHistory },
+  { path: "/withdraw-request", Component: PendingRequest },
+  { path: "/withdraw-history", Component: ViewHistory },
 
   // ===============[ Withdrawal]===============
-  { path: "/upgrade-history", Component: upgradeHistory },
+  { path: "/investor-history", Component: UpgradeHistory },
   { path: "/investor-request", Component: InvestorPendingRequest },
 
   // ===============[ Deletion]===============

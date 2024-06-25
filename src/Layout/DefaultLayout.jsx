@@ -4,7 +4,12 @@ import logoMini from "../assets/logo-min.png";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../Redux/Slice/auth";
 import Button02 from "../Components/Buttons/Button02";
-import { TbArrowBadgeLeftFilled } from "react-icons/tb";
+import {
+  TbArrowBadgeLeftFilled,
+  TbListDetails,
+  TbReportMoney,
+  TbTransactionDollar,
+} from "react-icons/tb";
 import { TbArrowBadgeRightFilled } from "react-icons/tb";
 import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import {
@@ -39,13 +44,25 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
+  Image,
 } from "@chakra-ui/react";
 import GlobalStateContext from "../Contexts/GlobalStateContext";
 import Cookies from "js-cookie"; // Import the Cookies library
 import Header from "../Components/Header";
 import HeaderMain from "../Components/HeaderMain";
 import { IoMdSwap } from "react-icons/io";
-import { RiExchangeBoxLine, RiMoneyDollarBoxLine } from "react-icons/ri";
+import {
+  RiBankLine,
+  RiExchangeBoxLine,
+  RiFileUserLine,
+  RiMoneyDollarBoxLine,
+} from "react-icons/ri";
+import { VscSymbolClass } from "react-icons/vsc";
+import { MdNotificationsNone, MdOutlineAddChart } from "react-icons/md";
+import { HiOutlineChartSquareBar } from "react-icons/hi";
+import { GrManual } from "react-icons/gr";
+import { LuContact } from "react-icons/lu";
+import shield from "../assets/shield.png"
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
@@ -80,21 +97,167 @@ const DashboardLayout = () => {
             <RiMoneyDollarBoxLine className="h4 m-0" /> Sponser
           </span>
         );
+      case "/investment-type":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <VscSymbolClass className="h4 m-0" /> Investment Type
+          </span>
+        );
       case "/exchange-rate":
         return (
           <span className="d-flex align-items-end gap-2">
-            <RiExchangeBoxLine className="h4 m-0 fw-normal" /> Echange rate
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Echange rate
           </span>
         );
-      case "/community/add-comunity":
+      case "/create-io":
         return (
-          <Text color={"teal.800"} className="d-flex align-items-center">
-            <Link to={"/community/"}>
-              <ArrowBackIcon className="me-2 fs-3 link p-1 rounded-1" />
-            </Link>
-            Community
-          </Text>
+          <span className="d-flex align-items-end gap-2">
+            <MdOutlineAddChart className="h4 m-0 fw-normal" />
+            Create IO
+          </span>
         );
+      case "/view-io":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <HiOutlineChartSquareBar className="h4 m-0 fw-normal" />
+            View IO
+          </span>
+        );
+      case "/investor-details":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <TbListDetails className="h4 m-0 fw-normal" />
+            Investor Details
+          </span>
+        );
+      case "/investor-transactions":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <TbTransactionDollar className="h4 m-0 fw-normal" />
+            Investor Transactions
+          </span>
+        );
+      case "/withdraw-request":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
+            Withdrawal pending request
+          </span>
+        );
+      case "/withdraw-history":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Withdrawal request
+          </span>
+        );
+
+      case "/investor-request":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
+            Investor pending request
+          </span>
+        );
+      case "/investor-history":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Investor request
+          </span>
+        );
+
+      case "/deletion-request":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
+            Deletion pending request
+          </span>
+        );
+      case "/deletion-history":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Deletion request
+          </span>
+        );
+
+      case "/bank-investor":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <TbReportMoney className="h4 m-0 fw-normal" />
+            Ban / Unban Investor
+          </span>
+        );
+
+      case "/academy":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <GrManual className="h4 m-0 fw-normal" />
+            Academy
+          </span>
+        );
+
+      case "/notification":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <MdNotificationsNone className="h4 m-0 fw-normal" />
+            Notification
+          </span>
+        );
+
+      case "/contact":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <LuContact className="h4 m-0 fw-normal" />
+            Contact Details
+          </span>
+        );
+
+      case "/users":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiFileUserLine className="h4 m-0 fw-normal" />
+            Users
+          </span>
+        );
+      case "/bank-details":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiBankLine className="h4 m-0 fw-normal" />
+            Bank Details
+          </span>
+        );
+      case "/deletion-request":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
+            Deletion pending request
+          </span>
+        );
+      case "/deletion-history":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Deletion request
+          </span>
+        );
+      case "/deletion-request":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiMoneyDollarBoxLine className="h4 m-0 fw-normal" />
+            Deletion pending request
+          </span>
+        );
+      case "/deletion-history":
+        return (
+          <span className="d-flex align-items-end gap-2">
+            <RiExchangeBoxLine className="h4 m-0 fw-normal" />
+            Deletion request
+          </span>
+        );
+
       default:
         if (path.startsWith("/community/view/")) {
           return (
@@ -159,7 +322,7 @@ const DashboardLayout = () => {
 
       {slideFromRight ? null : (
         <aside
-          className="h-100  position-relative sideBar  pe-1"
+          className="h-100  position-relative sideBar  "
           // onMouseOver={() => setIsDrawerOpen(true)}
           // onMouseLeave={() => setIsDrawerOpen(false)}
           style={{
@@ -199,8 +362,8 @@ const DashboardLayout = () => {
           </div>
 
           <Box
-            className="ps-2 scroll-bar"
-            style={{ height: "85%", overflowY: "scroll", overflowX: "hidden" }}
+            className="ps-2 pb-5 scroll-bar pe-1"
+            style={{ height: "90%", overflowY: "scroll", overflowX: "hidden" }}
           >
             <Accordion m={0} allowToggle>
               {nav.map(({ title, type, Icon, submenu, path }, index) => {
@@ -221,13 +384,15 @@ const DashboardLayout = () => {
                           gap={2}
                           alignItems={"center"}
                         >
-                          {Icon && <Icon className="web-text-large" />}
+                          {/* {Icon && title === "Admin" ? <Image w={15} src={shield} /> : <Icon className={`web-text-large`} />} */}
+                          {Icon &&  <Icon color={title === "Admin" ? "#004118" :""} fontSize={title === "Admin" ? "18px" :"15px"}/>}
                           <Text
                             as={"span"}
                             display={
                               isDrawerOpen || openDrawerClick ? "flex" : "none"
                             }
                             alignItems="center"
+                            
                             overflow="hidden"
                             textAlign={"left"}
                           >
@@ -263,7 +428,7 @@ const DashboardLayout = () => {
                                   position: "absolute",
                                   top: 0,
                                   width: 2,
-                                  left: 20,
+                                  left: 22,
                                   height:
                                     i === submenu?.length - 1 ? "55%" : "120%",
                                   borderRadius: "0 0 10px 10px",
@@ -273,8 +438,8 @@ const DashboardLayout = () => {
                                 backgroundColor={"gray.300"}
                                 style={{
                                   position: "absolute",
-                                  width: 8,
-                                  left: 20,
+                                  width: 10,
+                                  left: 22,
                                   height: 2,
                                 }}
                               />
@@ -282,7 +447,7 @@ const DashboardLayout = () => {
                               <NavLink
                                 className={`${
                                   isDrawerOpen || openDrawerClick
-                                    ? "p-2 ps-1 ms-1 web-text-medium "
+                                    ? "p-2 ps-1 ms-2 web-text-medium "
                                     : "p-2 ps-0 ms-0 zindex-3 ms-4 web-text-xlarge justify-content-center"
                                 } rounded-1 link d-flex align-items-center gap-2 w-100 `}
                                 to={link}
@@ -318,7 +483,6 @@ const DashboardLayout = () => {
                       as={"span"}
                       key={index}
                       className="web-text-xxsmall fw-600  text-secondary fw-bold"
-                      
                     >
                       {title}
                     </Text>
@@ -377,9 +541,11 @@ const DashboardLayout = () => {
             )}
           </Button>
 
-
-          
-      <Box id="google_translate_element" display="block" className="bg-danger" />
+          <Box
+            id="google_translate_element"
+            display="block"
+            className="bg-danger"
+          />
         </aside>
       )}
 
@@ -463,16 +629,16 @@ const DashboardLayout = () => {
                             ? "p-2 web-text-medium ps-3 justify-content-between"
                             : "p-2 ps-1 web-text-xlarge justify-content-center"
                         } rounded-1 link d-flex align-items-center gap-2 w-100 mb-1`}
-                        flexDirection={'row-reverse'}
+                        flexDirection={"row-reverse"}
                       >
                         <Box
                           as="span"
                           display={"flex"}
                           gap={2}
                           alignItems={"center"}
-                          flexDirection={'row-reverse'}
+                          flexDirection={"row-reverse"}
                         >
-                          {Icon && <Icon className="web-text-large" /> }
+                          {Icon && <Icon className="web-text-large" />}
                           <Text
                             as={"span"}
                             display={
@@ -498,7 +664,7 @@ const DashboardLayout = () => {
                             { title: subMenuTitle, path: link, icon: SubIcon },
                             i
                           ) => (
-                            <Box 
+                            <Box
                               key={i}
                               style={{ height: "auto", position: "relative" }}
                               className={`${
@@ -529,14 +695,15 @@ const DashboardLayout = () => {
                                 }}
                               />
 
-                              <NavLink flexDirection={'row-reverse'}
+                              <NavLink
+                                flexDirection={"row-reverse"}
                                 className={`${
                                   isDrawerOpen || openDrawerClick
                                     ? "p-2 ps-1 me-1 web-text-medium "
                                     : "p-2 ps-0 ms-0 zindex-3 ms-4 web-text-xlarge justify-content-center"
                                 } rounded-1 link d-flex align-items-center gap-2 w-100 flex-direction-row-reverse`}
                                 to={link}
-                                style={{flexDirection:"row-reverse"}}
+                                style={{ flexDirection: "row-reverse" }}
                               >
                                 {SubIcon && (
                                   <SubIcon
@@ -570,8 +737,8 @@ const DashboardLayout = () => {
                       key={index}
                       className="web-text-xxsmall fw-600 mt-1 text-secondary fw-bold me-2"
                       padding={0}
-                      display={'flex'}
-                      justifyContent={'end'}
+                      display={"flex"}
+                      justifyContent={"end"}
                     >
                       {title}
                     </Text>
@@ -580,17 +747,20 @@ const DashboardLayout = () => {
                   return (
                     <NavLink
                       key={index}
-                      style={{ height: "auto", position: "relative" ,flexDirection:"row-reverse"}}
+                      style={{
+                        height: "auto",
+                        position: "relative",
+                        flexDirection: "row-reverse",
+                      }}
                       className={`${
                         isDrawerOpen || openDrawerClick
                           ? "p-2 web-text-medium"
                           : "p-2 ps-0 web-text-xlarge justify-content-start"
                       } rounded-1 link d-flex align-items-center gap-2 w-100`}
                       to={path}
-                      
                     >
                       {Icon && <Icon className="web-text-large ms-2" />}
-                      <Text 
+                      <Text
                         as={"span"}
                         display={
                           isDrawerOpen || openDrawerClick ? "flex" : "none"

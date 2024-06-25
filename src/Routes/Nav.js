@@ -4,7 +4,7 @@ import { RiBankLine, RiFileUserLine, RiMoneyDollarBoxLine } from "react-icons/ri
 import { RiExchangeBoxLine } from "react-icons/ri";
 import { VscGitPullRequestGoToChanges, VscSymbolClass } from "react-icons/vsc";
 import { FiUsers } from "react-icons/fi";
-
+import { PiCrown } from "react-icons/pi";
 import { MdOutlineAddChart, MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineChartSquareBar } from "react-icons/hi";
 import { TbListDetails } from "react-icons/tb";
@@ -18,6 +18,8 @@ import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdNotificationsNone } from "react-icons/md";
 import { SiAcademia } from "react-icons/si";
 import { LuContact } from "react-icons/lu";
+import { LiaCrownSolid } from "react-icons/lia";
+import { PiCrownDuotone } from "react-icons/pi";
 
 export const nav = [
   {
@@ -51,12 +53,12 @@ export const nav = [
     submenu: [
       {
         title: "Create IO",
-        path: "/create",
+        path: "/create-io",
         icon: MdOutlineAddChart
       },
       {
         title: "View IO",
-        path: "/view",
+        path: "/view-io",
         icon: HiOutlineChartSquareBar
       },
     ],
@@ -88,12 +90,12 @@ export const nav = [
     submenu: [
       {
         title: "Pending Request",
-        path: "/pending-request",
+        path: "/withdraw-request",
         icon: RiMoneyDollarBoxLine
       },
       {
         title: "View History",
-        path: "/view-history",
+        path: "/withdraw-history",
         icon: RiExchangeBoxLine
       }
     ],
@@ -110,7 +112,7 @@ export const nav = [
       },
       {
         title: "View History",
-        path: "/upgrade-history",
+        path: "/investor-history",
         icon: RiExchangeBoxLine
       }
     ],
@@ -141,14 +143,14 @@ export const nav = [
     title: "Admin",
     submenu: [
       {
-        title: "Bank / Urban Investor",
+        title: "Ban / Unban Investor",
         path: "/bank-investor",
         icon: TbReportMoney
       },
       {
         title: "Academy",
         path: "/academy",
-        icon: SiAcademia
+        icon: GrManual
       },
       {
         title: "Notification",

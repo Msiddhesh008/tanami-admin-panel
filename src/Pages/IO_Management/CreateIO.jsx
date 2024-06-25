@@ -2,7 +2,7 @@ import { Box, Image, Text } from "@chakra-ui/react"
 // import error from "../assets/Error.svg"
 import robot from "../../assets/robot.png"
 // import robot from "../assets/robot.png"
-const BankDetails = () => {
+const CreateIO = () => {
   return (
     
     <Box
@@ -19,4 +19,4 @@ const BankDetails = () => {
   )
 }
 
-export default BankDetails
+export default CreateIO

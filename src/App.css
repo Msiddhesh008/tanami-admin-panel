@@ -160,7 +160,7 @@
 
 /* Total scrollbar width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
   height: 12px;
 }
 
@@ -173,14 +173,14 @@
 
 /* The draggable scrollbar handle */
 ::-webkit-scrollbar-thumb {
-  background: #004118;
+  background: #0041184f;
   border-radius: 10px;
   cursor: grabbing;
 }
 
 /* On hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #004118;
+  background: #0041189a;
 }
 
 

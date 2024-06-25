@@ -1,12 +1,22 @@
-import { Box, Text } from "@chakra-ui/react";
-import { OPACITY_ON_LOAD } from "../../Layout/animations";
-
+import { Box, Image, Text } from "@chakra-ui/react"
+// import error from "../assets/Error.svg"
+import robot from "../../assets/robot.png"
+// import robot from "../assets/robot.png"
 const DeletionHistory = () => {
   return (
-    <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"}>
-      <Text as={"h1"}>Account deletion request</Text>
+    
+    <Box
+    h={'100vh'}
+    display={'flex'}
+    justifyContent={'center'}
+    alignItems={'center'}
+    flexDirection={'column'}
+    gap={8}
+    >
+        <Image src={robot} w={"171px"} />
+        {/* <Text color={'green.800'} as={'span'} fontSize={'small'}>The requested URL was not found on this server.</Text> */}
     </Box>
-  );
-};
+  )
+}
 
-export default DeletionHistory;
+export default DeletionHistory
