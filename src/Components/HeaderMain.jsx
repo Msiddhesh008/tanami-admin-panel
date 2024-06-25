@@ -11,6 +11,8 @@ import {
   PopoverTrigger,
   Portal,
   Text,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -20,6 +22,11 @@ import { useGetNewsLetterEmailQuery } from "../Services/api.service";
 import profile from "../assets/proavatar.webp"
 
 const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttion }) => {
+
+  const { toggleColorMode } = useColorMode()
+
+  const bg = useColorModeValue('red.500', 'red.200')
+  const color = useColorModeValue('white', 'gray.800')
 
 
   return (
@@ -32,6 +39,7 @@ const HeaderMain = ({ link, btnTitle, title, icon, logOutHandler, slideDirecttio
         fontWeight={"500"}
         color={"forestGreen.500"}
         className="fs-6 "
+        onClick={toggleColorMode}
       >
         {/* <icon /> */}
         {title}

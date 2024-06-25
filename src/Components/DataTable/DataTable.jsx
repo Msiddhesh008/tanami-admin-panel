@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Table,
   TableContainer,
@@ -13,8 +13,12 @@ import {
 } from "@chakra-ui/react";
 import EmptySearchList from "../EmptySearchList";
 import Pagination from "../Pagination";
+import GlobalStateContext from "../../Contexts/GlobalStateContext";
 
 const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage, totalPages }) => {
+  const { slideFromRight } = useContext(GlobalStateContext);
+
+
   const columnWidth = data && data[0] ? `${(100 / Object.keys(data[0]).length).toFixed(2)}%` : "auto";
   return (
     <TableContainer overflowX={"hidden"} className="h-auto mb-3 w-100">
@@ -27,7 +31,7 @@ const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage, totalPages }) 
           <Thead   backgroundColor="gray.50">
             <Tr>
               {tableHeadRow.map((heading, index) => (
-                <Th key={index} p={3} w={"auto"} color={"#004118"}>
+                <Th textAlign={slideFromRight? 'right': 'left'} key={index} p={3} w={"auto"} color={"#004118"}>
                   {isLoading ? <Skeleton height="20px" /> : heading}
                   {/* {heading} */}
                 </Th>
@@ -39,7 +43,7 @@ const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage, totalPages }) 
               ? Array?.from({ length: 10 }).map((_, index) => (
                   <Tr key={index}>
                     {tableHeadRow.map((_, i) => (
-                      <Td
+                      <Td textAlign={slideFromRight? 'right': 'left'}
                         key={i}
                         style={{
                           whiteSpace: "nowrap",
@@ -56,7 +60,7 @@ const DataTable = ({ data, isLoading, tableHeadRow, emptyMessage, totalPages }) 
               : data?.map((item, index) => (
                   <Tr key={index}>
                     {tableHeadRow.map((heading, i) => (
-                      <Td
+                      <Td textAlign={slideFromRight? 'right': 'left'}
                         color={"gray.600"}
                         key={i}
                         style={{

@@ -28,7 +28,7 @@ import CustomAlertDialog from "../../../Components/CustomAlertDialog";
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const Sponser = () => {
-  const { sponser, setSponser } = useContext(GlobalStateContext);
+  const { sponser, setSponser,slideFromRight } = useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [deleteAlert, setDeleteAlert] = useState(false);
@@ -79,7 +79,7 @@ const Sponser = () => {
 
   const extractedArray = filteredData?.map((item) => ({
     "Sponser name": (
-      <Text
+      <Text justifyContent={slideFromRight? 'right': 'left' }
         as={"span"}
         color={"gray.600"}
         className="d-flex align-items-center fw-bold web-text-small"
@@ -88,7 +88,7 @@ const Sponser = () => {
       </Text>
     ),
     Address: (
-      <Box w={350} isTruncated={true}>
+      <Box w={350} isTruncated={true} >
         <Text as={"span"} color={"teal.900"}>
           {item.sponserAddress}
         </Text>

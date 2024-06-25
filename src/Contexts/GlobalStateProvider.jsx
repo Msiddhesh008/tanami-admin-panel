@@ -11,6 +11,7 @@ const GlobalStateProvider = ({ children }) => {
   const [isAuthenticate, setIsAuthenticate] = useState(false);
   const [memberIfo, setMemberInfo] = useState();
   const [communityMembers, setCommityMembers] = useState();
+  const [slideFromRight, setSlideFormRight] = useState(false);
 
     const [sponser, setSponser] = useState([
       {
@@ -265,6 +266,8 @@ const GlobalStateProvider = ({ children }) => {
         setCommityMembers,
         sponser,
         setSponser,
+        slideFromRight,
+        setSlideFormRight
       }}
     >
       {children}
