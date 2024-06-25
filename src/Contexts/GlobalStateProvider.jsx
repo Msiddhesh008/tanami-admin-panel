@@ -12,6 +12,7 @@ const GlobalStateProvider = ({ children }) => {
   const [isAuthenticate, setIsAuthenticate] = useState(false);
   const [memberIfo, setMemberInfo] = useState();
   const [communityMembers, setCommityMembers] = useState();
+  const [slideFromRight, setSlideFormRight] = useState(false);
 
   const { colorMode, toggleColorMode } = useColorMode();
   const [sponser, setSponser] = useState([
@@ -270,6 +271,8 @@ const GlobalStateProvider = ({ children }) => {
         setSponser,
         colorMode,
         toggleColorMode,
+        slideFromRight,
+        setSlideFormRight
       }}
     >
       {children}

@@ -74,8 +74,7 @@ const DashboardLayout = () => {
   const path = location.pathname;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDrawerClick, setOpenDrawerClick] = useState(true);
-  const { setIsAuthenticate, colorMode, toggleColorMode } = useContext(GlobalStateContext);
-  const [slideFromRight, setSlideFormRight] = useState(false);
+  const { setIsAuthenticate, colorMode, toggleColorMode, setSlideFormRight, slideFromRight } = useContext(GlobalStateContext);
   const [isSplashVisible, setSplashVisible] = useState(true);
 
 
@@ -341,7 +340,7 @@ const DashboardLayout = () => {
           style={{
             width: isDrawerOpen || openDrawerClick ? 232 : 74,
             transition: "width 0.3s ease-in-out", // Smooth transition for width change
-            overflow: "hidden", // Hide overflow to prevent content overflow during transition
+            // overflow: "hidden",
             backgroundColor: "#0041180A",
             position: "relative",
             // backgroundColor: "#002F0F",
@@ -376,8 +375,8 @@ const DashboardLayout = () => {
           </div>
 
           <Box
-            className="ps-2 pb-5 scroll-bar pe-1"
-            style={{ height: "90%", overflowY: "scroll", overflowX: "hidden" }}
+            className="ps-2 scroll-bar pe-1"
+            style={{ height: "90%", overflowY: "scroll", overflowX: "hidden" ,paddingBottom:'5rem'}}
           >
             <Accordion m={0} allowToggle>
               {nav.map(({ title, type, Icon, submenu, path }, index) => {
@@ -543,9 +542,9 @@ const DashboardLayout = () => {
               width: 18,
               height: 26,
               position: "absolute",
-              right: 0,
+              right: -19,
               bottom: 28,
-              zIndex: 333,
+              zIndex: 99,
             }}
           >
             {isDrawerOpen || openDrawerClick ? (
@@ -594,7 +593,7 @@ const DashboardLayout = () => {
           style={{
             width: isDrawerOpen || openDrawerClick ? 232 : 74,
             transition: "width 0.3s ease-in-out", // Smooth transition for width change
-            overflow: "hidden", // Hide overflow to prevent content overflow during transition
+            // overflow: "hidden", 
             backgroundColor: "#0041180A",
             position: "relative",
             // backgroundColor: "#002F0F",
@@ -803,13 +802,13 @@ const DashboardLayout = () => {
               width: 18,
               height: 26,
               position: "absolute",
-              left: 0,
+              left: -18,
               bottom: 28,
-              zIndex: 333,
+              zIndex: 99,
             }}
           >
             {isDrawerOpen || openDrawerClick ? (
-              <ArrowRightIcon className="web-text-small " />
+              <ArrowRightIcon  className="web-text-small " />
             ) : (
               <ArrowLeftIcon className="web-text-small" />
             )}
