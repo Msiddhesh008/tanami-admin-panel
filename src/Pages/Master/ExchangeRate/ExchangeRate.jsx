@@ -27,6 +27,7 @@ import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../../Components/CustomAlertDialog";
 import ToastBox from "../../../Components/ToastBox";
 import { formatDate } from "../../../Components/Functions/UTCConvertor";
+import EditExchangeRate from "./EditExchangeRate";
 
 const ExchangeRate = () => {
   const toast = useToast();
@@ -70,7 +71,7 @@ const ExchangeRate = () => {
 
   // ====================================================[Table Setup]================================================================
   const tableHeadRow = [
-    "Sr No.",
+    // "Sr No.",
     "From currency",
     "To currency",
     "Effective from",
@@ -81,22 +82,24 @@ const ExchangeRate = () => {
 
   const extractedArray = filteredData?.map((item, index) => ({
     id: item?.id,
-    "Sr No.": (
-      <Text
-        justifyContent={slideFromRight ? "right" : "left"}
-        as={"span"}
-        color={"gray.800"}
-        className="d-flex align-items-center fw- web-text-small"
-      >
-        {index + 1}.
-      </Text>
-    ),
+    // "Sr No.": (
+    //   <Text
+    //     justifyContent={slideFromRight ? "right" : "left"}
+    //     as={"span"}
+    //     color={"gray.600"}
+    //     fontWeight={'600'}
+    //     className="d-flex align-items-center fw- web-text-small"
+    //   >
+    //     {index + 1}.
+    //   </Text>
+    // ),
     "From currency": (
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        className="d-flex align-items-center fw-bold web-text-small"
+        fontWeight={'600'}
+        className="d-flex align-items-center fw- web-text-small"
       >
         {item.fromCurr}
       </Text>
@@ -106,7 +109,8 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        className="d-flex align-items-center fw-bold web-text-small"
+        fontWeight={'600'}
+        className="d-flex align-items-center fw- web-text-small"
       >
         {item.toCurr}
       </Text>
@@ -115,8 +119,9 @@ const ExchangeRate = () => {
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
-        color={"gray.800"}
-        className="d-flex align-items-center fw- web-text-small"
+        color={"gray.600"}
+        fontWeight={'600'}
+        className="d-flex align-items-center  web-text-small"
       >
         {formatDate(item.effectFrom)}
       </Text>
@@ -125,8 +130,9 @@ const ExchangeRate = () => {
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
-        color={"gray.800"}
-        className="d-flex align-items-center fw-500 web-text-small"
+        color={"gray.600"}
+        fontWeight={'600'}
+        className="d-flex align-items-center  web-text-small"
       >
         {formatDate(item.effectTill)}
       </Text>
@@ -136,16 +142,19 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        className="d-flex align-items-center fw-bold web-text-small"
+        fontWeight={'600'}
+        className="d-flex align-items-center  web-text-small"
       >
         {item.rate}
       </Text>
     ),
 
     Action: (
-      <Button colorScheme="green" size={"xs"} variant={"ghost"}>
-        Edit
-      </Button>
+      // <Button colorScheme="green" size={"xs"} variant={"ghost"}>
+      //   Edit
+      // </Button>
+
+      <EditExchangeRate setIsLoading={setIsLoading} id={item.id} />
     ),
   }));
 

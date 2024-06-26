@@ -101,22 +101,23 @@ const Sponser = () => {
     "Sponser name": (
       <Text justifyContent={slideFromRight? 'right': 'left' }
         as={"span"}
-        color={"gray.600"}
-        className="d-flex align-items-center fw-bold web-text-small"
+        color={"teal.900"}
+        fontWeight={'500'}
+        className="d-flex align-items-center web-text-small"
       >
         {item.sponserName}
       </Text>
     ),
     Address: (
       <Box w={350} isTruncated={true} >
-        <Text as={"span"} color={"teal.900"}>
+        <Text as={"span"} color={"teal.900"} fontWeight={'500'}>
           {item.sponserAddress}
         </Text>
       </Box>
     ),
     "Mobile no": (
       <Box w={"auto"} isTruncated={true}>
-        <Text as={"span"} color={"teal.900"}>
+        <Text as={"span"} color={"teal.900"} fontWeight={'500'}>
           {item.mobileNo}
         </Text>
       </Box>
@@ -124,7 +125,7 @@ const Sponser = () => {
     Status:
       <Switch
         size={"sm"}
-        color="green"
+        colorScheme="green"
         onChange={() => handleUpdateStatus(item.id)}
         isChecked={item.status}
       />
@@ -142,7 +143,7 @@ const Sponser = () => {
       ,
     "Created At": (
       <span className="d-flex justify-content-between align-items-center">
-        <Text as={"span"} color={"gray.600"} className=" fw-bold">
+        <Text as={"span"} color={"gray.600"} fontWeight={'500'}>
           {formatDate(item.createdAt)}
         </Text>
         <Menu>

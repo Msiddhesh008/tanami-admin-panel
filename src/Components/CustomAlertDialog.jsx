@@ -24,6 +24,7 @@ const CustomAlertDialog = ({ isOpen, onOpen, onClose, alertHandler, isLoading, m
             size={"sm"}
             // ref={cancelRef}
             onClick={onClose}
+            rounded={'sm'}
           >
             No
           </Button>
@@ -32,6 +33,7 @@ const CustomAlertDialog = ({ isOpen, onOpen, onClose, alertHandler, isLoading, m
             isLoading={isLoading}
             onClick={alertHandler}
             size={"sm"}
+            rounded={'sm'}
             colorScheme="red"
             ml={3}
           >

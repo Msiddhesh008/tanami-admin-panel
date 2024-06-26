@@ -92,7 +92,7 @@ const HeaderMain = ({
                   Hello, developer admin
                 </Text>
                 <Text as={"span"} className="web-text-xsmall">
-                  siddhesh@rubix.com
+                  siddhesh@tanami.com
                 </Text>
               </Box>
             </Box>

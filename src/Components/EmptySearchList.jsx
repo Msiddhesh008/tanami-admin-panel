@@ -1,6 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react"
-import EmptySearchListImage from "../assets/empty_state_empty_folder.svg"
-// import EmptySearchListImage from "../assets/EmptySearchList.svg"
+// import EmptySearchListImage from "../assets/empty_state_empty_folder.svg"
+import EmptySearchListImage from "../assets/EmptySearchList.svg"
 
 const EmptySearchList = ({message}) => {
   return (
