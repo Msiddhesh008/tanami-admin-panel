@@ -13,7 +13,7 @@ const EmptySearchList = ({message}) => {
     >
         <Image w={200} mb={8} h={200} src={EmptySearchListImage} alt='Dan Abramov' />
         <Text className=" fw-bold fs-5" >{message}</Text>
-        <Text as={'p'} className="web-text-medium">Posts of rubix will appear here.</Text>
+        <Text as={'p'} className="web-text-medium">Posts of tanami will appear here.</Text>
         
     </Box>
   )

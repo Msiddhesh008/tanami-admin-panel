@@ -141,38 +141,9 @@ const InvestorDetails = () => {
     // ),
 
     Action: (
-      <Box w={"auto"} isTruncated={true}>
-        <span className="d-flex justify-content-between align-items-center">
-          <Text as={"span"} color={"gray.600"} className=" fw-bold">
-            {/* {formatDate(item.createdAt)} */}
-            {item.Action}
-          </Text>
-          <Menu>
-            <MenuButton className="link p-1 rounded-1">
-              <HiDotsVertical className="rubix-text-dark fs-6" />
-            </MenuButton>
-            <Portal>
-              <MenuList minWidth="80px">
-                <RouterLink to={`edit-sponser/${item.id}`}>
-                  <MenuItem className="web-text-medium">Edit</MenuItem>
-                </RouterLink>
-                <RouterLink to={`view-sponser/${item.id}`}>
-                  <MenuItem className="web-text-medium">View</MenuItem>
-                </RouterLink>
-                <MenuItem
-                  onClick={() => {
-                    setActionId(item?.id);
-                    setDeleteAlert(true);
-                  }}
-                  className="web-text-medium"
-                >
-                  Delete
-                </MenuItem>
-              </MenuList>
-            </Portal>
-          </Menu>
-        </span>
-      </Box>
+          <Button colorScheme="green" size={"xs"} variant={"ghost"}>
+        Distribute
+       </Button>
     ),
   }));
 

@@ -276,6 +276,7 @@ const GlobalStateProvider = ({ children }) => {
       targClose: "24 December",
       holdingPer: "5-7 years",
       progressValue: 80,
+      status: "Available"
     },
     {
       imgSrc:
@@ -288,6 +289,7 @@ const GlobalStateProvider = ({ children }) => {
       targClose: "24 December",
       holdingPer: "5-7 years",
       progressValue: 80,
+      status: "Upcomming"
     },
     {
       imgSrc:
@@ -300,6 +302,7 @@ const GlobalStateProvider = ({ children }) => {
       targClose: "24 December",
       holdingPer: "5-7 years",
       progressValue: 80,
+      status: "Closed"
     },
   ]);
 

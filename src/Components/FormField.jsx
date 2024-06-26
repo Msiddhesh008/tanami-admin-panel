@@ -1,5 +1,5 @@
-import { FormControl, FormLabel, Input, Textarea } from '@chakra-ui/react';
-import React from 'react'
+import { FormControl, FormLabel, Input, Textarea, Select, Checkbox, RadioGroup, Radio, Stack } from '@chakra-ui/react';
+import React from 'react';
 import { Controller } from 'react-hook-form';
 import { TiWarning } from 'react-icons/ti';
 
@@ -8,40 +8,82 @@ const FormField = ({
     control,
     name,
     type = "text",
+    options = [],
     errors,
     isRequired,
     arabic,
     ...props
   }) => (
-    // <FormControl isInvalid={errors[name]}>
-    // <FormControl isRequired={isRequired}>
-    <FormControl >
+    <FormControl isInvalid={errors[name]}>
       <FormLabel textAlign={arabic ? "right" : "left"} fontSize={"sm"}>{label}</FormLabel>
       <Controller
         control={control}
         name={name}
         defaultValue=""
         render={({ field }) => {
-          return type === "textarea" ? (
-            <Textarea
-              focusBorderColor="forestGreen.400"
-              size={"sm"}
-              {...field}
-              {...props}
-              placeholder={label}
-              textAlign={arabic ? "right" : "left"}
-            />
-          ) : (
-            <Input
-              focusBorderColor="forestGreen.300"
-              size={"sm"}
-              type={type}
-              {...field}
-              {...props}
-              placeholder={label}
-              textAlign={arabic ? "right" : "left"}
-            />
-          );
+          switch (type) {
+            case 'textarea':
+              return (
+                <Textarea
+                  focusBorderColor="forestGreen.400"
+                  size={"sm"}
+                  {...field}
+                  {...props}
+                  placeholder={label}
+                  textAlign={arabic ? "right" : "left"}
+                />
+              );
+            case 'select':
+              return (
+                <Select
+                  focusBorderColor="forestGreen.300"
+                  size={"sm"}
+                  {...field}
+                  {...props}
+                  placeholder={label}
+                  textAlign={arabic ? "right" : "left"}
+                >
+                  {options.map((option, index) => (
+                    <option key={index} value={option.value}>{option.label}</option>
+                  ))}
+                </Select>
+              );
+            case 'checkbox':
+              return (
+                <Checkbox
+                  size={"sm"}
+                  {...field}
+                  {...props}
+                  textAlign={arabic ? "right" : "left"}
+                >
+                  {label}
+                </Checkbox>
+              );
+            case 'radio':
+              return (
+                <RadioGroup {...field} {...props}>
+                  <Stack direction="row">
+                    {options.map((option, index) => (
+                      <Radio key={index} value={option.value}>
+                        {option.label}
+                      </Radio>
+                    ))}
+                  </Stack>
+                </RadioGroup>
+              );
+            default:
+              return (
+                <Input
+                  focusBorderColor="forestGreen.300"
+                  size={"sm"}
+                  type={type}
+                  {...field}
+                  {...props}
+                  placeholder={label}
+                  textAlign={arabic ? "right" : "left"}
+                />
+              );
+          }
         }}
       />
       {errors[name] && (
@@ -52,4 +94,4 @@ const FormField = ({
     </FormControl>
   );
 
-export default FormField
+export default FormField;
