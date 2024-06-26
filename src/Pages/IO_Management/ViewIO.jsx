@@ -55,7 +55,7 @@ const ExchangeRate = () => {
         <TabPanels>
           <TabPanel>
             {investment?.map((investmentDetails, index) => (
-                <Skeleton isLoaded={!isLoading}><InvestmentCard key={index} investment={investmentDetails} /></Skeleton>
+                <Skeleton  key={index} isLoaded={!isLoading}><InvestmentCard  investment={investmentDetails} /></Skeleton>
                 ))}
           </TabPanel>
           <TabPanel>

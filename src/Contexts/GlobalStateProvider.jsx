@@ -301,18 +301,6 @@ const GlobalStateProvider = ({ children }) => {
       holdingPer: "5-7 years",
       progressValue: 80,
     },
-    {
-      imgSrc:
-        "https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-      title: "Multi Family Residence Portfolio",
-      sponsor: "KKR",
-      annReturn: "12.5%",
-      annYield: "12.5%",
-      minInvests: ",00 $0",
-      targClose: "24 December",
-      holdingPer: "5-7 years",
-      progressValue: 80,
-    },
   ]);
 
   const [rateExchange, setRateExchange] = useState([
