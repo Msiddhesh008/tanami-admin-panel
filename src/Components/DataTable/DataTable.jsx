@@ -51,33 +51,14 @@ const DataTable = ({
                   w={"auto"}
                   color={"#004118"}
                 >
-                  {isLoading ? <Skeleton height="20px" /> : heading}
-                  {/* {heading} */}
+                  <Skeleton isLoaded={!isLoading}
+        fadeDuration={0.4} height="20px" >{heading}</Skeleton> 
                 </Th>
               ))}
             </Tr>
           </Thead>
           <Tbody className="web-text-small">
-            {isLoading
-              ? Array?.from({ length: 10 }).map((_, index) => (
-                  <Tr key={index}>
-                    {tableHeadRow.map((_, i) => (
-                      <Td
-                        textAlign={slideFromRight ? "right" : "left"}
-                        key={i}
-                        style={{
-                          whiteSpace: "nowrap",
-                          textOverflow: "ellipsis",
-                        }}
-                        className="web-text-small"
-                        w={columnWidth}
-                      >
-                        <Skeleton height="20px" mb={1} mt={1} />
-                      </Td>
-                    ))}
-                  </Tr>
-                ))
-              : data?.map((item, index) => (
+         { data?.map((item, index) => (
                   <Tr
                     // onMouseEnter={(e) => {
                     //   e.currentTarget.style.backgroundColor = "transparent"; // Change the background color on hover
@@ -116,7 +97,7 @@ const DataTable = ({
                         //     : () => navigate(`edit-sponser/${item.id}`) // Define the onClick handler for other cells
                         // }
                       >
-                        {item[heading]}
+                        <Skeleton fadeDuration={index / 12} isLoaded={!isLoading} >{item[heading]}</Skeleton>
                       </Td>
                     ))}
                   </Tr>

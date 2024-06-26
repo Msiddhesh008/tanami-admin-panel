@@ -563,10 +563,11 @@ const DashboardLayout = () => {
       )}
 
       <main
-        className={`h-100   ${slideFromRight ? "pe-3" : "ps-3"}  `}
+        className={`h-100   ${slideFromRight ? "pe-3" : "ps-3"} `}
         style={{
           width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 232 : 74}px)`,
           transition: "width 0.3s ease-in-out",
+          
         }}
       >
         {/* <header className="p-2 ps-0 pt-3 fw-400  border-bottom">

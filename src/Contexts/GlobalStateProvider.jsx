@@ -1,12 +1,18 @@
 // GlobalStateContext.js
 import React, { useState } from "react";
 import GlobalStateContext from "./GlobalStateContext";
-import { useColorMode } from "@chakra-ui/react";
+import { effect, useColorMode } from "@chakra-ui/react";
+import { v4 as uuidv4 } from "uuid";
 
-function generateUID() {
-  // Generates a random 8-character alphanumeric string
-  return Math.random().toString(36).substring(2, 10);
-}
+
+const getRandomDate = (start, end) => {
+  const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return date.toISOString();
+};
+
+
+const startDate = new Date(2020, 0, 1); // January 1, 2020
+const endDate = new Date(); // Current date
 
 const GlobalStateProvider = ({ children }) => {
   const [isAuthenticate, setIsAuthenticate] = useState(false);
@@ -258,6 +264,150 @@ const GlobalStateProvider = ({ children }) => {
     },
   ]);
 
+  const [investment, setInvestment] = useState([
+    {
+      imgSrc:
+        "https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+      title: "Multi Family Residence Portfolio",
+      sponsor: "KKR",
+      annReturn: "12.5%",
+      annYield: "12.5%",
+      minInvests: ",00 $0",
+      targClose: "24 December",
+      holdingPer: "5-7 years",
+      progressValue: 80,
+    },{
+      imgSrc:
+        "https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+      title: "Multi Family Residence Portfolio",
+      sponsor: "KKR",
+      annReturn: "12.5%",
+      annYield: "12.5%",
+      minInvests: ",00 $0",
+      targClose: "24 December",
+      holdingPer: "5-7 years",
+      progressValue: 80,
+    },{
+      imgSrc:
+        "https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+      title: "Multi Family Residence Portfolio",
+      sponsor: "KKR",
+      annReturn: "12.5%",
+      annYield: "12.5%",
+      minInvests: ",00 $0",
+      targClose: "24 December",
+      holdingPer: "5-7 years",
+      progressValue: 80,
+    },
+  ])
+
+  const [ rateExchange, setRateExchange ] = useState([
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "BHD .د.ب;",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "KWD ·د.ك",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "OMR ﷼.",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "QAR ﷼.",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "SAR ﷼.",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "USD $",
+      toCurr: "AED د.إ. ",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+
+
+
+
+
+    {
+      id : uuidv4(),
+      fromCurr: "AED د.إ. ",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "SAR ﷼.",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "QAR ﷼.",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+
+
+    
+    {
+      id : uuidv4(),
+      fromCurr: "BHD .د.ب;",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "KWD ·د.ك",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+    {
+      id : uuidv4(),
+      fromCurr: "OMR ﷼.",
+      toCurr: "USD $",
+      effectFrom: getRandomDate(startDate, endDate),
+      effectTill: getRandomDate(startDate, endDate),
+      rate: 2.66
+    },
+  ])
+
   return (
     <GlobalStateContext.Provider
       value={{
@@ -272,7 +422,8 @@ const GlobalStateProvider = ({ children }) => {
         colorMode,
         toggleColorMode,
         slideFromRight,
-        setSlideFormRight
+        setSlideFormRight,
+        investment, setInvestment, rateExchange, setRateExchange
       }}
     >
       {children}

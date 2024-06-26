@@ -6,13 +6,13 @@ import InvestmentCard from "../../../Components/InvestmentCard/InvestmentCard";
 const InvestmentType = () => {
   return (
     <Box
-      h={"100vh"}
-      w={'100%'}
-      p={'20px'}
-      overflow="scroll"
+    display={'flex'}
+    height={'100vh'}
+    justifyContent={'center'}
+    alignItems={'center'}
     >
-      {/* <Image src={robot} w={"171px"} /> */}
-      <InvestmentCard />
+      <Image src={robot} w={"171px"} />
+      {/* <InvestmentCard /> */}
     </Box>
   );
 };
