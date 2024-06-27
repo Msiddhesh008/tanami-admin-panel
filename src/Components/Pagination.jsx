@@ -36,6 +36,7 @@ const Pagination = ({ totalItems, itemsPerPageOptions = [ 10, 15] }) => {
 
       <HStack>
       <Select
+        
         className="pointer web-text-small"
         width={"90px"}
         rounded="sm"
@@ -50,6 +51,7 @@ const Pagination = ({ totalItems, itemsPerPageOptions = [ 10, 15] }) => {
         ))}
       </Select>
         <IconButton
+        mt={1}
           size={'sm'}
           rounded="sm" 
           icon={<ChevronLeftIcon />}
@@ -61,6 +63,7 @@ const Pagination = ({ totalItems, itemsPerPageOptions = [ 10, 15] }) => {
           {displayRange.start} - {displayRange.end} of {totalItems}
         </Text>
         <IconButton
+        mt={1}
           icon={<ChevronRightIcon />}
           size={'sm'}
           rounded="sm" 

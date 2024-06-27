@@ -2,6 +2,7 @@ import {
   Box,
   Image,
   Input,
+  Select,
   Skeleton,
   Tab,
   TabIndicator,
@@ -24,6 +25,7 @@ const ExchangeRate = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { investment, setInvestment } = useContext(GlobalStateContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState("all");
 
   useEffect(() => {
     // Simulate loading
@@ -42,15 +44,16 @@ const ExchangeRate = () => {
     const nameMatches = name.toLowerCase().includes(searchLower);
 
     // Filter by status
-    // const status = item.status;
+    const status = item.status;
     // const statusLower = status ? "active" : "inactive";
 
-    // const statusMatches =
-    //   statusFilter === "all" ||
-    //   (statusFilter === "active" && status === true) ||
-    //   (statusFilter === "inactive" && status === false);
+    const statusMatches =
+      statusFilter === "all" ||
+      (statusFilter === "Available" && status === "Available") ||
+      (statusFilter === "Upcomming" && status === "Upcomming") ||
+      (statusFilter === "Closed" && status === "Closed");
 
-    return nameMatches;
+      return nameMatches && statusMatches;
   });
 
   const availableInvestments = filteredData.filter(
@@ -91,7 +94,22 @@ const ExchangeRate = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+            <Box display={"flex"} gap={2} >
+              <Select pb={1}
+              className="pointer web-text-small"
+              width={"100px"}
+              rounded="sm"
+              size="sm"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="Available">Available</option>
+              <option value="Upcomming">Upcomming</option>
+              <option value="Closed">Closed</option>
+            </Select>
               <Pagination pageCount={false} totalItems={50} />
+              </Box>
             </Box>
             {filteredData?.length === 0 ? (
               <EmptySearchList message="We have no IO with this name" />
@@ -166,7 +184,11 @@ const ExchangeRate = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+
+
+
               <Pagination pageCount={false} totalItems={50} />
+
             </Box>
             {closedInvestments?.length === 0 ? (
               <EmptySearchList message="We have no IO with this name" />
