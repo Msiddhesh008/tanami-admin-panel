@@ -37,11 +37,11 @@ const ExchangeRate = () => {
   }, []);
 
   // ====================================================[Table Filter]================================================================
-  const filteredData = investment.filter((item) => {
+  const filteredData = investment?.filter((item) => {
     // Filter by name (case insensitive)
-    const name = item.title;
-    const searchLower = searchTerm.toLowerCase();
-    const nameMatches = name.toLowerCase().includes(searchLower);
+    const name = item?.ioName;
+    const searchLower = searchTerm?.toLowerCase();
+    const nameMatches = name?.toLowerCase().includes(searchLower);
 
     // Filter by status
     const status = item.status;
@@ -79,7 +79,7 @@ const ExchangeRate = () => {
           mt="-1.5px"
           height="2px"
           bg="green.500"
-          borderRadius="1px"
+          borderRadius="1px" 
         />
         <TabPanels>
           <TabPanel>

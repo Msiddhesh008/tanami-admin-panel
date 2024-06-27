@@ -90,7 +90,7 @@ export function debounce(func, delay) {
 }
 const CreateIO = () => {
   const navigate = useNavigate();
-  const { sponser, setSponser } = useContext(GlobalStateContext);
+  const { sponser, setSponser,investment, setInvestment } = useContext(GlobalStateContext);
   const [bannerImageData, setBannerImageData] = useState(null);
   const [otherImageData, setOtherImageData] = useState(null);
 
@@ -98,10 +98,12 @@ const CreateIO = () => {
   const [selectedOtherImageData, setSelectedOtherImageData] = useState(null);
   
 
+
   const {
     control,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -117,7 +119,12 @@ const CreateIO = () => {
   console.log(errors);
 
   const onSubmit = (data) => {
-    console.log(data);
+
+    // setValue("banner_image", selectedBannerImageData);
+    data.banner_image = selectedBannerImageData;
+    const updatedData = { ...data, status: "Available"}
+    console.log(selectedBannerImageData);
+    setInvestment([...investment,updatedData])
     navigate("/view-io");
     reset();
   };
