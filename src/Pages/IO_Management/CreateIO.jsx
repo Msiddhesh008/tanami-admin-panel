@@ -117,7 +117,7 @@ const CreateIO = () => {
   console.log(errors);
 
   const onSubmit = (data) => {
-    console.log(data?.targetClose);
+    console.log(data);
     navigate("/view-io");
     reset();
   };
@@ -205,7 +205,7 @@ const removeOtherImage = (index) => {
               isRequired={true}
             />
 
-            {/* <FormField
+            <FormField
               label="Year"
               control={control}
               name="year"
@@ -213,7 +213,7 @@ const removeOtherImage = (index) => {
               options={years}
               errors={errors}
               isRequired={true}
-            /> */}
+            />
 
             <FormField
               label="Sponsers Name"

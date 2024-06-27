@@ -60,20 +60,20 @@ const DataTable = ({
           <Tbody className="web-text-small">
          { data?.map((item, index) => (
                   <Tr
-                    // onMouseEnter={(e) => {
-                    //   e.currentTarget.style.backgroundColor = "transparent"; // Change the background color on hover
-                    //   e.currentTarget.style.transition = "0.1s";
-                    //   e.currentTarget.style.boxShadow =
-                    //     "rgba(0, 0, 0, 0.24) 0px 1px 8px";
-                    //   setMouseEntered(true);
-                    //   setMouseEnteredId(item.id);
-                    // }}
-                    // onMouseLeave={(e) => {
-                    //   e.currentTarget.style.backgroundColor = "transparent"; // Revert to default background color on hover out
-                    //   e.currentTarget.style.transition = "0.3s";
-                    //   e.currentTarget.style.boxShadow = "none";
-                    //   setMouseEntered(false);
-                    // }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent"; // Change the background color on hover
+                      e.currentTarget.style.transition = "0.1s";
+                      e.currentTarget.style.boxShadow =
+                        "rgba(0, 0, 0, 0.24) 0px 1px 8px";
+                      setMouseEntered(true);
+                      setMouseEnteredId(item.id);
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent"; // Revert to default background color on hover out
+                      e.currentTarget.style.transition = "0.3s";
+                      e.currentTarget.style.boxShadow = "none";
+                      setMouseEntered(false);
+                    }}
                     transition={"0.5s all"}
                     _hover={{
                       bg: "green.50",

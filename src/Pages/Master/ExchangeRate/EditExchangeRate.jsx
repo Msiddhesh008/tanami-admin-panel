@@ -138,7 +138,7 @@ const EditExchangeRate = ({ id, setIsLoading }) => {
             </FormControl>
 
             <FormControl mb={4}>
-              <FormLabel fontSize={"sm"}>Rate</FormLabel>
+              <FormLabel fontSize={"sm"}>Exchange rate</FormLabel>
               <Input
                 type="number"
                 placeholder="Type rate here..."

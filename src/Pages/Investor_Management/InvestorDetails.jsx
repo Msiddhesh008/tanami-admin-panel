@@ -54,7 +54,7 @@ const InvestorDetails = () => {
   // ====================================================[Table Setup]================================================================
   const tableHeadRow = [
     "Sr N/O",
-    "IO Name",
+    "Investor Name",
     "Sponsor",
     "Investment Amount",
     "Action",
@@ -102,7 +102,7 @@ const InvestorDetails = () => {
         {item.id}
       </Text>
     ),
-    "IO Name": (
+    "Investor Name": (
       <Box w={"auto"} isTruncated={true}>
         <Text as={"span"} color={"teal.900"}>
           {item.InvestorName}
@@ -125,7 +125,7 @@ const InvestorDetails = () => {
       // />
       <Box w={"auto"} isTruncated={true}>
         <Text as={"span"} color={"teal.900"}>
-          {item.InvestmentAmount}
+          {item.InvestmentAmount} $
         </Text>
       </Box>
     ),
