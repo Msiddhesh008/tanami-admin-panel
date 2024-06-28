@@ -14,6 +14,7 @@ import {
   Switch,
   Tag,
   Text,
+  Tooltip,
   useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
@@ -21,7 +22,15 @@ import { OPACITY_ON_LOAD } from "../../../Layout/animations";
 import DataTable from "../../../Components/DataTable/DataTable";
 import { HiDotsVertical } from "react-icons/hi";
 import { Link, Link as RouterLink } from "react-router-dom";
-import { AddIcon, EmailIcon } from "@chakra-ui/icons";
+import {
+  AddIcon,
+  CheckIcon,
+  CloseIcon,
+  DeleteIcon,
+  EditIcon,
+  EmailIcon,
+  ViewIcon,
+} from "@chakra-ui/icons";
 import Pagination from "../../../Components/Pagination";
 import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../../Components/CustomAlertDialog";
@@ -31,16 +40,15 @@ import { debounce } from "./AddSponser";
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const Sponser = () => {
-  const toast = useToast()
-  const { sponser, setSponser,slideFromRight } = useContext(GlobalStateContext);
+  const toast = useToast();
+  const { sponser, setSponser, slideFromRight } =
+    useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [deleteAlert, setDeleteAlert] = useState(false);
   const [actionId, setActionId] = useState(false);
   const [mouseEntered, setMouseEntered] = useState(false);
   const [mouseEnteredId, setMouseEnteredId] = useState("");
-
-
 
   useEffect(() => {
     // Simulate loading
@@ -59,23 +67,19 @@ const Sponser = () => {
     "Mobile no",
     "Status",
     "Created At",
+    "Action",
   ];
 
   const handleUpdateStatus = debounce((id) => {
-    
     setSponser((prevSponser) =>
       prevSponser.map((sponsor) =>
         sponsor.id === id ? { ...sponsor, status: !sponsor.status } : sponsor
       )
     );
     toast({
-      render: () => (
-        <ToastBox
-          message={"Status changed succesfully.!"}
-        />
-      ),
+      render: () => <ToastBox message={"Status changed succesfully.!"} />,
     });
-  },300) ;
+  }, 300);
 
   // ====================================================[Table Filter]================================================================
   const filteredData = sponser.filter((item) => {
@@ -99,54 +103,55 @@ const Sponser = () => {
   const extractedArray = filteredData?.map((item) => ({
     id: item?.id,
     "Sponser name": (
-      <Text justifyContent={slideFromRight? 'right': 'left' }
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"teal.900"}
-        fontWeight={'500'}
+        fontWeight={"500"}
         className="d-flex align-items-center web-text-small"
       >
         {item.sponserName}
       </Text>
     ),
     Address: (
-      <Box w={350} isTruncated={true} >
-        <Text as={"span"} color={"teal.900"} fontWeight={'500'}>
+      <Box w={350} isTruncated={true}>
+        <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
           {item.sponserAddress}
         </Text>
       </Box>
     ),
     "Mobile no": (
       <Box w={"auto"} isTruncated={true}>
-        <Text as={"span"} color={"teal.900"} fontWeight={'500'}>
+        <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
           {item.mobileNo}
         </Text>
       </Box>
     ),
-    Status:
+    Status: (
       <Switch
         size={"sm"}
         colorScheme="green"
         onChange={() => handleUpdateStatus(item.id)}
         isChecked={item.status}
       />
+    ),
 
-      // item?.status ? (
-      //   <Badge bg={'transparent'} color={"#05c46b"}>
-      //     Passed
-      //   </Badge>
-      // ) : (
-      //   <Badge bg={'transparent'} color={"#f53b57"}>
-      //     Not passes
-      //   </Badge>
-      // ),
-      
-      ,
+    // item?.status ? (
+    //   <Badge bg={'transparent'} color={"#05c46b"}>
+    //     Passed
+    //   </Badge>
+    // ) : (
+    //   <Badge bg={'transparent'} color={"#f53b57"}>
+    //     Not passes
+    //   </Badge>
+    // ),
+
     "Created At": (
       <span className="d-flex justify-content-between align-items-center">
-        <Text as={"span"} color={"gray.600"} fontWeight={'500'}>
+        <Text as={"span"} color={"gray.600"} fontWeight={"500"}>
           {formatDate(item.createdAt)}
         </Text>
-        <Menu>
+        {/* <Menu>
           <MenuButton className="link p-1 rounded-1">
             <HiDotsVertical className="rubix-text-dark fs-6" />
           </MenuButton>
@@ -169,13 +174,108 @@ const Sponser = () => {
               </MenuItem>
             </MenuList>
           </Portal>
-        </Menu>
+        </Menu> */}
       </span>
     ),
+    Action: (
+      <Box display={"flex"} justifyContent={"space-between"}>
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="View"
+          bg="#fff"
+          color={"green.500"}
+          placement="top"
+        >
+          <Button
+            _hover={{ color: "green.500" }}
+            // transition={"0.5s all"}
+            color="green.300"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <ViewIcon />
+          </Button>
+        </Tooltip>
+
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="Edit"
+          bg="#fff"
+          color={"blue.500"}
+          placement="top"
+        >
+          <Button
+            _hover={{ color: "blue.500" }}
+            // transition={"0.5s all"}
+            color="blue.400"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <EditIcon />
+          </Button>
+        </Tooltip>
+
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="Delete"
+          bg="#fff"
+          color={"red.500"}
+          placement="top"
+        >
+          <Button
+            onClick={() => {
+              setActionId(item?.id);
+              setDeleteAlert(true);
+            }}
+            _hover={{ color: "red.500" }}
+            // transition={"0.5s all"}
+            color="red.300"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <DeleteIcon />
+          </Button>
+        </Tooltip>
+
+      </Box>
+    ),
+
+    // "Created At":
+    //   mouseEntered && mouseEnteredId === item?.id ? (
+    //     // false ? (
+    //     <Box w={38} as="span" display={"flex"} justifyContent={"start"} gap={3}>
+    //     <Box as="span" p={1} className="link" rounded={'sm'} >
+    //       <EditIcon fontSize={'md'} />
+    //     </Box>
+    //       <Box as="span" p={1} className="link" rounded={'sm'} >
+    //         <ViewIcon fontSize={'md'} />
+    //       </Box>
+    //       <Box as="span" p={1} className="link" rounded={'sm'} >
+    //         <DeleteIcon fontSize={'md'} />
+    //       </Box>
+    //     </Box>
+    //   ) : (
+    //     <Box
+    //       as="span" display={"flex"} justifyContent={"start"}
+    //       p={1}
+    //     >
+    //       <Text  as={"span"} color={"gray.600"} fontWeight={"500"}>
+    //         {formatDate(item.createdAt)}
+    //       </Text>
+    //     </Box>
+    //   ),
   }));
 
   const handleDelete = () => {
-    const updatedSponsors = sponser.filter((sponsor) => sponsor.id !== actionId);
+    const updatedSponsors = sponser.filter(
+      (sponsor) => sponsor.id !== actionId
+    );
 
     setTimeout(() => {
       setSponser(updatedSponsors);
@@ -184,9 +284,6 @@ const Sponser = () => {
     }, 100);
     setIsLoading(true);
   };
-
-  
-
 
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={38}>
@@ -237,16 +334,12 @@ const Sponser = () => {
         setViewActionId={setActionId}
         // totalPages={10}
 
-
-
-
-        
         setMouseEnteredId={setMouseEnteredId}
         setMouseEntered={setMouseEntered}
       />
 
       <CustomAlertDialog
-       onClose={()=> setDeleteAlert(false)}
+        onClose={() => setDeleteAlert(false)}
         isOpen={deleteAlert}
         message={"Are you sure you want to delete sponers?"}
         alertHandler={handleDelete}

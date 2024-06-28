@@ -153,7 +153,7 @@ const ExchangeRate = () => {
       // <Button colorScheme="green" size={"xs"} variant={"ghost"}>
       //   Edit
       // </Button>
-
+      
       <EditExchangeRate setIsLoading={setIsLoading} id={item.id} />
     ),
   }));

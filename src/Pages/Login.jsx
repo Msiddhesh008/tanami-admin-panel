@@ -44,7 +44,7 @@ const Login = () => {
 
   const onSubmit = (value) => {
     setIsLoading(true);
-    if (value.name === "Admin" && value.password === "Admin") {
+    if (value.name === "admin@tanami.com" && value.password === "Admin@123") {
       return setTimeout(() => {
         // dispatch(loginUser(true));
         setIsAuthenticate(true);
@@ -125,7 +125,7 @@ const Login = () => {
             className="mb-4"
           />
           <span className="fw-bold fs-2 rubix-text-dark text-start">
-            Welcome back.
+            Welcome.
           </span>
           <span className="fw-500  web-text-large text-secondary text-start">
             Login to manage tanami.
@@ -134,7 +134,7 @@ const Login = () => {
 
         <FormControl className=" mb-3">
           <FormLabel className="rubix-text-dark ps-1 web-text-medium fw-bold">
-            Owner name <span className="text-danger">*</span>
+            E-mail <span className="text-danger">*</span>
           </FormLabel>
 
           <Input

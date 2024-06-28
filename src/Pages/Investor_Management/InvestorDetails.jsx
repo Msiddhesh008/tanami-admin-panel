@@ -141,7 +141,8 @@ const InvestorDetails = () => {
     // ),
 
     Action: (
-          <Button colorScheme="green" size={"xs"} variant={"ghost"}>
+          <Button 
+          color={"green.500"} size={"xs"} variant={"ghost"}>
         Distribute
        </Button>
     ),

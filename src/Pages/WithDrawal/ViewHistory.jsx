@@ -65,7 +65,7 @@ const ViewHistory = () => {
     "Charges (USD)",
     "Year",
     "Quater",
-    "Amount",
+    "Action",
   ];
 
   const extractedArray = filteredData?.map((item, index) => ({
@@ -138,7 +138,7 @@ const ViewHistory = () => {
       </Text>
     ),
 
-    Amount: (
+    Action: (
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}

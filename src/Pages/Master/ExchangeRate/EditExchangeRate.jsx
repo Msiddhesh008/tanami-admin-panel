@@ -78,17 +78,19 @@ const EditExchangeRate = ({ id, setIsLoading }) => {
 
   return (
     <>
-      <Button
-      leftIcon={<TbEdit/>}
-        ref={btnRef}
-        onClick={onOpen}
-        // colorScheme="forestGreen"
-        color={"green.500"}
-        size={"xs"}
-        variant={"ghost"}
-      >
-        Edit
-      </Button>
+        <Button
+        leftIcon={<TbEdit/>}
+          ref={btnRef}
+          onClick={onOpen}
+          // colorScheme="forestGreen"
+          color={"green.500"}
+          size={"xs"}
+          variant={"ghost"}
+          rounded={'md'}
+          ms={"auto"}
+        >
+          Edit
+        </Button>
       <Drawer
         isOpen={isOpen}
         placement="right"

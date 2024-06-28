@@ -70,17 +70,17 @@ const ExchangeRate = () => {
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"}>
       <Tabs position="relative" variant="unstyled" mt={2}>
         <TabList>
-          <Tab fontSize={"sm"}>All</Tab>
-          <Tab fontSize={"sm"}>Available</Tab>
+          {/* <Tab fontSize={"sm"}>All</Tab> */}
+          {/* <Tab fontSize={"sm"}>Available</Tab>
           <Tab fontSize={"sm"}>Upcomming</Tab>
-          <Tab fontSize={"sm"}>Closed</Tab>
+          <Tab fontSize={"sm"}>Closed</Tab> */}
         </TabList>
-        <TabIndicator
+        {/* <TabIndicator
           mt="-1.5px"
           height="2px"
           bg="green.500"
           borderRadius="1px"
-        />
+        /> */}
         <TabPanels>
           <TabPanel>
             <Box display={"flex"} justifyContent={"space-between"}>
@@ -122,7 +122,7 @@ const ExchangeRate = () => {
             )}
           </TabPanel>
 
-          <TabPanel>
+          {/* <TabPanel>
             <Box display={"flex"} justifyContent={"space-between"}>
               <Input
                 type="search"
@@ -199,7 +199,7 @@ const ExchangeRate = () => {
                 </Skeleton>
               ))
             )}
-          </TabPanel>
+          </TabPanel> */}
         </TabPanels>
       </Tabs>
     </Box>

@@ -84,20 +84,21 @@ const AddSponser = () => {
           Personal Details
         </Heading>
         <Box display={"flex"} gap={0}>
-          <Box
-            width={"50%"}
-            p={5}
-            display={"flex"}
-            flexDirection={"column"}
-            gap={4}
-          >
+        <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
             <FormField
               label="Sponser name"
               name="sponserName"
               control={control}
               errors={errors}
               isRequired={true}
-            />
+            /><FormField
+            placeHolder={"الرجاء إدخال القيمة"}
+            name="اسم الراعي"
+            control={control}
+            errors={errors}
+            isRequired={true}
+            arabic={true}
+          />
             <FormField
               label="Mobile no"
               name="mobileNo"
@@ -116,22 +117,6 @@ const AddSponser = () => {
             />
           </Box>
 
-          <Box
-            width={"50%"}
-            p={5}
-            display={"flex"}
-            flexDirection={"column"}
-            gap={4}
-          >
-            <FormField
-              label="اسم الراعي"
-              name="اسم الراعي"
-              control={control}
-              errors={errors}
-              isRequired={true}
-              arabic={true}
-            />
-          </Box>
         </Box>
 
         <Divider />
@@ -141,13 +126,7 @@ const AddSponser = () => {
         </Heading>
         <Box display={"flex"} gap={0}>
           {Array(1).fill(
-            <Box
-              width={"50%"}
-              p={5}
-              display={"flex"}
-              flexDirection={"column"}
-              gap={4}
-            >
+        <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
               {/* <FormField
                 label="Account Holder's Name"
                 name="accountHolderName"
@@ -246,10 +225,10 @@ const AddSponser = () => {
           )}
         </Box>
 
-        <Box display={"flex"} justifyContent={"flex-start"} p={4}>
+        <Box display={"flex"} justifyContent={"flex-end"} p={4}>
           <Button
             size={"sm"}
-            width={"50%"}
+            width={"49.5%"}
             rounded={"sm"}
             type="submit"
             colorScheme="green"
