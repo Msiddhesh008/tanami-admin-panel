@@ -184,9 +184,6 @@ const ExchangeRate = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-
-
-
               <Pagination pageCount={false} totalItems={50} />
 
             </Box>

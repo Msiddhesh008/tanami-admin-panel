@@ -19,7 +19,7 @@ const FormField = ({
   handleImageChange,
   ...props
 }) => (
-  <FormControl isInvalid={errors[name]} isRequired={isRequired} className="mb-3">
+  <FormControl w={"49%"} isInvalid={errors[name]} isRequired={isRequired} className="mb-3">
     <FormLabel textAlign={arabic ? "right" : "left"} fontSize={"sm"}>{label}</FormLabel>
     <Controller
       control={control}
