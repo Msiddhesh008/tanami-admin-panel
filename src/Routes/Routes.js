@@ -17,7 +17,10 @@ import upgradeHistory from "../Pages/InvestorUpgrade/UpgradeHistory";
 import InvestorDetails from "../Pages/Investor_Management/InvestorDetails";
 import InvestorTransactions from "../Pages/Investor_Management/InvestorTransactions";
 import ExchangeRate from "../Pages/Master/ExchangeRate/ExchangeRate";
+import AddInvestmentType from "../Pages/Master/InvestmentType/AddInvestmentType";
+import EditInvestmentType from "../Pages/Master/InvestmentType/EditInvestmentType";
 import InvestmentType from "../Pages/Master/InvestmentType/InvestmentType";
+import ViewInvestmentType from "../Pages/Master/InvestmentType/ViewInvestmentType";
 import AddSponser from "../Pages/Master/Sponser/AddSponser";
 import EditSponser from "../Pages/Master/Sponser/EditSponser";
 import Sponser from "../Pages/Master/Sponser/Sponsers";
@@ -39,6 +42,9 @@ export const RouteLink = [
 
   { path: "/exchange-rate", Component: ExchangeRate },
   { path: "/investment-type", Component: InvestmentType },
+  { path: "/investment-type/add-investment", Component: AddInvestmentType },
+  { path: "/investment-type/view-investment/:id", Component: ViewInvestmentType },
+  { path: "/investment-type/edit-investment/:id", Component: EditInvestmentType },
 
   // ===============[ IO Management]===============
   { path: "/create-io", Component: CreateIO },

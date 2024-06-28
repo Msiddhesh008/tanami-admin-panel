@@ -64,7 +64,7 @@ const years = Array.from(
 
 const CreateIO = () => {
   const navigate = useNavigate();
-  const { sponser } = useContext(GlobalStateContext);
+  const { sponser, setSponser,investment, setInvestment } = useContext(GlobalStateContext);
   const [bannerImageData, setBannerImageData] = useState(null);
   const [otherImageData, setOtherImageData] = useState(null);
 
@@ -74,11 +74,13 @@ const CreateIO = () => {
   const [totalCharge, setTotalCharge] = useState(0.0);
   const [totalAmount, setTotalAmount] = useState(0.0);
 
+
   const {
     control,
     handleSubmit,
     reset,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -110,7 +112,12 @@ const CreateIO = () => {
   }, [charges, destributedAmount]);
 
   const onSubmit = (data) => {
-    console.log(data);
+
+    // setValue("banner_image", selectedBannerImageData);
+    data.banner_image = selectedBannerImageData;
+    const updatedData = { ...data, status: "Available"}
+    console.log(selectedBannerImageData);
+    setInvestment([...investment,updatedData])
     navigate("/view-io");
     reset();
   };

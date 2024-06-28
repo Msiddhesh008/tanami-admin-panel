@@ -1,18 +1,255 @@
-import { Box, Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
-// import error from "../assets/Error.svg"
-import robot from "../../../assets/robot.png";
-import InvestmentCard from "../../../Components/InvestmentCard/InvestmentCard";
-// import robot from "../assets/robot.png"
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  HStack,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Portal,
+  Select,
+  Switch,
+  Tag,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
+import { OPACITY_ON_LOAD } from "../../../Layout/animations";
+import DataTable from "../../../Components/DataTable/DataTable";
+import { HiDotsVertical } from "react-icons/hi";
+import { Link, Link as RouterLink } from "react-router-dom";
+import { AddIcon, EmailIcon } from "@chakra-ui/icons";
+import Pagination from "../../../Components/Pagination";
+import GlobalStateContext from "../../../Contexts/GlobalStateContext";
+import CustomAlertDialog from "../../../Components/CustomAlertDialog";
+import ToastBox from "../../../Components/ToastBox";
+import { debounce } from "../Sponser/AddSponser";
+
+const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
+
 const InvestmentType = () => {
+  const toast = useToast()
+  const { investmentType, setInvestmentType,slideFromRight } = useContext(GlobalStateContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [actionId, setActionId] = useState(false);
+  const [mouseEntered, setMouseEntered] = useState(false);
+  const [mouseEnteredId, setMouseEnteredId] = useState("");
+
+
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
+
+  // ====================================================[Table Setup]================================================================
+  const tableHeadRow = [
+    "investment name",
+    "Address",
+    "Mobile no",
+    "Status",
+    "Created At",
+  ];
+
+  const handleUpdateStatus = debounce((id) => {
+    
+    setInvestmentType((prevInvestmentType) =>
+      prevInvestmentType.map((investmentType) =>
+        investmentType.id === id ? { ...investmentType, status: !investmentType.status } : investmentType
+      )
+    );
+    toast({
+      render: () => (
+        <ToastBox
+          message={"Status changed succesfully.!"}
+        />
+      ),
+    });
+  },300) ;
+
+  // ====================================================[Table Filter]================================================================
+  const filteredData = investmentType.filter((item) => {
+    // Filter by name (case insensitive)
+    const name = item.investmentName;
+    const searchLower = searchTerm.toLowerCase();
+    const nameMatches = name.toLowerCase().includes(searchLower);
+
+    // Filter by status
+    // const status = item.status;
+    // const statusLower = status ? "active" : "inactive";
+
+    // const statusMatches =
+    //   statusFilter === "all" ||
+    //   (statusFilter === "active" && status === true) ||
+    //   (statusFilter === "inactive" && status === false);
+
+    return nameMatches;
+  });
+
+  const extractedArray = filteredData?.map((item) => ({
+    id: item?.id,
+    "investment name": (
+      <Text justifyContent={slideFromRight? 'right': 'left' }
+        as={"span"}
+        color={"gray.600"}
+        className="d-flex align-items-center web-text-small"
+      >
+        {item.investmentName}
+      </Text>
+    ),
+    Address: (
+      <Box w={350} isTruncated={true} >
+        <Text as={"span"} color={"teal.900"}>
+          {item.sponserAddress}
+        </Text>
+      </Box>
+    ),
+    "Mobile no": (
+      <Box w={"auto"} isTruncated={true}>
+        <Text as={"span"} color={"teal.900"}>
+          {item.mobileNo}
+        </Text>
+      </Box>
+    ),
+    Status:
+      <Switch
+        size={"sm"}
+        color="green"
+        onChange={() => handleUpdateStatus(item.id)}
+        isChecked={item.status}
+      />
+
+      // item?.status ? (
+      //   <Badge bg={'transparent'} color={"#05c46b"}>
+      //     Passed
+      //   </Badge>
+      // ) : (
+      //   <Badge bg={'transparent'} color={"#f53b57"}>
+      //     Not passes
+      //   </Badge>
+      // ),
+      
+      ,
+    "Created At": (
+      <span className="d-flex justify-content-between align-items-center">
+        <Text as={"span"} color={"gray.600"} className=" fw-bold">
+          {formatDate(item.createdAt)}
+        </Text>
+        <Menu>
+          <MenuButton className="link p-1 rounded-1">
+            <HiDotsVertical className="rubix-text-dark fs-6" />
+          </MenuButton>
+          <Portal>
+            <MenuList minWidth="80px">
+              <RouterLink to={`edit-investment/${item.id}`}>
+                <MenuItem className="web-text-medium">Edit</MenuItem>
+              </RouterLink>
+              <RouterLink to={`view-investment/${item.id}`}>
+                <MenuItem className="web-text-medium">View</MenuItem>
+              </RouterLink>
+              <MenuItem
+                onClick={() => {
+                  setActionId(item?.id);
+                  setDeleteAlert(true);
+                }}
+                className="web-text-medium"
+              >
+                Delete
+              </MenuItem>
+            </MenuList>
+          </Portal>
+        </Menu>
+      </span>
+    ),
+  }));
+
+  const handleDelete = () => {
+    const updatedInvestmentType = investmentType.filter((investmentType) => investmentType.id !== actionId);
+
+    setTimeout(() => {
+      setInvestmentType(updatedInvestmentType);
+      setDeleteAlert(false);
+      setIsLoading(false);
+    }, 100);
+    setIsLoading(true);
+  };
+
+  
+
+
   return (
-    <Box
-    display={'flex'}
-    height={'100vh'}
-    justifyContent={'center'}
-    alignItems={'center'}
-    >
-      <Image src={robot} w={"171px"} />
-      {/* <InvestmentCard /> */}
+    <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={38}>
+      <Box bg="white.500">
+        <HStack
+          display={"flex"}
+          justifyContent={"space-between"}
+          ps={1}
+          pe={1}
+          pb={4}
+          pt={4}
+          spacing="24px"
+        >
+          <Input
+            type="search"
+            width={300}
+            placeholder="Search..."
+            size="sm"
+            rounded="sm"
+            focusBorderColor="green.500"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
+          <HStack display={"flex"} alignItems={"center"}>
+            <Pagination totalItems={10} />
+
+            <Link to={"/investment-type/add-investment"}>
+              <Button
+                leftIcon={<AddIcon />}
+                colorScheme={"green"}
+                rounded={"sm"}
+                size={"sm"}
+              >
+                Add Investment
+              </Button>
+            </Link>
+          </HStack>
+        </HStack>
+      </Box>
+
+      <DataTable
+        emptyMessage={`We don't have any Sponers `}
+        tableHeadRow={tableHeadRow}
+        data={extractedArray}
+        isLoading={isLoading}
+        viewActionId={actionId}
+        setViewActionId={setActionId}
+        // totalPages={10}
+
+
+
+
+        
+        setMouseEnteredId={setMouseEnteredId}
+        setMouseEntered={setMouseEntered}
+      />
+
+      <CustomAlertDialog
+       onClose={()=> setDeleteAlert(false)}
+        isOpen={deleteAlert}
+        message={"Are you sure you want to delete Investment Type?"}
+        alertHandler={handleDelete}
+        isLoading={isLoading}
+      />
     </Box>
   );
 };

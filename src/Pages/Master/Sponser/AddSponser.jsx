@@ -51,6 +51,7 @@ export function debounce(func, delay) {
     debounceTimer = setTimeout(() => func.apply(this, args), delay);
   };
 }
+
 const AddSponser = () => {
   const navigate = useNavigate();
   const { sponser, setSponser } = useContext(GlobalStateContext);
