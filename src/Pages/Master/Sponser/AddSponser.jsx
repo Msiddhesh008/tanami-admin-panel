@@ -42,11 +42,9 @@ const schema = yup.object().shape({
   // accountHolderName: yup.string().required("Account Holder's Name is required"),
 });
 
-
-
 export function debounce(func, delay) {
   let debounceTimer;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => func.apply(this, args), delay);
   };
@@ -85,21 +83,22 @@ const AddSponser = () => {
           Personal Details
         </Heading>
         <Box display={"flex"} gap={0}>
-        <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
+          <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
             <FormField
               label="Sponser name"
               name="sponserName"
               control={control}
               errors={errors}
               isRequired={true}
-            /><FormField
-            placeHolder={"الرجاء إدخال القيمة"}
-            name="اسم الراعي"
-            control={control}
-            errors={errors}
-            isRequired={true}
-            arabic={true}
-          />
+            />
+            <FormField
+              placeHolder={"الرجاء إدخال القيمة"}
+              name="اسم الراعي"
+              control={control}
+              errors={errors}
+              isRequired={true}
+              arabic={true}
+            />
             <FormField
               label="Mobile no"
               name="mobileNo"
@@ -117,7 +116,6 @@ const AddSponser = () => {
               isRequired={true}
             />
           </Box>
-
         </Box>
 
         <Divider />
@@ -127,7 +125,13 @@ const AddSponser = () => {
         </Heading>
         <Box display={"flex"} gap={0}>
           {Array(1).fill(
-        <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
+            <Box
+              width={"100%"}
+              p={5}
+              display={"flex"}
+              flexWrap={"wrap"}
+              gap={4}
+            >
               {/* <FormField
                 label="Account Holder's Name"
                 name="accountHolderName"

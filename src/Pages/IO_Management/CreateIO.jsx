@@ -67,7 +67,6 @@ const CreateIO = () => {
   const { sponser, setSponser,investment, setInvestment } = useContext(GlobalStateContext);
   const [bannerImageData, setBannerImageData] = useState(null);
   const [otherImageData, setOtherImageData] = useState(null);
-
   const [selectedBannerImageData, setSelectedBannerImageData] = useState(null);
   const [selectedOtherImageData, setSelectedOtherImageData] = useState(null);
   const [charges, setCharges] = useState([]);
@@ -128,6 +127,97 @@ const CreateIO = () => {
     label: item.sponserName,
   }));
 
+
+  const [investForm, setInvestForm] = useState(
+    [
+      {
+        label: "Investment object name",
+        name: "ioName",
+        type: "text",
+        isRequired: true,
+      },
+      {
+        label: "Investment object",
+        name: "ioNameArabic",
+        placeHolder: "الرجاء إدخال القيمة",
+        arabic: true,
+        isRequired: true,
+      },
+      {
+        label: "Destributed Amount",
+        placeHolder: "$00.0",
+        helperText: "Please enter value in $",
+        name: "destributedAmount",
+        type: "number",
+        isRequired: true,
+      },
+      {
+        label: "Min Invest",
+        placeHolder: "$00.00",
+        helperText: "Please enter value in $",
+        name: "miniInvest",
+        type: "number",
+        isRequired: true,
+      },
+      {
+        label: "Year",
+        name: "year",
+        type: "select",
+        options: years,
+        isRequired: true,
+      },
+      {
+        label: "Quaterly",
+        name: "quaterly",
+        type: "select",
+        options: [
+          { label: "Q1", value: "Q1" },
+          { label: "Q2", value: "Q2" },
+          { label: "Q3", value: "Q3" },
+          { label: "Q4", value: "Q4" },
+        ],
+        isRequired: true,
+      },
+      {
+        label: "Sponsers Name",
+        name: "sponserName",
+        type: "select",    
+        options: sponserOptions,
+        isRequired: true,
+      },
+      {
+        label: "Target close",
+        name: "targetClose",
+        type: "date",
+        isRequired: true,
+      },
+      {
+        label: "Tenure",
+        name: "tenure",
+        type: "number",
+        isRequired: true,
+      },
+      {
+        label: "Annual yeild",
+        placeHolder: "00.00%",
+        helperText: "Please enter value in percentage",
+        name: "annualyield",
+        type: "number",
+        isRequired: true,
+      },
+      {
+        label: "Annual return",
+        placeHolder: "00.00%",
+        helperText: "Please enter value in percentage",
+        name: "annualReturn",
+        type: "number",
+        isRequired: true,
+      },
+    ]
+  );
+
+
+
   const handleBannerImageChange = (e) => {
     const file = e.target.files[0];
     setBannerImageData(file);
@@ -172,7 +262,7 @@ const CreateIO = () => {
   // Function to remove a specific image
   const removeOtherImage = (index) => {
     const newImageData = otherImageData.filter((_, i) => i !== index);
-    const newSelectedImageData = selectedOtherImageData.filter(
+    const newSelectedImageData = selectedOtherImageData.filter(   
       (_, i) => i !== index
     );
 
@@ -186,134 +276,21 @@ const CreateIO = () => {
         <Heading as="h6" size="xs" mt={4}>
           Investment Object Details
         </Heading>
-        <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
-          <FormField
-            label="Investment object name"
-            name="ioName"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Investment object"
-            name="ioNameArabic"
-            placeHolder={"الرجاء إدخال القيمة"}
-            control={control}
-            errors={errors}
-            isRequired={true}
-            arabic={true}
-          />
-
-          <FormField
-            label="Destributed Amount"
-            placeHolder={"$00.0"}
-            helperText={"Please enter value in $"}
-            name="destributedAmount"
-            type="number"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Min Invest"
-            placeHolder={"$00.00"}
-            helperText={"Please enter value in $"}
-            name="miniInvest"
-            type="number"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Sponsers Name"
-            control={control}
-            name="sponserName"
-            type="select"
-            options={sponserOptions}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Year"
-            control={control}
-            name="year"
-            type="select"
-            options={years}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Annual return"
-            placeHolder={"00.00%"}
-            helperText={"Please enter value in percentage"}
-            name="annualReturn"
-            type="number"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Annual yeild"
-            placeHolder={"00.00%"}
-            helperText={"Please enter value in percentage"}
-            name="annualyield"
-            type="number"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Quaterly"
-            control={control}
-            name="quaterly"
-            type="select"
-            options={[
-              {
-                label: "Q1",
-                value: "Q1",
-              },
-              {
-                label: "Q2",
-                value: "Q2",
-              },
-              {
-                label: "Q3",
-                value: "Q3",
-              },
-              {
-                label: "Q4",
-                value: "Q4",
-              },
-            ]}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Tenure"
-            // helperText={"Please enter value in Dollar"}
-            name="tenure"
-            type="number"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
-
-          <FormField
-            label="Target close"
-            name="targetClose"
-            type="date"
-            control={control}
-            errors={errors}
-            isRequired={true}
-          />
+        <Box w={'100%'} display={'flex'} flexWrap={'wrap'} gap={5} p={2}>
+          {investForm.map((field, index) => (
+            <FormField
+              key={index}
+              label={field.label}
+              name={field.name}
+              type={field.type}
+              placeHolder={field.placeHolder}
+              helperText={field.helperText} 
+              options={field.options}
+              control={control}
+              errors={errors}
+              isRequired={true}
+            />
+          ))}
         </Box>
 
         <Divider />
