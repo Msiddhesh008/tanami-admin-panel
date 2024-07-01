@@ -56,7 +56,7 @@ const Login = () => {
         });
 
         Cookies.set("isAuthenticated", true, { expires: 7 });
-        navigate("/sponser");
+        navigate("/");
       }, 2000); // 3-second delay
     } else {
       return setTimeout(() => {
