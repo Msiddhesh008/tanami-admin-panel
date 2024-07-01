@@ -11,7 +11,7 @@ import CreateIO from "../Pages/IO_Management/CreateIO";
 import Create from "../Pages/IO_Management/CreateIO";
 import ViewIO from "../Pages/IO_Management/ViewIO";
 import View from "../Pages/IO_Management/ViewIO";
-import InvestorPendingRequest from "../Pages/InvestorUpgrade/InvestorPendingRequest";
+import InvestorPendingRequest from "../Pages/InvestorUpgrade/InvestorRequest";
 import UpgradeHistory from "../Pages/InvestorUpgrade/UpgradeHistory";
 import upgradeHistory from "../Pages/InvestorUpgrade/UpgradeHistory";
 import InvestorDetails from "../Pages/Investor_Management/InvestorDetails";

@@ -14,32 +14,42 @@ import {
   Switch,
   Tag,
   Text,
+  Tooltip,
   useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
 import DataTable from "../../../Components/DataTable/DataTable";
 import { HiDotsVertical } from "react-icons/hi";
-import { Link, Link as RouterLink } from "react-router-dom";
-import { AddIcon, EmailIcon } from "@chakra-ui/icons";
+import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
+import {
+  AddIcon,
+  CheckIcon,
+  CloseIcon,
+  DeleteIcon,
+  EditIcon,
+  EmailIcon,
+  ViewIcon,
+} from "@chakra-ui/icons";
 import Pagination from "../../../Components/Pagination";
 import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../../Components/CustomAlertDialog";
 import ToastBox from "../../../Components/ToastBox";
-import { debounce } from "../Sponser/AddSponser";
+import { debounce } from "./AddInvestmentType";
 
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const InvestmentType = () => {
-  const toast = useToast()
-  const { investmentType, setInvestmentType,slideFromRight } = useContext(GlobalStateContext);
+  const navigate = useNavigate()
+  const toast = useToast();
+  const { investmentType, setInvestmentType, slideFromRight } =
+    useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [deleteAlert, setDeleteAlert] = useState(false);
   const [actionId, setActionId] = useState(false);
   const [mouseEntered, setMouseEntered] = useState(false);
   const [mouseEnteredId, setMouseEnteredId] = useState("");
-
 
   useEffect(() => {
     // Simulate loading
@@ -53,28 +63,24 @@ const InvestmentType = () => {
 
   // ====================================================[Table Setup]================================================================
   const tableHeadRow = [
-    "investment name",
+    "Investment name",
     "Address",
     "Mobile no",
     "Status",
     "Created At",
+    "Action",
   ];
 
   const handleUpdateStatus = debounce((id) => {
-    
     setInvestmentType((prevInvestmentType) =>
       prevInvestmentType.map((investmentType) =>
         investmentType.id === id ? { ...investmentType, status: !investmentType.status } : investmentType
       )
     );
     toast({
-      render: () => (
-        <ToastBox
-          message={"Status changed succesfully.!"}
-        />
-      ),
+      render: () => <ToastBox message={"Status changed succesfully.!"} />,
     });
-  },300) ;
+  }, 300);
 
   // ====================================================[Table Filter]================================================================
   const filteredData = investmentType.filter((item) => {
@@ -97,63 +103,65 @@ const InvestmentType = () => {
 
   const extractedArray = filteredData?.map((item) => ({
     id: item?.id,
-    "investment name": (
-      <Text justifyContent={slideFromRight? 'right': 'left' }
+    "Investment name": (
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
-        color={"gray.600"}
+        color={"teal.900"}
+        fontWeight={"500"}
         className="d-flex align-items-center web-text-small"
       >
         {item.investmentName}
       </Text>
     ),
     Address: (
-      <Box w={350} isTruncated={true} >
-        <Text as={"span"} color={"teal.900"}>
-          {item.sponserAddress}
+      <Box w={350} isTruncated={true}>
+        <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
+          {item.investmentAddress}
         </Text>
       </Box>
     ),
     "Mobile no": (
       <Box w={"auto"} isTruncated={true}>
-        <Text as={"span"} color={"teal.900"}>
+        <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
           {item.mobileNo}
         </Text>
       </Box>
     ),
-    Status:
+    Status: (
       <Switch
         size={"sm"}
-        color="green"
+        colorScheme="green"
         onChange={() => handleUpdateStatus(item.id)}
         isChecked={item.status}
       />
+    ),
 
-      // item?.status ? (
-      //   <Badge bg={'transparent'} color={"#05c46b"}>
-      //     Passed
-      //   </Badge>
-      // ) : (
-      //   <Badge bg={'transparent'} color={"#f53b57"}>
-      //     Not passes
-      //   </Badge>
-      // ),
-      
-      ,
+    // item?.status ? (
+    //   <Badge bg={'transparent'} color={"#05c46b"}>
+    //     Passed
+    //   </Badge>
+    // ) : (
+    //   <Badge bg={'transparent'} color={"#f53b57"}>
+    //     Not passes
+    //   </Badge>
+    // ),
+
     "Created At": (
       <span className="d-flex justify-content-between align-items-center">
-        <Text as={"span"} color={"gray.600"} className=" fw-bold">
+        <Text as={"span"} color={"gray.600"} fontWeight={"500"}>
           {formatDate(item.createdAt)}
         </Text>
-        <Menu>
+        {/* <Menu>
           <MenuButton className="link p-1 rounded-1">
             <HiDotsVertical className="rubix-text-dark fs-6" />
           </MenuButton>
           <Portal>
             <MenuList minWidth="80px">
-              <RouterLink to={`edit-investment/${item.id}`}>
+              <RouterLink to={`edit-sponser/${item.id}`}>
                 <MenuItem className="web-text-medium">Edit</MenuItem>
               </RouterLink>
-              <RouterLink to={`view-investment/${item.id}`}>
+              <RouterLink to={`view-sponser/${item.id}`}>
                 <MenuItem className="web-text-medium">View</MenuItem>
               </RouterLink>
               <MenuItem
@@ -167,24 +175,118 @@ const InvestmentType = () => {
               </MenuItem>
             </MenuList>
           </Portal>
-        </Menu>
+        </Menu> */}
       </span>
     ),
+    Action: (
+      <Box display={"flex"} justifyContent={"space-between"}>
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="View"
+          bg="#fff"
+          color={"green.500"}
+          placement="top"
+        >
+          <Button
+            _hover={{ color: "green.500" }}
+            // transition={"0.5s all"}
+          onClick={()=>{ navigate(`view-investment/${item.id}`)}}
+            color="green.300"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <ViewIcon />
+          </Button>
+        </Tooltip>
+
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="Edit"
+          bg="#fff"
+          color={"blue.500"}
+          placement="top"
+        >
+          <Button
+          onClick={()=>{ navigate(`edit-investment/${item.id}`)}}
+            _hover={{ color: "blue.500" }}
+            // transition={"0.5s all"}
+            color="blue.400"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <EditIcon />
+          </Button>
+        </Tooltip>
+
+
+        <Tooltip
+          rounded={"sm"}
+          fontSize={"xs"}
+          label="Delete"
+          bg="#fff"
+          color={"red.500"}
+          placement="top"
+        >
+          <Button
+            onClick={() => {
+              setActionId(item?.id);
+              setDeleteAlert(true);
+            }}
+            _hover={{ color: "red.500" }}
+            // transition={"0.5s all"}
+            color="red.300"
+            rounded={"sm"}
+            size={"xs"}
+          >
+            <DeleteIcon />
+          </Button>
+        </Tooltip>
+
+      </Box>
+    ),
+
+    // "Created At":
+    //   mouseEntered && mouseEnteredId === item?.id ? (
+    //     // false ? (
+    //     <Box w={38} as="span" display={"flex"} justifyContent={"start"} gap={3}>
+    //     <Box as="span" p={1} className="link" rounded={'sm'} >
+    //       <EditIcon fontSize={'md'} />
+    //     </Box>
+    //       <Box as="span" p={1} className="link" rounded={'sm'} >
+    //         <ViewIcon fontSize={'md'} />
+    //       </Box>
+    //       <Box as="span" p={1} className="link" rounded={'sm'} >
+    //         <DeleteIcon fontSize={'md'} />
+    //       </Box>
+    //     </Box>
+    //   ) : (
+    //     <Box
+    //       as="span" display={"flex"} justifyContent={"start"}
+    //       p={1}
+    //     >
+    //       <Text  as={"span"} color={"gray.600"} fontWeight={"500"}>
+    //         {formatDate(item.createdAt)}
+    //       </Text>
+    //     </Box>
+    //   ),
   }));
 
   const handleDelete = () => {
-    const updatedInvestmentType = investmentType.filter((investmentType) => investmentType.id !== actionId);
+    const updatedSponsors = sponser.filter(
+      (sponsor) => sponsor.id !== actionId
+    );
 
     setTimeout(() => {
-      setInvestmentType(updatedInvestmentType);
+      setSponser(updatedSponsors);
       setDeleteAlert(false);
       setIsLoading(false);
     }, 100);
     setIsLoading(true);
   };
-
-  
-
 
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={38}>
@@ -235,18 +337,14 @@ const InvestmentType = () => {
         setViewActionId={setActionId}
         // totalPages={10}
 
-
-
-
-        
         setMouseEnteredId={setMouseEnteredId}
         setMouseEntered={setMouseEntered}
       />
 
       <CustomAlertDialog
-       onClose={()=> setDeleteAlert(false)}
+        onClose={() => setDeleteAlert(false)}
         isOpen={deleteAlert}
-        message={"Are you sure you want to delete Investment Type?"}
+        message={"Are you sure you want to delete sponers?"}
         alertHandler={handleDelete}
         isLoading={isLoading}
       />

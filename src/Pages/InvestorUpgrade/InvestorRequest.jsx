@@ -6,7 +6,6 @@ import {
   HStack,
   Input,
   Text,
-  Tooltip,
   useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
@@ -16,12 +15,11 @@ import Pagination from "../../Components/Pagination";
 import GlobalStateContext from "../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../Components/CustomAlertDialog";
 import { formatDate } from "../../Components/Functions/UTCConvertor";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 // import { formatDate } from "../../Components/Functions/UTCConvertor";
 
-const ViewHistory = () => {
+const InvestorRequest = () => {
   const toast = useToast();
-  const { slideFromRight, viewHistory, setViewHistory } =
+  const { slideFromRight, investorRequest, setInvestorRequest } =
     useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +39,7 @@ const ViewHistory = () => {
   }, []);
 
   // ====================================================[Table Filter]================================================================
-  const filteredData = viewHistory.filter((item) => {
+  const filteredData = investorRequest.filter((item) => {
     // Filter by name (case insensitive)
     const name = item.Distribution;
     const searchLower = searchTerm.toLowerCase();
@@ -67,7 +65,7 @@ const ViewHistory = () => {
     "Charges (USD)",
     "Year",
     "Quater",
-    "Action",
+    "Amount",
   ];
 
   const extractedArray = filteredData?.map((item, index) => ({
@@ -99,7 +97,7 @@ const ViewHistory = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        className="d-flex align-items-center  web-text-small"
+        className="d-flex align-items-center web-text-small"
         fontWeight={'500'}
       >
         {item.Distribution}
@@ -136,18 +134,20 @@ const ViewHistory = () => {
         className="d-flex align-items-center web-text-small"
         fontWeight={'500'}
       >
-        {item.quarter}
+        {item.quater}
       </Text>
     ),
-    Action: (
-      <Box display={'flex'} justifyContent={'space-around'}>
-        <Tooltip rounded={'sm'} fontSize={'xs'}  label='Accept' bg='#fff' color={'green.500'} placement="left-start">
-        <Button color="green.500"   rounded={'sm'} size={'xs'}>
-        <CheckIcon /></Button></Tooltip>
-        <Tooltip rounded={'sm'} fontSize={'xs'}  label='Reject' bg='#fff' color={'red.500'} placement="left-start">
-        <Button color="red.500" rounded={'sm'} size={'xs'}>
-        <CloseIcon /></Button></Tooltip>
-      </Box>
+
+    Amount: (
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
+        as={"span"}
+        color={"gray.600"}
+        className="d-flex align-items-center web-text-small"
+        fontWeight={'500'}
+      >
+        {item.amount}
+      </Text>
     ),
   }));
 
@@ -217,4 +217,4 @@ const ViewHistory = () => {
   );
 };
 
-export default ViewHistory;
+export default InvestorRequest;

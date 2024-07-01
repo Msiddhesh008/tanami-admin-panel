@@ -30,14 +30,14 @@ const InvestmentCard = ({ investment }) => {
         p={"14px"}
         rounded={"24px"}
         objectFit="cover"
-        w={"200px"}
-        h={"140px"}
+        w={"180px"}
+        h={"160px"}
         src={investment?.banner_image}
         alt={investment?.ioName}
       />
 
-      <Stack w={"38%"}>
-        <CardBody>
+      <Stack w={"22%"}>
+        <CardBody p={"18px 12px 18px 0px"}>
           <Heading size="sm" fontWeight={"500"}>
             {investment?.ioName}
             <Badge
@@ -54,6 +54,7 @@ const InvestmentCard = ({ investment }) => {
               pb={0.5}
               fontSize={"xs"}
               ms={3}
+              fontWeight={'600'}
             >
               {investment?.status === "Available"
                 ? "Available"
@@ -62,68 +63,87 @@ const InvestmentCard = ({ investment }) => {
                 : "Closed"}
             </Badge>
           </Heading>
-          <Text fontSize="sm" mb={"4px"}>
-            Sponsor: 
-            <Text as={"span"} fontWeight={"600"}>
+          <Text
+            fontSize="sm"
+            mb={"4px"}
+            display={"flex"}
+            justifyContent={"space-between"}
+          >
+            Sponsor:
+            <Text as={"span"} fontWeight={"500"}>
               {investment?.sponserName}
             </Text>
           </Text>
-          <Text fontSize="sm" mb={"4px"}>
-            Ann return: 
-            <Text as={"span"} fontWeight={"600"}>
+          <Text
+            fontSize="sm"
+            mb={"4px"}
+            display={"flex"}
+            justifyContent={"space-between"}
+          >
+            Ann return:
+            <Text as={"span"} fontWeight={"500"}>
               {investment?.annualReturn}
             </Text>
           </Text>
-          <Text fontSize="sm" mb={"4px"}>
-            Ann Yield: 
-            <Text as={"span"} fontWeight={"600"}>
+          <Text
+            fontSize="sm"
+            mb={"4px"}
+            display={"flex"}
+            justifyContent={"space-between"}
+          >
+            Ann Yield:
+            <Text as={"span"} fontWeight={"500"}>
               {investment?.annualyield}
-            </Text>
-          </Text>
-          <Text fontSize="sm" mb={"4px"}>
-            Tenure: 
-            <Text as={"span"} fontWeight={"600"}>
-              {investment?.tenure}
-            </Text>
-          </Text>
-          <Text fontSize="sm" mb={"4px"}>
-            Quaterly: 
-            <Text as={"span"} fontWeight={"600"}>
-              {investment?.quaterly}
             </Text>
           </Text>
         </CardBody>
       </Stack>
-      <Stack borderLeft={"1px solid #ccc"}>
-        <CardBody>
-        <Text fontSize="sm" mb={"4px"}>
-              Destributed Amount: 
-            <Text as={"span"} fontWeight={"600"}>
+      <Stack w={"22%"} borderLeft={"1px solid #ccc"}>
+        <CardBody p={"38px 12px 7px 12px"}>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
+            Tenure:
+            <Text as={"span"} fontWeight={"500"}>
+              {investment?.tenure}
+            </Text>
+          </Text>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
+            Quaterly:
+            <Text as={"span"} fontWeight={"500"}>
+              {investment?.quaterly}
+            </Text>
+          </Text>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
+            Destributed Amount:
+            <Text as={"span"} fontWeight={"500"}>
               {investment?.destributedAmount}
             </Text>
           </Text>
-          <Text fontSize="sm" mb={"4px"}>
+        </CardBody>
+      </Stack>
+      <Stack w={"22%"} borderLeft={"1px solid #ccc"}>
+        <CardBody p={"38px 12px 7px 12px"}>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
             Min.Invests:
-            <Text as={"span"} fontWeight={"600"}>
-              {investment?.minInvests}
+            <Text as={"span"} fontWeight={"500"}>
+              {investment?.miniInvest}
             </Text>
           </Text>
-          <Text fontSize="sm" mb={"4px"}>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
             Targ Close:
-            <Text as={"span"} fontWeight={"600"}>
+            <Text as={"span"} fontWeight={"500"}>
               {new Date(investment?.targetClose).toLocaleDateString()}
             </Text>
           </Text>
-          <Text fontSize="sm" mb={"4px"}>
-            Year: 
-            <Text as={"span"} fontWeight={"600"}>
+          <Text fontSize="sm" mb={"4px"} display={'flex'} justifyContent={'space-between'}>
+            Year:
+            <Text as={"span"} fontWeight={"500"}>
               {investment?.year}
             </Text>
           </Text>
         </CardBody>
       </Stack>
-      <Stack>
-        <CardBody>
+      <Stack w={"20%"} borderLeft={"1px solid #ccc"}>
+        <CardBody padding={'25px 12px 7px 12px'}>
           <Box
             as="span"
             display={"flex"}
@@ -138,7 +158,7 @@ const InvestmentCard = ({ investment }) => {
             </Text>
           </Box>
           <Progress
-            width={"200px"}
+            width={"100%"}
             value={75} // Assuming a static progress value
             rounded={"10px"}
             colorScheme={"green"}

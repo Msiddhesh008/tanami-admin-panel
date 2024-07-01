@@ -68,7 +68,7 @@ const ExchangeRate = () => {
 
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"}>
-      <Tabs position="relative" variant="unstyled" mt={2}>
+      <Tabs position="relative" variant="unstyled" mt={2} >
         <TabList>
           {/* <Tab fontSize={"sm"}>All</Tab> */}
           {/* <Tab fontSize={"sm"}>Available</Tab>
