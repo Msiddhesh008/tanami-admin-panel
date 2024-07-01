@@ -56,7 +56,7 @@ const Login = () => {
         });
 
         Cookies.set("isAuthenticated", true, { expires: 7 });
-        navigate("/");
+        navigate("/sponser");
       }, 2000); // 3-second delay
     } else {
       return setTimeout(() => {
@@ -93,7 +93,7 @@ const Login = () => {
         justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        backgroundColor:"#0041180A"
+        backgroundColor: "#0041180A",
       }}
       className="rubix-primary"
     >
