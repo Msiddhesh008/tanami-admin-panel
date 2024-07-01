@@ -29,12 +29,11 @@ const CustomAlertDialog = ({ isOpen, onOpen, onClose, alertHandler, isLoading, m
             No
           </Button>
           <Button
-            backgroundColor={"#ff6b6b"}
             isLoading={isLoading}
             onClick={alertHandler}
             size={"sm"}
             rounded={'sm'}
-            colorScheme="red"
+            colorScheme="green"
             ml={3}
           >
             Yes

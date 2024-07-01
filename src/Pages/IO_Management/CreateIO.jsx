@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import FormField from "../../Components/FormField";
 import { v4 as uuidv4 } from "uuid";
 import AddIOCharges from "./AddIOCharges";
+import FormInputMain from "../../Components/FormInputMain";
 
 const schema = yup.object().shape({
   ioNameArabic: yup.string().required("Arabic name is required"),
@@ -64,7 +65,8 @@ const years = Array.from(
 
 const CreateIO = () => {
   const navigate = useNavigate();
-  const { sponser, setSponser,investment, setInvestment } = useContext(GlobalStateContext);
+  const { sponser, setSponser, investment, setInvestment } =
+    useContext(GlobalStateContext);
   const [bannerImageData, setBannerImageData] = useState(null);
   const [otherImageData, setOtherImageData] = useState(null);
   const [selectedBannerImageData, setSelectedBannerImageData] = useState(null);
@@ -72,7 +74,6 @@ const CreateIO = () => {
   const [charges, setCharges] = useState([]);
   const [totalCharge, setTotalCharge] = useState(0.0);
   const [totalAmount, setTotalAmount] = useState(0.0);
-
 
   const {
     control,
@@ -111,12 +112,11 @@ const CreateIO = () => {
   }, [charges, destributedAmount]);
 
   const onSubmit = (data) => {
-
     // setValue("banner_image", selectedBannerImageData);
     data.banner_image = selectedBannerImageData;
-    const updatedData = { ...data, status: "Available"}
+    const updatedData = { ...data, status: "Available" };
     console.log(selectedBannerImageData);
-    setInvestment([...investment,updatedData])
+    setInvestment([...investment, updatedData]);
     navigate("/view-io");
     reset();
   };
@@ -270,187 +270,147 @@ const CreateIO = () => {
     setSelectedOtherImageData(newSelectedImageData);
   };
 
+  const formFields = [
+    {
+      label: "Investment object name",
+      name: "ioName",
+      type: "text",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Investment object (Arabic)",
+      name: "ioNameArabic",
+      placeHolder: "الرجاء إدخال القيمة",
+      type: "text",
+      isRequired: true,
+      arabic: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Destributed Amount",
+      name: "destributedAmount",
+      type: "number",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Min Invest",
+      name: "miniInvest",
+      type: "number",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Sponsers name",
+      name: "sponserName",
+      type: "text",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Year",
+      name: "accountNumber",
+      type: "select",
+      options: years,
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Annual return",
+      name: "annualReturn",
+      type: "number",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Annual yeild",
+      name: "annualyield",
+      type: "number",
+      helperText: "Please enter value in percentage",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+    {
+      label: "Quaterly",
+      name: "quaterly",
+      type: "select",
+      options: [
+        {
+          label: "Q1",
+          value: "Q1",
+        },
+        {
+          label: "Q2",
+          value: "Q2",
+        },
+        {
+          label: "Q3",
+          value: "Q3",
+        },
+        {
+          label: "Q4",
+          value: "Q4",
+        },
+      ],
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+
+    {
+      label: "Target close",
+      name: "targetClose",
+      type: "date",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+
+    {
+      label: "Banner image",
+      name: "banner_image",
+      id: "banner_image",
+      type: "fileNormal",
+      isRequired: true,
+      section: "Uplaod Banner Images",
+      multiple: false,
+      selectedImageData: selectedBannerImageData,
+      setSelectedImageData: setSelectedBannerImageData,
+      imageData: bannerImageData,
+      handleImageChange: handleBannerImageChange,
+    },
+    {
+      label: "Multi Image",
+      name: "OtherImage",
+      id: "OtherImage",
+      type: "fileNormal",
+      isRequired: true,
+      section: "Uplaod Banner Images",
+      multiple: true,
+      selectedImageData: selectedOtherImageData,
+      setSelectedImageData: setSelectedOtherImageData,
+      imageData: otherImageData,
+      handleImageChange: handleOtherImageChange,
+      removeImage: removeOtherImage,
+    },
+  ];
+
+  const groupedFields = formFields.reduce((groups, field) => {
+    const { section } = field;
+    if (!groups[section]) {
+      groups[section] = [];
+    }
+    groups[section].push(field);
+    return groups;
+  }, {});
+
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={14}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Heading as="h6" size="xs" mt={4}>
-          Investment Object Details
-        </Heading>
-        <Box w={'100%'} display={'flex'} flexWrap={'wrap'} gap={5} p={2}>
-          {investForm.map((field, index) => (
-            <FormField
-              key={index}
-              label={field.label}
-              name={field.name}
-              type={field.type}
-              placeHolder={field.placeHolder}
-              helperText={field.helperText} 
-              options={field.options}
-              control={control}
-              errors={errors}
-              isRequired={true}
-            />
-          ))}
-        </Box>
-
-        <Divider />
-
-        <Heading w={"100%"} as="h6" size="xs" mb={5}>
-          Uplaod Banner Images
-        </Heading>
-        <Box
-          width={"100%"}
-          p={5}
-          pt={0}
-          display={"flex"}
-          flexWrap={"wrap"}
-          gap={4}
-        >
-          <FormField
-            label="Banner image"
-            control={control}
-            name="banner_image"
-            type="fileNormal"
-            helperText={"You can select only one image for banner."}
-            errors={errors}
-            multiple={false}
-            handleImageChange={handleBannerImageChange}
-            isRequired={true}
-            rules={{
-              required: "Profile image is required",
-            }}
-            // register={register}  // Pass register function to FormField
-          />
-
-          <FormField
-            id="otherImageInput"
-            label="Other images"
-            control={control}
-            name="other_image"
-            type="fileNormal"
-            multiple={true}
-            errors={errors}
-            handleImageChange={handleOtherImageChange}
-            isRequired={true}
-            rules={{
-              required: "Profile image is required",
-            }}
-            // register={register}  // Pass register function to FormField
-          />
-
-          {selectedBannerImageData && (
-            <Box width={"49%"}>
-              <Image
-                rounded={"md"}
-                objectFit={"cover"}
-                src={selectedBannerImageData}
-                alt="profile"
-                width={100}
-                height={100}
-              />
-              <Box
-                w={"30%"}
-                display={"flex"}
-                flexDirection={"column"}
-                position={"relative"}
-              >
-                <CloseIcon
-                  onClick={() => setSelectedBannerImageData(null)}
-                  className="link pointer"
-                  p={1}
-                  fontSize={"lg"}
-                  color={"red"}
-                  fontWeight={"500"}
-                  rounded={"md"}
-                  position={"absolute"}
-                  top={1}
-                  right={0}
-                />
-                <Text
-                  as={"span"}
-                  fontSize={"xs"}
-                  w={"70%"}
-                  fontWeight={"500"}
-                  mt={1}
-                  isTruncated={true}
-                >
-                  {bannerImageData?.name}
-                </Text>
-                <Text as={"span"} fontSize={"xs"} fontStyle={"italic"}>
-                  {(bannerImageData?.size / (1024 * 1024)).toFixed(2)} mb
-                </Text>
-              </Box>
-            </Box>
-          )}
-
-          {selectedOtherImageData?.length > 0 && (
-            <Box width={"49.5%"} display="flex" flexWrap="wrap" gap={4}>
-              {selectedOtherImageData.map((imageData, index) => (
-                <Box key={index} width={"100px"}>
-                  <Image
-                    rounded={"md"}
-                    objectFit={"cover"}
-                    src={imageData}
-                    alt={`profile-${index}`}
-                    width={100}
-                    height={100}
-                  />
-                  <Box
-                    display={"flex"}
-                    flexDirection={"column"}
-                    position={"relative"}
-                  >
-                    <CloseIcon
-                      onClick={() => removeOtherImage(index)}
-                      bg={"#fff"}
-                      className="link pointer"
-                      p={1}
-                      fontSize={"lg"}
-                      color={"red"}
-                      fontWeight={"500"}
-                      rounded={"md"}
-                      position={"absolute"}
-                      bottom={0}
-                      right={0}
-                    />
-                    <Text
-                      as={"span"}
-                      fontSize={"xs"}
-                      fontWeight={"500"}
-                      mt={1}
-                      isTruncated={true}
-                    >
-                      {otherImageData[index]?.name}
-                    </Text>
-                    <Text as={"span"} fontSize={"xs"} fontStyle={"italic"}>
-                      {(otherImageData[index]?.size / (1024 * 1024)).toFixed(2)}{" "}
-                      mb
-                    </Text>
-                  </Box>
-                </Box>
-              ))}
-              {/* <Box  width={"100px"} display={'flex'} alignItems={'center'}> */}
-              <AddIcon
-                onClick={() =>
-                  document.getElementById("otherImageInput").click()
-                }
-                rounded={"md"}
-                width={50}
-                height={50}
-                mt={26}
-                p={4}
-                cursor={"pointer"}
-                // rounded={'md'}
-                className="link"
-              />
-              {/* </Box> */}
-            </Box>
-          )}
-        </Box>
-
-
-
-        
+      <FormInputMain
+        groupedFields={groupedFields}
+        control={control}
+        errors={errors}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Divider />
         <Heading
           w={"100%"}
@@ -534,28 +494,27 @@ const CreateIO = () => {
               ""
             )}
 
+            <Box display={"flex"}>
+              <Text
+                fontSize={"sm"}
+                fontWeight={"500"}
+                as={"span"}
+                w={"70%"}
+                bg={""}
+              >
+                Total distributed amount
+              </Text>
+              <Text
+                as={"span"}
+                fontSize={"sm"}
+                fontWeight={"600"}
+                w={"30%"}
+                bg={""}
+              >
+                $ {destributedAmount.toFixed(4)}
+              </Text>
+            </Box>
 
-<Box display={"flex"}>
-                <Text
-                  fontSize={"sm"}
-                  fontWeight={"500"}
-                  as={"span"}
-                  w={"70%"}
-                  bg={""}
-                >
-                  Total distributed amount
-                </Text>
-                <Text
-                  as={"span"}
-                  fontSize={"sm"}
-                  fontWeight={"600"}
-                  w={"30%"}
-                  bg={""}
-                >
-                  $ {destributedAmount.toFixed(4)}
-                </Text>
-              </Box>
-            
             <Box pt={2} borderTop={"1px solid #fff"} as="span" display={"flex"}>
               <Text
                 fontSize={"sm"}
@@ -576,25 +535,9 @@ const CreateIO = () => {
                 $ {totalAmount.toFixed(4)}
               </Text>
             </Box>
-
-
           </Box>
         </Box>
-        
-        <Box display={"flex"} justifyContent={"flex-end"} p={4}>
-          <Button
-            size={"sm"}
-            width={"50%"}
-            rounded={"sm"}
-            type="submit"
-            colorScheme="green"
-            mt={4}
-          >
-            Submit
-          </Button>
-        </Box>
-
-      </form>
+      </FormInputMain>
     </Box>
   );
 };

@@ -25,6 +25,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 1,
       sponserName: "John Doe",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1234567890",
       sponserAddress: "123 Main St, Springfield, USA",
       accountHolderName: "John Doe",
@@ -45,6 +46,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 2,
       sponserName: "Jane Smith",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "9876543210",
       sponserAddress: "456 Oak St, Metropolis, USA",
       accountHolderName: "Jane Smith",
@@ -65,6 +67,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 3,
       sponserName: "Alice Johnson",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1231231234",
       sponserAddress: "789 Pine St, Gotham, USA",
       accountHolderName: "Alice Johnson",
@@ -85,6 +88,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 4,
       sponserName: "Bob Brown",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "3213214321",
       sponserAddress: "101 Maple St, Smallville, USA",
       accountHolderName: "Bob Brown",
@@ -105,6 +109,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 5,
       sponserName: "Charlie Davis",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "5555555555",
       sponserAddress: "202 Birch St, Star City, USA",
       accountHolderName: "Charlie Davis",
@@ -125,6 +130,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 6,
       sponserName: "Daniel Evans",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "4444444444",
       sponserAddress: "303 Cedar St, Central City, USA",
       accountHolderName: "Daniel Evans",
@@ -145,6 +151,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 7,
       sponserName: "Ella Fitzgerald",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "3333333333",
       sponserAddress: "404 Elm St, Coast City, USA",
       accountHolderName: "Ella Fitzgerald",
@@ -165,6 +172,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 8,
       sponserName: "Frank Green",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "2222222222",
       sponserAddress: "505 Ash St, Keystone City, USA",
       accountHolderName: "Frank Green",
@@ -185,6 +193,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 9,
       sponserName: "Grace Hall",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1111111111",
       sponserAddress: "606 Willow St, Hub City, USA",
       accountHolderName: "Grace Hall",
@@ -205,6 +214,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 10,
       sponserName: "Henry Ingram",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "6666666666",
       sponserAddress: "707 Spruce St, Fawcett City, USA",
       accountHolderName: "Henry Ingram",
@@ -225,6 +235,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 11,
       sponserName: "Grace Hall",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1111111111",
       sponserAddress: "606 Willow St, Hub City, USA",
       accountHolderName: "Grace Hall",
@@ -245,6 +256,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 12,
       sponserName: "Henry Ingram",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "6666666666",
       sponserAddress: "707 Spruce St, Fawcett City, USA",
       accountHolderName: "Henry Ingram",
