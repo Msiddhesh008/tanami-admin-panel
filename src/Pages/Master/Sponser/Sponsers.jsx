@@ -21,7 +21,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
 import DataTable from "../../../Components/DataTable/DataTable";
 import { HiDotsVertical } from "react-icons/hi";
-import { Link, Link as RouterLink } from "react-router-dom";
+import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   AddIcon,
   CheckIcon,
@@ -40,6 +40,7 @@ import { debounce } from "./AddSponser";
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const Sponser = () => {
+  const navigate = useNavigate()
   const toast = useToast();
   const { sponser, setSponser, slideFromRight } =
     useContext(GlobalStateContext);
@@ -191,6 +192,7 @@ const Sponser = () => {
           <Button
             _hover={{ color: "green.500" }}
             // transition={"0.5s all"}
+          onClick={()=>{ navigate(`view-sponser/${item?.id}`)}}
             color="green.300"
             rounded={"sm"}
             size={"xs"}
@@ -209,6 +211,7 @@ const Sponser = () => {
           placement="top"
         >
           <Button
+          onClick={()=>{ navigate(`edit-sponser/${item?.id}`)}}
             _hover={{ color: "blue.500" }}
             // transition={"0.5s all"}
             color="blue.400"

@@ -19,8 +19,9 @@ import { WarningTwoIcon } from "@chakra-ui/icons";
 import { TiWarning } from "react-icons/ti";
 import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
+import FormField from "../../../Components/FormField";
 import { v4 as uuidv4 } from "uuid";
-import FormInputMain from "../../../Components/FormInputMain";
+import FormInputMain from "../../../Components/AddEditComponentMain";
 
 export const addSponser = yup.object().shape({
   sponserName: yup.string().required("Sponser name is required"),
@@ -189,12 +190,31 @@ console.log(selectedBannerImageData);
       section: "Bank Details",
     },
     {
-      label: "Annual yeild",
-      name: "annualyield",
-      type: "number",
-      helperText: "Please enter value in percentage",
+      label: "Banner image",
+      name: "banner_image",
+      id:"banner_image",
+      type: "fileNormal",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "Bank Details",
+      multiple:false,
+      selectedImageData:selectedBannerImageData,
+      setSelectedImageData:setSelectedBannerImageData,
+      imageData:bannerImageData,
+      handleImageChange:handleBannerImageChange
+    },
+    {
+      label: "Multi Image",
+      name: "OtherImage",
+      id:"OtherImage",
+      type: "fileNormal",
+      isRequired: true,
+      section: "Bank Details",
+      multiple:true,
+      selectedImageData:selectedOtherImageData,
+      setSelectedImageData:setSelectedOtherImageData,
+      imageData:otherImageData,
+      handleImageChange:handleOtherImageChange,
+      removeImage:removeOtherImage
     },
   ];
 
