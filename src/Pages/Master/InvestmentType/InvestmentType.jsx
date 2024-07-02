@@ -40,7 +40,7 @@ import { debounce } from "./AddInvestmentType";
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
 const InvestmentType = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const toast = useToast();
   const { investmentType, setInvestmentType, slideFromRight } =
     useContext(GlobalStateContext);
@@ -63,18 +63,19 @@ const InvestmentType = () => {
 
   // ====================================================[Table Setup]================================================================
   const tableHeadRow = [
-    "Investment name",
-    "Address",
-    "Mobile no",
+    "Sr.no",
+    "Investment Type Name",
+    "Description",
     "Status",
-    "Created At",
     "Action",
   ];
 
   const handleUpdateStatus = debounce((id) => {
     setInvestmentType((prevInvestmentType) =>
       prevInvestmentType.map((investmentType) =>
-        investmentType.id === id ? { ...investmentType, status: !investmentType.status } : investmentType
+        investmentType.id === id
+          ? { ...investmentType, status: !investmentType.status }
+          : investmentType
       )
     );
     toast({
@@ -101,9 +102,19 @@ const InvestmentType = () => {
     return nameMatches;
   });
 
-  const extractedArray = filteredData?.map((item) => ({
-    id: item?.id,
-    "Investment name": (
+  const extractedArray = filteredData?.map((item, index) => ({
+    "Sr.no": (
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
+        as={"span"}
+        color={"teal.900"}
+        fontWeight={"500"}
+        className="d-flex align-items-center web-text-small"
+      >
+        {index + 1}
+      </Text>
+    ),
+    "Investment Type Name": (
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
@@ -114,17 +125,10 @@ const InvestmentType = () => {
         {item.investmentName}
       </Text>
     ),
-    Address: (
-      <Box w={350} isTruncated={true}>
+    Description: (
+      <Box w={"200px"} isTruncated={true}>
         <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
-          {item.investmentAddress}
-        </Text>
-      </Box>
-    ),
-    "Mobile no": (
-      <Box w={"auto"} isTruncated={true}>
-        <Text as={"span"} color={"teal.900"} fontWeight={"500"}>
-          {item.mobileNo}
+          {item.description}
         </Text>
       </Box>
     ),
@@ -147,40 +151,39 @@ const InvestmentType = () => {
     //   </Badge>
     // ),
 
-    "Created At": (
-      <span className="d-flex justify-content-between align-items-center">
-        <Text as={"span"} color={"gray.600"} fontWeight={"500"}>
-          {formatDate(item.createdAt)}
-        </Text>
-        {/* <Menu>
-          <MenuButton className="link p-1 rounded-1">
-            <HiDotsVertical className="rubix-text-dark fs-6" />
-          </MenuButton>
-          <Portal>
-            <MenuList minWidth="80px">
-              <RouterLink to={`edit-sponser/${item.id}`}>
-                <MenuItem className="web-text-medium">Edit</MenuItem>
-              </RouterLink>
-              <RouterLink to={`view-sponser/${item.id}`}>
-                <MenuItem className="web-text-medium">View</MenuItem>
-              </RouterLink>
-              <MenuItem
-                onClick={() => {
-                  setActionId(item?.id);
-                  setDeleteAlert(true);
-                }}
-                className="web-text-medium"
-              >
-                Delete
-              </MenuItem>
-            </MenuList>
-          </Portal>
-        </Menu> */}
-      </span>
-    ),
+    // "Created At": (
+    //   <span className="d-flex justify-content-between align-items-center">
+    //     <Text as={"span"} color={"gray.600"} fontWeight={"500"}>
+    //       {formatDate(item.createdAt)}
+    //     </Text>
+    //     <Menu>
+    //       <MenuButton className="link p-1 rounded-1">
+    //         <HiDotsVertical className="rubix-text-dark fs-6" />
+    //       </MenuButton>
+    //       <Portal>
+    //         <MenuList minWidth="80px">
+    //           <RouterLink to={`edit-sponser/${item.id}`}>
+    //             <MenuItem className="web-text-medium">Edit</MenuItem>
+    //           </RouterLink>
+    //           <RouterLink to={`view-sponser/${item.id}`}>
+    //             <MenuItem className="web-text-medium">View</MenuItem>
+    //           </RouterLink>
+    //           <MenuItem
+    //             onClick={() => {
+    //               setActionId(item?.id);
+    //               setDeleteAlert(true);
+    //             }}
+    //             className="web-text-medium"
+    //           >
+    //             Delete
+    //           </MenuItem>
+    //         </MenuList>
+    //       </Portal>
+    //     </Menu>
+    //   </span>
+    // ),
     Action: (
-      <Box display={"flex"} justifyContent={"space-between"}>
-
+      <Box display={"flex"} justifyContent={"space-evenly"}>
         <Tooltip
           rounded={"sm"}
           fontSize={"xs"}
@@ -192,7 +195,9 @@ const InvestmentType = () => {
           <Button
             _hover={{ color: "green.500" }}
             // transition={"0.5s all"}
-          onClick={()=>{ navigate(`view-investment/${item.id}`)}}
+            onClick={() => {
+              navigate(`view-investment/${item.id}`);
+            }}
             color="green.300"
             rounded={"sm"}
             size={"xs"}
@@ -201,8 +206,7 @@ const InvestmentType = () => {
           </Button>
         </Tooltip>
 
-
-        <Tooltip
+        {/* <Tooltip
           rounded={"sm"}
           fontSize={"xs"}
           label="Edit"
@@ -211,7 +215,9 @@ const InvestmentType = () => {
           placement="top"
         >
           <Button
-          onClick={()=>{ navigate(`edit-investment/${item.id}`)}}
+            onClick={() => {
+              navigate(`edit-investment/${item.id}`);
+            }}
             _hover={{ color: "blue.500" }}
             // transition={"0.5s all"}
             color="blue.400"
@@ -220,8 +226,7 @@ const InvestmentType = () => {
           >
             <EditIcon />
           </Button>
-        </Tooltip>
-
+        </Tooltip> */}
 
         <Tooltip
           rounded={"sm"}
@@ -245,7 +250,6 @@ const InvestmentType = () => {
             <DeleteIcon />
           </Button>
         </Tooltip>
-
       </Box>
     ),
 

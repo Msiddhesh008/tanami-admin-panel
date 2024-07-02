@@ -1,12 +1,6 @@
 import React, { useContext } from "react";
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
-import {
-  Box,
-  Divider,
-  Heading,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Divider, Heading, Button, Text } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -19,13 +13,15 @@ import { v4 as uuidv4 } from "uuid";
 
 const schema = yup.object().shape({
   investmentName: yup.string().required("Investment name is required"),
-  mobileNo: yup.string().required("Mobile no is required"),
-  investmentAddress: yup.string().required("Investment address is required"),
+  // investmentNameArabic: yup.string().required("Investment name is required"),
+  // mobileNo: yup.string().required("Mobile no is required"),
+  description: yup.string().required("Description is required"),
+  // descriptionArabic: yup.string().required("Description address is required"),
 
-  bankName: yup.string().required("Bank Name is required"),
-  accountNumber: yup.string().required("Account Number is required"),
-  swiftCode: yup.string().required("SWIFT/BIC Code is required"),
-  bankEmail: yup.string().email("Invalid email format"),
+  // bankName: yup.string().required("Bank Name is required"),
+  // accountNumber: yup.string().required("Account Number is required"),
+  // swiftCode: yup.string().required("SWIFT/BIC Code is required"),
+  // bankEmail: yup.string().email("Invalid email format"),
 
   // routingNumber: yup.string().required("Routing Number is required"),
   // iban: yup.string().required("IBAN is required"),
@@ -47,8 +43,7 @@ export function debounce(func, delay) {
 
 const AddInvestmentType = () => {
   const navigate = useNavigate();
-  const { investmentType, setInvestmentType } =
-    useContext(GlobalStateContext);
+  const { investmentType, setInvestmentType } = useContext(GlobalStateContext);
   const {
     control,
     handleSubmit,
@@ -81,42 +76,45 @@ const AddInvestmentType = () => {
         <Box display={"flex"} gap={0}>
           <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
             <FormField
-              label="Investment Name"
+              height={"2.5rem"}
+              label="Investment Name (English)"
               name="investmentName"
               control={control}
               errors={errors}
               isRequired={true}
             />
             <FormField
-              placeHolder={"الرجاء إدخال القيمة"}
-              name="اسم الراعي"
+              height={"2.5rem"}
+              label="Investment Name (Arabic)"
+              // placeHolder={"الرجاء إدخال القيمة"}
+              placeHolder={"Investment Name (Arabic)"}
+              name="investmentNameArabic"
               control={control}
               errors={errors}
               isRequired={true}
               arabic={true}
             />
             <FormField
-              label="Mobile no"
-              name="mobileNo"
-              type="tel"
-              control={control}
-              errors={errors}
-              isRequired={true}
-            />
-            <FormField
-              label="Investment address"
-              name="investmentAddress"
+              label="Description (English)"
+              name="description"
               type="textarea"
               control={control}
               errors={errors}
               isRequired={true}
             />
+            <FormField
+              label="Description (Arabic)"
+              name="descriptionArabic"
+              type="textarea"
+              control={control}
+              errors={errors}
+              isRequired={true}
+              arabic={true}
+            />
           </Box>
         </Box>
 
-        <Divider />
-
-        <Heading as="h6" size="xs" mt={4}>
+        {/* <Heading as="h6" size="xs" mt={4}>
           Bank Details
         </Heading>
         <Box display={"flex"} gap={0}>
@@ -128,13 +126,6 @@ const AddInvestmentType = () => {
               flexWrap={"wrap"}
               gap={4}
             >
-              {/* <FormField
-                label="Account Holder's Name"
-                name="accountHolderName"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              /> */}
               <FormField
                 label="Bank Name"
                 name="bankName"
@@ -164,12 +155,14 @@ const AddInvestmentType = () => {
               />
             </Box>
           )}
-        </Box>
+        </Box> */}
 
-        <Box display={"flex"} justifyContent={"flex-end"} p={4}>
+        <Box display={"flex"} justifyContent={"flex-end"} p={5}>
           <Button
+            padding={"0 3rem"}
+            borderRadius={"5px"}
             size={"sm"}
-            width={"49.5%"}
+            width={"auto"}
             rounded={"sm"}
             type="submit"
             colorScheme="green"

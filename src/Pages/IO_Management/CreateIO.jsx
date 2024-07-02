@@ -127,96 +127,91 @@ const CreateIO = () => {
     label: item.sponserName,
   }));
 
-
-  const [investForm, setInvestForm] = useState(
-    [
-      {
-        label: "Investment object name",
-        name: "ioName",
-        type: "text",
-        isRequired: true,
-      },
-      {
-        label: "Investment object",
-        name: "ioNameArabic",
-        placeHolder: "الرجاء إدخال القيمة",
-        arabic: true,
-        isRequired: true,
-      },
-      {
-        label: "Destributed Amount",
-        placeHolder: "$00.0",
-        helperText: "Please enter value in $",
-        name: "destributedAmount",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Min Invest",
-        placeHolder: "$00.00",
-        helperText: "Please enter value in $",
-        name: "miniInvest",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Year",
-        name: "year",
-        type: "select",
-        options: years,
-        isRequired: true,
-      },
-      {
-        label: "Quaterly",
-        name: "quaterly",
-        type: "select",
-        options: [
-          { label: "Q1", value: "Q1" },
-          { label: "Q2", value: "Q2" },
-          { label: "Q3", value: "Q3" },
-          { label: "Q4", value: "Q4" },
-        ],
-        isRequired: true,
-      },
-      {
-        label: "Sponsers Name",
-        name: "sponserName",
-        type: "select",    
-        options: sponserOptions,
-        isRequired: true,
-      },
-      {
-        label: "Target close",
-        name: "targetClose",
-        type: "date",
-        isRequired: true,
-      },
-      {
-        label: "Tenure",
-        name: "tenure",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Annual yeild",
-        placeHolder: "00.00%",
-        helperText: "Please enter value in percentage",
-        name: "annualyield",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Annual return",
-        placeHolder: "00.00%",
-        helperText: "Please enter value in percentage",
-        name: "annualReturn",
-        type: "number",
-        isRequired: true,
-      },
-    ]
-  );
-
-
+  const [investForm, setInvestForm] = useState([
+    {
+      label: "Investment object name",
+      name: "ioName",
+      type: "text",
+      isRequired: true,
+    },
+    {
+      label: "Investment object",
+      name: "ioNameArabic",
+      placeHolder: "الرجاء إدخال القيمة",
+      arabic: true,
+      isRequired: true,
+    },
+    {
+      label: "Destributed Amount",
+      placeHolder: "$00.0",
+      helperText: "Please enter value in $",
+      name: "destributedAmount",
+      type: "number",
+      isRequired: true,
+    },
+    {
+      label: "Min Invest",
+      placeHolder: "$00.00",
+      helperText: "Please enter value in $",
+      name: "miniInvest",
+      type: "number",
+      isRequired: true,
+    },
+    {
+      label: "Year",
+      name: "year",
+      type: "select",
+      options: years,
+      isRequired: true,
+    },
+    {
+      label: "Quaterly",
+      name: "quaterly",
+      type: "select",
+      options: [
+        { label: "Q1", value: "Q1" },
+        { label: "Q2", value: "Q2" },
+        { label: "Q3", value: "Q3" },
+        { label: "Q4", value: "Q4" },
+      ],
+      isRequired: true,
+    },
+    {
+      label: "Sponsers Name",
+      name: "sponserName",
+      type: "select",
+      options: sponserOptions,
+      isRequired: true,
+    },
+    {
+      label: "Target close",
+      name: "targetClose",
+      type: "date",
+      isRequired: true,
+    },
+    {
+      label: "Tenure",
+      name: "tenure",
+      type: "number",
+      isRequired: true,
+    },
+    {
+      label: "Annual yeild",
+      placeHolder: "00.00%",
+      helperText: "Please enter value in percentage",
+      name: "annualyield",
+      type: "number",
+      isRequired: true,
+    },
+    {
+      label: "Annual return",
+      placeHolder: "00.00%",
+      helperText: "Please enter value in percentage",
+      name: "annualReturn",
+      type: "number",
+      isRequired: true,
+    },
+  ]);
 
   const handleBannerImageChange = (e) => {
     const file = e.target.files[0];
@@ -262,7 +257,7 @@ const CreateIO = () => {
   // Function to remove a specific image
   const removeOtherImage = (index) => {
     const newImageData = otherImageData.filter((_, i) => i !== index);
-    const newSelectedImageData = selectedOtherImageData.filter(   
+    const newSelectedImageData = selectedOtherImageData.filter(
       (_, i) => i !== index
     );
 
@@ -440,7 +435,7 @@ const CreateIO = () => {
           bgGradient="linear(to-tr, #000000, #004118)"
         >
           {charges.map(({ title, value }, index) => (
-            <Box as={"span"} w={"100%"} display={"flex"}>
+            <Box as={"span"} w={"100%"} display={"flex"} key={index}>
               <Text
                 fontSize={"sm"}
                 fontWeight={"600"}

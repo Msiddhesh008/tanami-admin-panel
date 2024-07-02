@@ -71,7 +71,7 @@ const ExchangeRate = () => {
 
   // ====================================================[Table Setup]================================================================
   const tableHeadRow = [
-    // "Sr No.",
+    "Sr.No",
     "From currency",
     "To currency",
     "Effective from",
@@ -81,24 +81,23 @@ const ExchangeRate = () => {
   ];
 
   const extractedArray = filteredData?.map((item, index) => ({
-    id: item?.id,
-    // "Sr No.": (
-    //   <Text
-    //     justifyContent={slideFromRight ? "right" : "left"}
-    //     as={"span"}
-    //     color={"gray.600"}
-    //     fontWeight={'600'}
-    //     className="d-flex align-items-center fw- web-text-small"
-    //   >
-    //     {index + 1}.
-    //   </Text>
-    // ),
+    "Sr.No": (
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
+        as={"span"}
+        color={"gray.600"}
+        fontWeight={"600"}
+        className="d-flex align-items-center fw- web-text-small"
+      >
+        {index + 1}.
+      </Text>
+    ),
     "From currency": (
       <Text
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        fontWeight={'600'}
+        fontWeight={"600"}
         className="d-flex align-items-center fw- web-text-small"
       >
         {item.fromCurr}
@@ -109,7 +108,7 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        fontWeight={'600'}
+        fontWeight={"600"}
         className="d-flex align-items-center fw- web-text-small"
       >
         {item.toCurr}
@@ -120,7 +119,7 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        fontWeight={'600'}
+        fontWeight={"600"}
         className="d-flex align-items-center  web-text-small"
       >
         {formatDate(item.effectFrom)}
@@ -131,7 +130,7 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        fontWeight={'600'}
+        fontWeight={"600"}
         className="d-flex align-items-center  web-text-small"
       >
         {formatDate(item.effectTill)}
@@ -142,7 +141,7 @@ const ExchangeRate = () => {
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
-        fontWeight={'600'}
+        fontWeight={"600"}
         className="d-flex align-items-center  web-text-small"
       >
         {item.rate}
@@ -153,7 +152,7 @@ const ExchangeRate = () => {
       // <Button colorScheme="green" size={"xs"} variant={"ghost"}>
       //   Edit
       // </Button>
-      
+
       <EditExchangeRate setIsLoading={setIsLoading} id={item.id} />
     ),
   }));
