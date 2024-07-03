@@ -56,22 +56,21 @@ const AddSponser = () => {
   const [bannerImageData, setBannerImageData] = useState(null);
   const [selectedBannerImageData, setSelectedBannerImageData] = useState(null);
 
-  
   const [otherImageData, setOtherImageData] = useState(null);
   const [selectedOtherImageData, setSelectedOtherImageData] = useState(null);
-
-
 
   const { sponser, setSponser } = useContext(GlobalStateContext);
   const {
     control,
+
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(addSponser),
   });
 
-  
+  console.log(errors);
+
   const handleBannerImageChange = (e) => {
     const file = e.target.files[0];
     setBannerImageData(file);
@@ -84,9 +83,8 @@ const AddSponser = () => {
     }
   };
 
-
-   // Handler for file input
-   const handleOtherImageChange = (e) => {
+  // Handler for file input
+  const handleOtherImageChange = (e) => {
     const files = Array.from(e.target.files);
     const newImageData = [...(otherImageData || []), ...files]; // Ensure otherImageData is an array
 
@@ -126,73 +124,117 @@ const AddSponser = () => {
     setSelectedOtherImageData(newSelectedImageData);
   };
 
-console.log(selectedBannerImageData);
-  
+  // console.log(selectedBannerImageData);
+
   const formFields = [
     {
-      label: "Sponser name",
+      label: "Sponser name (English)",
+      placeHolder:" ",
       name: "sponserName",
       type: "text",
       isRequired: true,
-      section: "Personal Details",
+      section: "Add Details",
     },
     {
       label: "Sponser Name (Arabic)",
       name: "sponserNameArabic",
+      placeHolder:" ",
       type: "text",
       isRequired: true,
       arabic: true,
-      section: "Personal Details",
+      section: "Add Details",
     },
     {
-      label: "Mobile no",
-      name: "mobileNo",
-      type: "number",
+      label: "Description (English)",
+      name: "description",
+      placeHolder:" ",
+      type: "textarea",
       isRequired: true,
-      section: "Personal Details",
+      section: "Add Details",
     },
     {
-      label: "Sponser address",
-      name: "sponserAddress",
+      label: "Description (Arabic)",
+      name: "descriptionArabic",
+      placeHolder:" ",
+      type: "textarea",
+      isRequired: true,
+      arabic: true,
+      section: "Add Details",
+    },
+    {
+      label: "Address (English)",
+      name: "sponserAddress", 
+      placeHolder:" ",
       type: "text",
       isRequired: true,
-      section: "Personal Details",
+      section: "Add Details",
     },
     {
-      label: "Bank name",
+      label: "Address (Arabic)",
+      name: "sponserAddressArabic",
+      placeHolder:" ",
+      type: "text",
+      isRequired: true,
+      arabic: true,
+      section: "Add Details",
+    },
+    {
+      label: "Bank Name (English)",
       name: "bankName",
+      placeHolder:" ",
       type: "text",
       isRequired: true,
-      section: "Bank Details",
+      section: "Add Details",
     },
     {
-      label: "Account Name",
+      label: "Bank Name (Arabic)",
+      name: "bankNameArabic",
+      placeHolder:" ",
+      type: "text",
+      isRequired: true,
+      arabic: true,
+      section: "Add Details",
+    },
+    {
+      label: "Account Name (English)",
+      name: "accountHolderName",
+      placeHolder:" ",
+      type: "text",
+      isRequired: true,
+      section: "Add Details",
+    },
+    {
+      label: "Account Name (Arabic)",
+      name: "accountHolderNameArabic",
+      placeHolder:" ",
+      type: "text",
+      isRequired: true,
+      arabic: true,
+      section: "Add Details",
+    },
+    {
+      label: "Mobile Number (English)",
+      name: "mobileNo",
+      placeHolder:" ",
+      type: "number",
+      isRequired: true,
+      section: "Add Details",
+    },
+    {
+      label: "Account Number (English)",
       name: "accountNumber",
+      placeHolder:" ",
       type: "text",
       isRequired: true,
-      section: "Bank Details",
+      section: "Add Details",
     },
     {
-      label: "SWIFT/BIC Code",
+      label: "IFSC Code (English)",
+      placeHolder:" ",
       name: "swiftCode",
-      type: "number",
-      isRequired: true,
-      section: "Bank Details",
-    },
-    {
-      label: "Account Email",
-      name: "bankEmail",
       type: "text",
       isRequired: true,
-      section: "Bank Details",
-    },
-    {
-      label: "Annual yeild",
-      name: "annualyield",
-      type: "number",
-      helperText: "Please enter value in percentage",
-      isRequired: true,
-      section: "Investment Object Details",
+      section: "Add Details",
     },
   ];
 
@@ -205,8 +247,8 @@ console.log(selectedBannerImageData);
     return groups;
   }, {});
 
-
   const onSubmit = (data) => {
+    console.log(data);
     setSponser([
       {
         ...data,
@@ -221,14 +263,13 @@ console.log(selectedBannerImageData);
 
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={14}>
-    <FormInputMain
-      groupedFields={groupedFields}
-      control={control}
-      errors={errors}
-
-      onSubmit={handleSubmit(onSubmit)}
-
-    /></Box>
+      <FormInputMain
+        groupedFields={groupedFields}
+        control={control}
+        errors={errors}
+        onSubmit={handleSubmit(onSubmit)}
+      />
+    </Box>
   );
 };
 

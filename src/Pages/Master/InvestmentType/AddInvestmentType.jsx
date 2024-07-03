@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
 import {
   Box,
-  Divider,
-  Heading,
-  Button,
-  Text,
 } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,8 +12,9 @@ import GlobalStateContext from "../../../Contexts/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 import FormField from "../../../Components/FormField";
 import { v4 as uuidv4 } from "uuid";
+import FormInputMain from "../../../Components/FormInputMain";
 
-const schema = yup.object().shape({
+export const addInvestmentType = yup.object().shape({
   investmentName: yup.string().required("Investment name is required"),
   mobileNo: yup.string().required("Mobile no is required"),
   investmentAddress: yup.string().required("Investment address is required"),
@@ -46,18 +43,153 @@ export function debounce(func, delay) {
 }
 
 const AddInvestmentType = () => {
+
   const navigate = useNavigate();
-  const { investmentType, setInvestmentType } =
-    useContext(GlobalStateContext);
+  const [bannerImageData, setBannerImageData] = useState(null);
+  const { investmentType, setInvestmentType } = useContext(GlobalStateContext);
+  const [selectedBannerImageData, setSelectedBannerImageData] = useState(null);
+
+  const [otherImageData, setOtherImageData] = useState(null);
+  const [selectedOtherImageData, setSelectedOtherImageData] = useState(null);
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(addInvestmentType),
   });
 
-  console.log(errors);
+  const handleBannerImageChange = (e) => {
+    const file = e.target.files[0];
+    setBannerImageData(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedBannerImageData(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handler for file input
+  const handleOtherImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    const newImageData = [...(otherImageData || []), ...files]; // Ensure otherImageData is an array
+
+    setOtherImageData(newImageData);
+
+    const readers = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(readers)
+      .then((results) => {
+        setSelectedOtherImageData([
+          ...(selectedOtherImageData || []),
+          ...results,
+        ]); // Ensure selectedOtherImageData is an array
+      })
+      .catch((error) => {
+        console.error("Error reading files:", error);
+      });
+  };
+
+  // Function to remove a specific image
+  const removeOtherImage = (index) => {
+    const newImageData = otherImageData.filter((_, i) => i !== index);
+    const newSelectedImageData = selectedOtherImageData.filter(
+      (_, i) => i !== index
+    );
+
+    setOtherImageData(newImageData);
+    setSelectedOtherImageData(newSelectedImageData);
+  };
+
+  console.log(selectedBannerImageData);
+
+  const formFields = [
+    {
+      label: "Investment name",
+      name: "investmentName",
+      type: "text",
+      isRequired: true,
+      section: "Personal Details",
+    },
+    {
+      label: "Investment Name (Arabic)",
+      name: "investmentNameArabic",
+      type: "text",
+      isRequired: true,
+      arabic: true,
+      section: "Personal Details",
+    },
+    {
+      label: "Mobile no",
+      name: "mobileNo",
+      type: "number",
+      isRequired: true,
+      section: "Personal Details",
+    },
+    {
+      label: "Investment address",
+      name: "investmentAddress",
+      type: "text",
+      isRequired: true,
+      section: "Personal Details",
+    },
+    {
+      label: "Bank name",
+      name: "bankName",
+      type: "text",
+      isRequired: true,
+      section: "Bank Details",
+    },
+    {
+      label: "Account Name",
+      name: "accountNumber",
+      type: "text",
+      isRequired: true,
+      section: "Bank Details",
+    },
+    {
+      label: "SWIFT/BIC Code",
+      name: "swiftCode",
+      type: "number",
+      isRequired: true,
+      section: "Bank Details",
+    },
+    {
+      label: "Account Email",
+      name: "bankEmail",
+      type: "text",
+      isRequired: true,
+      section: "Bank Details",
+    },
+    {
+      label: "Annual yeild",
+      name: "annualyield",
+      type: "number",
+      helperText: "Please enter value in percentage",
+      isRequired: true,
+      section: "Investment Object Details",
+    },
+  ];
+
+  const groupedFields = formFields.reduce((groups, field) => {
+    const { section } = field;
+    if (!groups[section]) {
+      groups[section] = [];
+    }
+    groups[section].push(field);
+    return groups;
+  }, {});
 
   const onSubmit = (data) => {
     setInvestmentType([
@@ -72,112 +204,15 @@ const AddInvestmentType = () => {
     navigate("/investment-type");
   };
 
+
   return (
     <Box {...OPACITY_ON_LOAD} overflowY={"scroll"} height={"100vh"} pb={14}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Heading as="h6" size="xs" mt={4}>
-          Personal Details
-        </Heading>
-        <Box display={"flex"} gap={0}>
-          <Box width={"100%"} p={5} display={"flex"} flexWrap={"wrap"} gap={4}>
-            <FormField
-              label="Investment Name"
-              name="investmentName"
-              control={control}
-              errors={errors}
-              isRequired={true}
-            />
-            <FormField
-              placeHolder={"الرجاء إدخال القيمة"}
-              name="اسم الراعي"
-              control={control}
-              errors={errors}
-              isRequired={true}
-              arabic={true}
-            />
-            <FormField
-              label="Mobile no"
-              name="mobileNo"
-              type="tel"
-              control={control}
-              errors={errors}
-              isRequired={true}
-            />
-            <FormField
-              label="Investment address"
-              name="investmentAddress"
-              type="textarea"
-              control={control}
-              errors={errors}
-              isRequired={true}
-            />
-          </Box>
-        </Box>
-
-        <Divider />
-
-        <Heading as="h6" size="xs" mt={4}>
-          Bank Details
-        </Heading>
-        <Box display={"flex"} gap={0}>
-          {Array(1).fill(
-            <Box
-              width={"100%"}
-              p={5}
-              display={"flex"}
-              flexWrap={"wrap"}
-              gap={4}
-            >
-              {/* <FormField
-                label="Account Holder's Name"
-                name="accountHolderName"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              /> */}
-              <FormField
-                label="Bank Name"
-                name="bankName"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-              <FormField
-                label="Account Number"
-                name="accountNumber"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-              <FormField
-                label="SWIFT/BIC Code"
-                name="swiftCode"
-                control={control}
-                errors={errors}
-                isRequired={true}
-              />
-              <FormField
-                label="Bank Email (optional)"
-                name="bankEmail"
-                control={control}
-                errors={errors}
-              />
-            </Box>
-          )}
-        </Box>
-
-        <Box display={"flex"} justifyContent={"flex-end"} p={4}>
-          <Button
-            size={"sm"}
-            width={"49.5%"}
-            rounded={"sm"}
-            type="submit"
-            colorScheme="green"
-          >
-            Submit
-          </Button>
-        </Box>
-      </form>
+      <FormInputMain
+        groupedFields={groupedFields}
+        control={control}
+        errors={errors}
+        onSubmit={handleSubmit(onSubmit)}
+      />
     </Box>
   );
 };

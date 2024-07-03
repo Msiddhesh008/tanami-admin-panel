@@ -335,8 +335,6 @@ const Sponser = () => {
         isLoading={isLoading}
         viewActionId={actionId}
         setViewActionId={setActionId}
-        // totalPages={10}
-
         setMouseEnteredId={setMouseEnteredId}
         setMouseEntered={setMouseEntered}
       />

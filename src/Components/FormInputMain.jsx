@@ -2,19 +2,21 @@ import { Box, Button, Divider, Heading } from "@chakra-ui/react";
 import React from "react";
 import FormField from "./FormField";
 import { OPACITY_ON_LOAD } from "../Layout/animations";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const FormInputMain = ({
   groupedFields,
   control,
   errors,
   onSubmit,
-  children,
+  children, 
 }) => {
   return (
     <form onSubmit={onSubmit}>
       {Object.entries(groupedFields).map(([section, fields], index) => (
-        <Box key={section}>
-          <Heading as="h6" size="xs" mt={index === 0 ? 3 : 4}>
+        <Box key={section} mt={4}>
+          <Heading as="h6" size="xs" mx={5} fontWeight={'500'}>
+            {/* <ArrowBackIcon fontSize={'lg'} />  */}
             {section}
           </Heading>
           <Box display={"flex"} gap={0}>
@@ -75,17 +77,28 @@ const FormInputMain = ({
       ))}
 
       {children}
-
-      <Box display={"flex"} justifyContent={"flex-end"} p={4}>
-        <Button
-          size={"sm"}
-          width={"49.5%"}
-          rounded={"sm"}
-          type="submit"
-          colorScheme="green"
-        >
-          Submit
-        </Button>
+      
+      <Box display={'flex'} justifyContent={'end'} mb={5}>
+        <Box display={"flex"} justifyContent={"space-around"} p={4} w={'49%'}>
+          <Button
+            size={"sm"}
+            width={"44.5%"}
+            rounded={"sm"}
+            type="submit"
+            colorScheme='gray'
+          >
+            Cancel
+          </Button>
+          <Button
+            size={"sm"}
+            width={"44.5%"}
+            rounded={"sm"}
+            type="submit"
+            colorScheme="green"
+          >
+            Submit
+          </Button>
+        </Box>
       </Box>
     </form>
   );

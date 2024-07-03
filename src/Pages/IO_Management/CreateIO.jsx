@@ -26,9 +26,32 @@ import AddIOCharges from "./AddIOCharges";
 import FormInputMain from "../../Components/FormInputMain";
 
 const schema = yup.object().shape({
-  ioNameArabic: yup.string().required("Arabic name is required"),
-  ioName: yup.string().required("Investment Object name is required"),
-  sponserName: yup.string().required("Sponser name is required"),
+  ioName: yup.string().required("Arabic name is required"),
+  ioNameArabic: yup.string().required("Investment Object name is required"),
+  discription: yup.string().required("Sponser name is required"),
+  discriptionArabic: yup.string().required("Arabic name is required"),
+  typeName: yup.string().required("Investment Object name is required"),
+  typeNameArabic: yup.string().required("Sponser name is required"),
+  sponserName: yup.string().required("Arabic name is required"),
+  sponserNameArabic: yup
+    .string()
+    .required("Investment Object name is required"),
+  holdingPeriod: yup.string().required("Sponser name is required"),
+  holdingPeriodArabic: yup.string().required("Arabic name is required"),
+  ioStartus: yup.string().required("Investment Object name is required"),
+  ioStartusArabic: yup.string().required("Sponser name is required"),
+  goalAmount: yup.string().required("Arabic name is required"),
+  closingDate: yup.string().required("Investment Object name is required"),
+  minInvestment: yup.string().required("Sponser name is required"),
+  maxInvestment: yup.string().required("Arabic name is required"),
+  expectedReturn: yup.string().required("Investment Object name is required"),
+  originalValue: yup.string().required("Sponser name is required"),
+  keyname: yup.string().required("Arabic name is required"),
+  keyNameArabic: yup.string().required("Investment Object name is required"),
+  keyDescription: yup.string().required("Sponser name is required"),
+  keyDescriptionArabic: yup.string().required("Sponser name is required"),
+  docType: yup.string().required("Sponser name is required"),
+
   destributedAmount: yup
     .number()
     .required("Distributed Amount is required")
@@ -52,8 +75,11 @@ const schema = yup.object().shape({
     .number()
     .required("Annual Yield is required")
     .positive("Must be a positive number"),
-  banner_image: yup.mixed().required("Profile image is required"),
-  other_image: yup.mixed().required("Profile image is required"),
+    iconUpload: yup.mixed().required("Profile image is required"),
+    bannerImages: yup.mixed().required("Profile image is required"),
+    otherImage: yup.mixed().required("Profile image is required"),
+    docAttach: yup.mixed().required("Profile image is required"),
+    videos: yup.mixed().required("Profile image is required"),
 });
 
 const startYear = 2024;
@@ -127,97 +153,6 @@ const CreateIO = () => {
     label: item.sponserName,
   }));
 
-
-  const [investForm, setInvestForm] = useState(
-    [
-      {
-        label: "Investment object name",
-        name: "ioName",
-        type: "text",
-        isRequired: true,
-      },
-      {
-        label: "Investment object",
-        name: "ioNameArabic",
-        placeHolder: "الرجاء إدخال القيمة",
-        arabic: true,
-        isRequired: true,
-      },
-      {
-        label: "Destributed Amount",
-        placeHolder: "$00.0",
-        helperText: "Please enter value in $",
-        name: "destributedAmount",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Min Invest",
-        placeHolder: "$00.00",
-        helperText: "Please enter value in $",
-        name: "miniInvest",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Year",
-        name: "year",
-        type: "select",
-        options: years,
-        isRequired: true,
-      },
-      {
-        label: "Quaterly",
-        name: "quaterly",
-        type: "select",
-        options: [
-          { label: "Q1", value: "Q1" },
-          { label: "Q2", value: "Q2" },
-          { label: "Q3", value: "Q3" },
-          { label: "Q4", value: "Q4" },
-        ],
-        isRequired: true,
-      },
-      {
-        label: "Sponsers Name",
-        name: "sponserName",
-        type: "select",    
-        options: sponserOptions,
-        isRequired: true,
-      },
-      {
-        label: "Target close",
-        name: "targetClose",
-        type: "date",
-        isRequired: true,
-      },
-      {
-        label: "Tenure",
-        name: "tenure",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Annual yeild",
-        placeHolder: "00.00%",
-        helperText: "Please enter value in percentage",
-        name: "annualyield",
-        type: "number",
-        isRequired: true,
-      },
-      {
-        label: "Annual return",
-        placeHolder: "00.00%",
-        helperText: "Please enter value in percentage",
-        name: "annualReturn",
-        type: "number",
-        isRequired: true,
-      },
-    ]
-  );
-
-
-
   const handleBannerImageChange = (e) => {
     const file = e.target.files[0];
     setBannerImageData(file);
@@ -262,7 +197,7 @@ const CreateIO = () => {
   // Function to remove a specific image
   const removeOtherImage = (index) => {
     const newImageData = otherImageData.filter((_, i) => i !== index);
-    const newSelectedImageData = selectedOtherImageData.filter(   
+    const newSelectedImageData = selectedOtherImageData.filter(
       (_, i) => i !== index
     );
 
@@ -272,125 +207,304 @@ const CreateIO = () => {
 
   const formFields = [
     {
-      label: "Investment object name",
+      label: "IO Name (English)",
+      placeHolder: " ",
       name: "ioName",
       type: "text",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "create IO",
     },
     {
-      label: "Investment object (Arabic)",
+      label: "IO Name (Arabic)",
+      placeHolder: " ",
       name: "ioNameArabic",
-      placeHolder: "الرجاء إدخال القيمة",
       type: "text",
       isRequired: true,
-      arabic: true,
-      section: "Investment Object Details",
+      section: "create IO",
     },
     {
-      label: "Destributed Amount",
-      name: "destributedAmount",
-      type: "number",
+      label: "Description (English)",
+      placeHolder: " ",
+      name: "discription",
+      type: "text",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "create IO",
     },
     {
-      label: "Min Invest",
-      name: "miniInvest",
-      type: "number",
+      label: "Description (Arabic)",
+      placeHolder: " ",
+      name: "discriptionArabic",
+      type: "text",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "create IO",
     },
     {
-      label: "Sponsers name",
+      label: "Investment Type Name (English)",
+      placeHolder: " ",
+      name: "typeName",
+      type: "select",
+      isRequired: true,
+      section: "create IO",
+      options: [
+        {
+          label: "option 1",
+          value: "option 1",
+        },
+        {
+          label: "option 2",
+          value: "option 2",
+        },
+        {
+          label: "option 3",
+          value: "option 3",
+        },
+        {
+          label: "option 4",
+          value: "option 4",
+        },
+      ],
+    },
+    {
+      label: "Investment Type Name (Arabic)",
+      placeHolder: " ",
+      name: "typeNameArabic",
+      type: "select",
+      isRequired: true,
+      section: "create IO",
+      options: [
+        {
+          label: "option 1",
+          value: "option 1",
+        },
+        {
+          label: "option 2",
+          value: "option 2",
+        },
+        {
+          label: "option 3",
+          value: "option 3",
+        },
+        {
+          label: "option 4",
+          value: "option 4",
+        },
+      ],
+    },
+    {
+      label: "Sponser Name (English)",
+      placeHolder: " ",
       name: "sponserName",
       type: "text",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "create IO",
     },
     {
-      label: "Year",
-      name: "accountNumber",
+      label: "Sponser Name (Arabic)",
+      placeHolder: " ",
+      name: "sponserNameArabic",
+      type: "text",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Holding Period (English)",
+      placeHolder: " ",
+      name: "holdingPeriod",
+      type: "text",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Holding Period (English)",
+      placeHolder: " ",
+      name: "holdingPeriodArabic",
+      type: "text",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "IO Status (English)",
+      placeHolder: " ",
+      name: "ioStartus",
       type: "select",
-      options: years,
       isRequired: true,
-      section: "Investment Object Details",
-    },
-    {
-      label: "Annual return",
-      name: "annualReturn",
-      type: "number",
-      isRequired: true,
-      section: "Investment Object Details",
-    },
-    {
-      label: "Annual yeild",
-      name: "annualyield",
-      type: "number",
-      helperText: "Please enter value in percentage",
-      isRequired: true,
-      section: "Investment Object Details",
-    },
-    {
-      label: "Quaterly",
-      name: "quaterly",
-      type: "select",
+      section: "create IO",
       options: [
         {
-          label: "Q1",
-          value: "Q1",
+          label: "option 1",
+          value: "option 1",
         },
         {
-          label: "Q2",
-          value: "Q2",
+          label: "option 2",
+          value: "option 2",
         },
         {
-          label: "Q3",
-          value: "Q3",
+          label: "option 3",
+          value: "option 3",
         },
         {
-          label: "Q4",
-          value: "Q4",
+          label: "option 4",
+          value: "option 4",
         },
       ],
-      isRequired: true,
-      section: "Investment Object Details",
     },
-
     {
-      label: "Target close",
-      name: "targetClose",
+      label: "IO Status (Arabic)",
+      placeHolder: " ",
+      name: "ioStartusArabic",
+      type: "select",
+      isRequired: true,
+      section: "create IO",
+      options: [
+        {
+          label: "option 1",
+          value: "option 1",
+        },
+        {
+          label: "option 2",
+          value: "option 2",
+        },
+        {
+          label: "option 3",
+          value: "option 3",
+        },
+        {
+          label: "option 4",
+          value: "option 4",
+        },
+      ],
+    },
+    {
+      label: "Goal Amount (English)",
+      placeHolder: " ",
+      name: "goalAmount",
+      type: "number",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Closing Date (English)",
+      placeHolder: " ",
+      name: "closingDate",
       type: "date",
       isRequired: true,
-      section: "Investment Object Details",
+      section: "create IO",
+    },
+    {
+      label: "Minimum Investment Amount (English)",
+      placeHolder: " ",
+      name: "minInvestment",
+      type: "number",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Maximum Investment Amount (English)",
+      placeHolder: " ",
+      name: "maxInvestment",
+      type: "number",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Expected Return Estimated (English)",
+      placeHolder: " ",
+      name: "expectedReturn",
+      type: "number",
+      isRequired: true,
+      section: "create IO",
+    },
+    {
+      label: "Original Valuation (English)",
+      placeHolder: " ",
+      name: "originalValue",
+      type: "number",
+      isRequired: true,
+      section: "create IO",
     },
 
     {
-      label: "Banner image",
-      name: "banner_image",
-      id: "banner_image",
-      type: "fileNormal",
+      label: "Name (English)",
+      placeHolder: " ",
+      name: "keyname",
+      type: "text",
       isRequired: true,
-      section: "Uplaod Banner Images",
-      multiple: false,
-      selectedImageData: selectedBannerImageData,
-      setSelectedImageData: setSelectedBannerImageData,
-      imageData: bannerImageData,
-      handleImageChange: handleBannerImageChange,
+      section: "Key Merits",
     },
     {
-      label: "Multi Image",
-      name: "OtherImage",
-      id: "OtherImage",
+      label: "Name (Arabic)",
+      placeHolder: " ",
+      name: "keyNameArabic",
+      type: "text",
+      isRequired: true,
+      section: "Key Merits",
+    },
+    {
+      label: "Description (English)",
+      placeHolder: " ",
+      name: "keyDescription",
+      type: "textarea",
+      isRequired: true,
+      section: "Key Merits",
+    },
+    {
+      label: "Description (Arabic)",
+      placeHolder: " ",
+      name: "keyDescriptionArabic",
+      type: "textarea",
+      isRequired: true,
+      section: "Key Merits",
+    },
+    {
+      label: "Icon",
+      placeHolder: " ",
+      name: "iconUpload",
       type: "fileNormal",
       isRequired: true,
-      section: "Uplaod Banner Images",
-      multiple: true,
-      selectedImageData: selectedOtherImageData,
-      setSelectedImageData: setSelectedOtherImageData,
-      imageData: otherImageData,
-      handleImageChange: handleOtherImageChange,
-      removeImage: removeOtherImage,
+      section: "Key Merits",
+    },
+
+    {
+      label: "Banner Images ",
+      placeHolder: " ",
+      name: "bannerImages",
+      type: "fileNormal",
+      isRequired: true,
+      section: "Images",
+    },
+
+    {
+        label: "Other Images",
+        placeHolder: " ",
+        name: "otherImage",
+        type: "fileNormal",
+        isRequired: true,
+        section: "Images",
+      },
+  
+    {
+      label: "Type",
+      placeHolder: " ",
+      name: "docType",
+      type: "text",
+      isRequired: true,
+      section: "Documents",
+    },
+    {
+      label: "Attachment",
+      placeHolder: " ",
+      name: "type",
+      type: "docAttach",
+      isRequired: true,
+      section: "Documents",
+    },
+    {
+      label: "Videos",
+      placeHolder: " ",
+      name: "videos",
+      type: "fileNormal",
+      isRequired: true,
+      section: "Videos",
     },
   ];
 
@@ -410,134 +524,7 @@ const CreateIO = () => {
         control={control}
         errors={errors}
         onSubmit={handleSubmit(onSubmit)}
-      >
-        <Divider />
-        <Heading
-          w={"100%"}
-          display={"flex"}
-          justifyContent={"space-between"}
-          as="h6"
-          size="xs"
-          mb={5}
-          pe={6}
-        >
-          Final calculation
-          <AddIOCharges charges={charges} setCharges={setCharges} />
-        </Heading>
-
-        <Box
-          w={"40%"}
-          display={"flex"}
-          justifyContent={"center"}
-          flexDirection={"column"}
-          alignItems={"start"}
-          gap={1}
-          p={5}
-          m={1}
-          rounded={"lg"}
-          boxShadow={"lg"}
-          color={"#fff"}
-          bgGradient="linear(to-tr, #000000, #004118)"
-        >
-          {charges.map(({ title, value }, index) => (
-            <Box as={"span"} w={"100%"} display={"flex"}>
-              <Text
-                fontSize={"sm"}
-                fontWeight={"600"}
-                as={"span"}
-                w={"70%"}
-                bg={""}
-              >
-                {title}
-              </Text>
-              <Text
-                as={"span"}
-                fontSize={"sm"}
-                fontWeight={"600"}
-                w={"30%"}
-                bg={""}
-              >
-                $ {value}
-              </Text>
-            </Box>
-          ))}
-
-          <Box
-            as={"span"}
-            w={"100%"}
-            display={"flex"}
-            flexDirection={"column"}
-            gap={2}
-          >
-            {totalCharge !== 0 ? (
-              <Box display={"flex"}>
-                <Text
-                  fontSize={"sm"}
-                  fontWeight={"500"}
-                  as={"span"}
-                  w={"70%"}
-                  bg={""}
-                >
-                  Total charges
-                </Text>
-                <Text
-                  as={"span"}
-                  fontSize={"sm"}
-                  fontWeight={"600"}
-                  w={"30%"}
-                  bg={""}
-                >
-                  $ {totalCharge.toFixed(4)}
-                </Text>
-              </Box>
-            ) : (
-              ""
-            )}
-
-            <Box display={"flex"}>
-              <Text
-                fontSize={"sm"}
-                fontWeight={"500"}
-                as={"span"}
-                w={"70%"}
-                bg={""}
-              >
-                Total distributed amount
-              </Text>
-              <Text
-                as={"span"}
-                fontSize={"sm"}
-                fontWeight={"600"}
-                w={"30%"}
-                bg={""}
-              >
-                $ {destributedAmount.toFixed(4)}
-              </Text>
-            </Box>
-
-            <Box pt={2} borderTop={"1px solid #fff"} as="span" display={"flex"}>
-              <Text
-                fontSize={"sm"}
-                fontWeight={"500"}
-                as={"span"}
-                w={"70%"}
-                bg={""}
-              >
-                Total Net Charges
-              </Text>
-              <Text
-                as={"span"}
-                fontSize={"sm"}
-                fontWeight={"600"}
-                w={"30%"}
-                bg={""}
-              >
-                $ {totalAmount.toFixed(4)}
-              </Text>
-            </Box>
-          </Box>
-        </Box>
-      </FormInputMain>
+      ></FormInputMain>
     </Box>
   );
 };

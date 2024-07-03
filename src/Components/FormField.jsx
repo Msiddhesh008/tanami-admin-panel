@@ -47,7 +47,7 @@ const FormField = ({
     isRequired={isRequired}
     className="mb-3"
   >
-    <FormLabel textAlign={arabic ? "right" : "left"} fontSize={"sm"}>
+    <FormLabel textAlign={arabic ? "right" : "left"} fontSize={"sm"} fontWeight={'400'}>
       {label}
     </FormLabel>
     <Controller
@@ -66,6 +66,8 @@ const FormField = ({
               cursor={"pointer"}
               placeholder={placeHolder ? placeHolder : label}
               textAlign={arabic ? "right" : "left"}
+              _placeholder={{fontSize:'xs'}}
+              borderRadius={'4px'}
             >
               {options.map((option, index) => (
                 <option key={index} value={option.value}>
@@ -83,6 +85,9 @@ const FormField = ({
               {...props}
               placeholder={placeHolder ? placeHolder : label}
               textAlign={arabic ? "right" : "left"}
+              _placeholder={{fontSize:'xs'}}
+              borderRadius={'4px'}
+              resize={'none'}
             />
           );
         } else if (type === "checkbox") {
@@ -218,7 +223,6 @@ const FormField = ({
                     </Kbd>{" "}
                     + <Kbd className="text-dark">select</Kbd>
                   </span>
-                  .
                 </FormHelperText>
               )}
               {selectedImageData &&  (
@@ -255,14 +259,14 @@ const FormField = ({
                           />
                           <Text
                             as={"span"}
-                            fontSize={"xs"}
+                            fontSize={"sm"}
                             fontWeight={"500"}
                             mt={1}
                             isTruncated={true}
                           >
                             {imageData[index]?.name}
                           </Text>
-                          <Text as={"span"} fontSize={"xs"} fontStyle={"italic"}>
+                          <Text as={"span"} fontSize={"sm"} fontStyle={"italic"}>
                             {(imageData[index]?.size / (1024 * 1024)).toFixed(2)}{" "}
                             mb
                           </Text>
@@ -332,11 +336,14 @@ const FormField = ({
             <Input
               focusBorderColor="forestGreen.300"
               size={"sm"}
+              fontSize={'sm'}
               type={type}
               {...field}
               {...props}
               placeholder={placeHolder ? placeHolder : label}
+              borderRadius={'4px'}
               textAlign={arabic ? "right" : "left"}
+              _placeholder={{fontSize:'xs'}}
             />
           );
         }

@@ -79,9 +79,7 @@ const EditEvents = () => {
 
   useEffect(() => {
     if (data?.data) {
-      setSelectedImage(
-        `${API_URL}/${data?.data?.banner_image}`
-      );
+      setSelectedImage(`${API_URL}/${data?.data?.banner_image}`);
       setValue("title", data?.data?.title);
       setValue("content", data?.data?.content);
       setValue("location", data?.data?.location);
@@ -108,7 +106,6 @@ const EditEvents = () => {
     }
   };
 
-
   const onSubmit = (data) => {
     setIsLoadingEdit(true);
     const formData = new FormData();
@@ -119,27 +116,18 @@ const EditEvents = () => {
     formData.append("organizer_mobile_number", data.organizer_mobile_number);
     formData.append("organizer_email", data.organizer_email);
 
-
     if (eventsDate.length === 0) {
       setIsLoadingEdit(false);
       return toast({
         render: () => (
           <ToastBox status={"warn"} message={"Please add events date"} />
         ),
-      })
-    }else{
-        eventsDate.forEach((date, index) => {
-          formData.append(`dates[${index}]`, date);
-        });
-      }
-
-
-  
-
-    
-
-
-
+      });
+    } else {
+      eventsDate.forEach((date, index) => {
+        formData.append(`dates[${index}]`, date);
+      });
+    }
 
     if (data.banner_image[0]) {
       formData.append("banner_image", data.banner_image[0]);
@@ -181,7 +169,6 @@ const EditEvents = () => {
         // Handle error notification if needed
       });
   };
-
 
   return isLoading ? (
     <FullscreenLoaders />
