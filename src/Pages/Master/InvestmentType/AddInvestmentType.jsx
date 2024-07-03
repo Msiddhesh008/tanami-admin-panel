@@ -16,13 +16,15 @@ import FormInputMain from "../../../Components/FormInputMain";
 
 export const addInvestmentType = yup.object().shape({
   investmentName: yup.string().required("Investment name is required"),
-  mobileNo: yup.string().required("Mobile no is required"),
-  investmentAddress: yup.string().required("Investment address is required"),
+  // investmentNameArabic: yup.string().required("Investment name is required"),
+  // mobileNo: yup.string().required("Mobile no is required"),
+  description: yup.string().required("Description is required"),
+  // descriptionArabic: yup.string().required("Description address is required"),
 
-  bankName: yup.string().required("Bank Name is required"),
-  accountNumber: yup.string().required("Account Number is required"),
-  swiftCode: yup.string().required("SWIFT/BIC Code is required"),
-  bankEmail: yup.string().email("Invalid email format"),
+  // bankName: yup.string().required("Bank Name is required"),
+  // accountNumber: yup.string().required("Account Number is required"),
+  // swiftCode: yup.string().required("SWIFT/BIC Code is required"),
+  // bankEmail: yup.string().email("Invalid email format"),
 
   // routingNumber: yup.string().required("Routing Number is required"),
   // iban: yup.string().required("IBAN is required"),

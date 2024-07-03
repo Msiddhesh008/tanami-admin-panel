@@ -93,7 +93,7 @@ const Login = () => {
         justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        backgroundColor:"#0041180A"
+        backgroundColor: "#0041180A",
       }}
       className="rubix-primary"
     >

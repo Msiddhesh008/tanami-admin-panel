@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"; // assuming react-hook-form is used
 import { OPACITY_ON_LOAD } from "../../../Layout/animations";
 
 const ViewInvestmentType = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { investmentType } = useContext(GlobalStateContext); 
   const { reset } = useForm(); // assuming react-hook-form

@@ -64,7 +64,7 @@ import { MdNotificationsNone, MdOutlineAddChart } from "react-icons/md";
 import { HiOutlineChartSquareBar } from "react-icons/hi";
 import { GrManual } from "react-icons/gr";
 import { LuContact } from "react-icons/lu";
-import shield from "../assets/shield.png"
+import shield from "../assets/shield.png";
 import SplashScreen from "../Pages/SplashScreen";
 
 const DashboardLayout = () => {
@@ -74,9 +74,28 @@ const DashboardLayout = () => {
   const path = location.pathname;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDrawerClick, setOpenDrawerClick] = useState(true);
-  const { setIsAuthenticate, colorMode, toggleColorMode, setSlideFormRight, slideFromRight } = useContext(GlobalStateContext);
+  const {
+    setIsAuthenticate,
+    colorMode,
+    toggleColorMode,
+    setSlideFormRight,
+    slideFromRight,
+  } = useContext(GlobalStateContext);
   const [isSplashVisible, setSplashVisible] = useState(true);
+  const [openIndex, setOpenIndex] = useState(null);
 
+  useEffect(() => {
+    const savedIndex = localStorage.getItem("openAccordionIndex");
+    if (savedIndex !== null) {
+      setOpenIndex(parseInt(savedIndex));
+    }
+  }, []);
+
+  const handleAccordionChange = (index) => {
+    const newIndex = openIndex === index ? null : index;
+    setOpenIndex(newIndex);
+    localStorage.setItem("openAccordionIndex", newIndex);
+  };
 
   useEffect(() => {
     // Set a timer to hide the splash screen after 3 seconds
@@ -355,12 +374,11 @@ const DashboardLayout = () => {
             height={"10%"}
           >
             {isDrawerOpen || openDrawerClick ? (
-
               <Image
                 style={{
                   width: 120,
                 }}
-                src={colorMode === "light"?logo : logoDark }
+                src={colorMode === "light" ? logo : logoDark}
                 alt="Logo"
               />
             ) : (
@@ -368,7 +386,7 @@ const DashboardLayout = () => {
                 style={{
                   width: 30,
                 }}
-                src={colorMode === "light"?logoMini : logoMiniDark }
+                src={colorMode === "light" ? logoMini : logoMiniDark}
                 alt="Logo"
               />
             )}
@@ -376,9 +394,20 @@ const DashboardLayout = () => {
 
           <Box
             className="ps-2 scroll-bar pe-1"
-            style={{ height: "90%", overflowY: "scroll", overflowX: "hidden" ,paddingBottom:'5rem'}}
+            style={{
+              height: "90%",
+              overflowY: "scroll",
+              overflowX: "hidden",
+              paddingBottom: "5rem",
+            }}
           >
-            <Accordion m={0} allowToggle>
+            <Accordion
+              m={0}
+              allowToggle
+              defaultIndex={[0]}
+              index={openIndex}
+              onChange={handleAccordionChange}
+            >
               {nav.map(({ title, type, Icon, submenu, path }, index) => {
                 if (type === "accordion") {
                   return (
@@ -398,14 +427,17 @@ const DashboardLayout = () => {
                           alignItems={"center"}
                         >
                           {/* {Icon && title === "Admin" ? <Image w={15} src={shield} /> : <Icon className={`web-text-large`} />} */}
-                          {Icon &&  <Icon  fontSize={title === "Admin" ? "18px" :"15px"}/>}
+                          {Icon && (
+                            <Icon
+                              fontSize={title === "Admin" ? "18px" : "15px"}
+                            />
+                          )}
                           <Text
                             as={"span"}
                             display={
                               isDrawerOpen || openDrawerClick ? "flex" : "none"
                             }
                             alignItems="center"
-                            
                             overflow="hidden"
                             textAlign={"left"}
                           >
@@ -567,7 +599,6 @@ const DashboardLayout = () => {
         style={{
           width: `calc(100% - ${isDrawerOpen || openDrawerClick ? 232 : 74}px)`,
           transition: "width 0.3s ease-in-out",
-          
         }}
       >
         {/* <header className="p-2 ps-0 pt-3 fw-400  border-bottom">
@@ -594,7 +625,7 @@ const DashboardLayout = () => {
           style={{
             width: isDrawerOpen || openDrawerClick ? 232 : 74,
             transition: "width 0.3s ease-in-out", // Smooth transition for width change
-            // overflow: "hidden", 
+            // overflow: "hidden",
             backgroundColor: "#0041180A",
             position: "relative",
             // backgroundColor: "#002F0F",
@@ -809,7 +840,7 @@ const DashboardLayout = () => {
             }}
           >
             {isDrawerOpen || openDrawerClick ? (
-              <ArrowRightIcon  className="web-text-small " />
+              <ArrowRightIcon className="web-text-small " />
             ) : (
               <ArrowLeftIcon className="web-text-small" />
             )}
