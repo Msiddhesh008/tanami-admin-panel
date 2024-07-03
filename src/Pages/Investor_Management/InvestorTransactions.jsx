@@ -30,7 +30,7 @@ import { debounce } from "../Master/Sponser/AddSponser";
 
 const formatDate = (date) => new Date(date).toLocaleDateString(); // Simple date formatter
 
-const InvestorTransactions = () => {
+const InvestorTransactions = () => { 
   const toast = useToast();
   const { investorTransaction, setInvestorTransaction, slideFromRight } =
     useContext(GlobalStateContext);

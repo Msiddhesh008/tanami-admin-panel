@@ -6,7 +6,6 @@ import {
   HStack,
   Input,
   Text,
-  Tooltip,
   useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
@@ -16,7 +15,6 @@ import Pagination from "../../Components/Pagination";
 import GlobalStateContext from "../../Contexts/GlobalStateContext";
 import CustomAlertDialog from "../../Components/CustomAlertDialog";
 import { formatDate } from "../../Components/Functions/UTCConvertor";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 // import { formatDate } from "../../Components/Functions/UTCConvertor";
 
 const DeletionRequest = () => {
@@ -67,7 +65,7 @@ const DeletionRequest = () => {
     "Charges (USD)",
     "Year",
     "Quater",
-    "Action",
+    "Amount",
   ];
 
   const extractedArray = filteredData?.map((item, index) => ({
@@ -140,25 +138,26 @@ const DeletionRequest = () => {
       </Text>
     ),
 
-    Action: (
-      <Box display={'flex'} justifyContent={'space-around'}>
-        <Tooltip rounded={'sm'} fontSize={'xs'}  label='Accept' bg='#fff' color={'green.500'} placement="left-start">
-        <Button color="green.500"   rounded={'sm'} size={'xs'}>
-        <CheckIcon /></Button></Tooltip>
-        <Tooltip rounded={'sm'} fontSize={'xs'}  label='Reject' bg='#fff' color={'red.500'} placement="left-start">
-        <Button color="red.500" rounded={'sm'} size={'xs'}>
-        <CloseIcon /></Button></Tooltip>
-      </Box>
+    Amount: (
+      <Text
+        justifyContent={slideFromRight ? "right" : "left"}
+        as={"span"}
+        color={"gray.600"}
+        className="d-flex align-items-center web-text-small"
+        fontWeight={'500'}
+      >
+        {item.amount}
+      </Text>
     ),
   }));
 
   const handleDelete = () => {
-    const deleteRequest = sponser.filter(
+    const updatedSponsors = sponser.filter(
       (sponsor) => sponsor.id !== actionId
     );
 
     setTimeout(() => {
-      setDeleteRequest(deleteRequest);
+      setSponser(updatedSponsors);
       setDeleteAlert(false);
       setIsLoading(false);
     }, 100);

@@ -25,7 +25,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 1,
       sponserName: "John Doe",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1234567890",
       sponserAddress: "123 Main St, Springfield, USA",
       accountHolderName: "John Doe",
@@ -46,7 +46,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 2,
       sponserName: "Jane Smith",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "9876543210",
       sponserAddress: "456 Oak St, Metropolis, USA",
       accountHolderName: "Jane Smith",
@@ -67,7 +67,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 3,
       sponserName: "Alice Johnson",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1231231234",
       sponserAddress: "789 Pine St, Gotham, USA",
       accountHolderName: "Alice Johnson",
@@ -88,7 +88,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 4,
       sponserName: "Bob Brown",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "3213214321",
       sponserAddress: "101 Maple St, Smallville, USA",
       accountHolderName: "Bob Brown",
@@ -109,7 +109,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 5,
       sponserName: "Charlie Davis",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "5555555555",
       sponserAddress: "202 Birch St, Star City, USA",
       accountHolderName: "Charlie Davis",
@@ -130,7 +130,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 6,
       sponserName: "Daniel Evans",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "4444444444",
       sponserAddress: "303 Cedar St, Central City, USA",
       accountHolderName: "Daniel Evans",
@@ -151,7 +151,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 7,
       sponserName: "Ella Fitzgerald",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "3333333333",
       sponserAddress: "404 Elm St, Coast City, USA",
       accountHolderName: "Ella Fitzgerald",
@@ -172,7 +172,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 8,
       sponserName: "Frank Green",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "2222222222",
       sponserAddress: "505 Ash St, Keystone City, USA",
       accountHolderName: "Frank Green",
@@ -193,7 +193,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 9,
       sponserName: "Grace Hall",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1111111111",
       sponserAddress: "606 Willow St, Hub City, USA",
       accountHolderName: "Grace Hall",
@@ -214,7 +214,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 10,
       sponserName: "Henry Ingram",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "6666666666",
       sponserAddress: "707 Spruce St, Fawcett City, USA",
       accountHolderName: "Henry Ingram",
@@ -235,7 +235,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 11,
       sponserName: "Grace Hall",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "1111111111",
       sponserAddress: "606 Willow St, Hub City, USA",
       accountHolderName: "Grace Hall",
@@ -256,7 +256,7 @@ const GlobalStateProvider = ({ children }) => {
     {
       id: 12,
       sponserName: "Henry Ingram",
-      sponserNameArabic: "الرجاء إدخال القيمة",
+      sponserNameArabic:"الرجاء إدخال القيمة",
       mobileNo: "6666666666",
       sponserAddress: "707 Spruce St, Fawcett City, USA",
       accountHolderName: "Henry Ingram",
@@ -275,7 +275,7 @@ const GlobalStateProvider = ({ children }) => {
       createdAt: "6",
     },
   ]);
-
+  
   const [investmentType, setInvestmentType] = useState([
     // {
     //   id: 1,
@@ -340,6 +340,7 @@ const GlobalStateProvider = ({ children }) => {
       status: true,
     },
   ]);
+  
 
   const [investment, setInvestment] = useState([
     // {
@@ -506,6 +507,37 @@ const GlobalStateProvider = ({ children }) => {
     },
     {
       id: 2,
+      InvestorName: "ECHO Investment",
+      Sponsor: "Tata",
+      InvestmentAmount: "2500000",
+      Action: "Distribute",
+    },
+  ]);
+
+  const [investorTransaction, setInvestorTransaction] = useState([
+    {
+      id: 1,
+      InvestorName: "ICC",
+      Sponsor: "Adani",
+      InvestmentAmount: "1000000",
+      Action: "Distribute",
+    },
+    {
+      id: 2,
+      InvestorName: "ECHO Investment",
+      Sponsor: "Tata",
+      InvestmentAmount: "2500000",
+      Action: "Distribute",
+    },
+    {
+      id: 3,
+      InvestorName: "ICC",
+      Sponsor: "Adani",
+      InvestmentAmount: "1000000",
+      Action: "Distribute",
+    },
+    {
+      id: 4,
       InvestorName: "ECHO Investment",
       Sponsor: "Tata",
       InvestmentAmount: "2500000",
@@ -735,6 +767,228 @@ const GlobalStateProvider = ({ children }) => {
     },
   ]);
 
+  const [upgradeHistory, setUpgradeHistory] = useState([
+    {
+      id: uuidv4(),
+      date: "2024-01-15",
+      Distribution: "Office supplies",
+      charge: "200.50",
+      year: "2024",
+      quarter: "Q1",
+      amount: 1500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-02-10",
+      Distribution: "Marketing expenses",
+      charge: "450.00",
+      year: "2024",
+      quarter: "Q1",
+      amount: 2000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-03-05",
+      Distribution: "Software subscription",
+      charge: "300.75",
+      year: "2024",
+      quarter: "Q1",
+      amount: 1200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-04-18",
+      Distribution: "Travel expenses",
+      charge: "600.30",
+      year: "2024",
+      quarter: "Q2",
+      amount: 2500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-05-22",
+      Distribution: "Consulting fees",
+      charge: "800.00",
+      year: "2024",
+      quarter: "Q2",
+      amount: 3000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-06-14",
+      Distribution: "Office rent",
+      charge: "1200.25",
+      year: "2024",
+      quarter: "Q2",
+      amount: 3500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-07-09",
+      Distribution: "Utilities",
+      charge: "150.40",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-08-29",
+      Distribution: "Employee training",
+      charge: "500.00",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1800,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-09-13",
+      Distribution: "Website maintenance",
+      charge: "350.65",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1400,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+  ]);
+
+  const [deleteHistory, setDeleteHistory] = useState([
+    {
+      id: uuidv4(),
+      date: "2024-01-15",
+      Distribution: "Office supplies",
+      charge: "200.50",
+      year: "2024",
+      quarter: "Q1",
+      amount: 1500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-02-10",
+      Distribution: "Marketing expenses",
+      charge: "450.00",
+      year: "2024",
+      quarter: "Q1",
+      amount: 2000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-03-05",
+      Distribution: "Software subscription",
+      charge: "300.75",
+      year: "2024",
+      quarter: "Q1",
+      amount: 1200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-04-18",
+      Distribution: "Travel expenses",
+      charge: "600.30",
+      year: "2024",
+      quarter: "Q2",
+      amount: 2500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-05-22",
+      Distribution: "Consulting fees",
+      charge: "800.00",
+      year: "2024",
+      quarter: "Q2",
+      amount: 3000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-06-14",
+      Distribution: "Office rent",
+      charge: "1200.25",
+      year: "2024",
+      quarter: "Q2",
+      amount: 3500,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-07-09",
+      Distribution: "Utilities",
+      charge: "150.40",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-08-29",
+      Distribution: "Employee training",
+      charge: "500.00",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1800,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-09-13",
+      Distribution: "Website maintenance",
+      charge: "350.65",
+      year: "2024",
+      quarter: "Q3",
+      amount: 1400,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+    {
+      id: uuidv4(),
+      date: "2024-10-23",
+      Distribution: "Advertising",
+      charge: "900.50",
+      year: "2024",
+      quarter: "Q4",
+      amount: 2200,
+    },
+  ]);
+
   const [investorRequest, setInvestorRequest] = useState([
     {
       id: uuidv4(),
@@ -846,6 +1100,118 @@ const GlobalStateProvider = ({ children }) => {
     },
   ]);
 
+  const [deleteRequest, setDeleteRequest] = useState([
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+    {
+      id: uuidv4(),
+      date: getRandomDate(startDate, endDate),
+      Distribution: "lorem ipsum dummy text",
+      charge: "500",
+      year: "2024",
+      quater: "Q 1",
+      amount: 1000,
+    },
+  ]);
+
+
   return (
     <GlobalStateContext.Provider
       value={{
@@ -876,6 +1242,14 @@ const GlobalStateProvider = ({ children }) => {
         setInvestmentType,
         investorRequest,
         setInvestorRequest,
+        investorTransaction,
+        setInvestorTransaction,
+        upgradeHistory,
+        setUpgradeHistory,
+        deleteHistory,
+        setDeleteHistory,
+        deleteRequest,
+        setDeleteRequest
       }}
     >
       {children}

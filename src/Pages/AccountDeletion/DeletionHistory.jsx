@@ -21,7 +21,7 @@ import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 
 const DeletionHistory = () => {
   const toast = useToast();
-  const { slideFromRight, deleteHistory, setdeleteHistory } =
+  const { slideFromRight, deleteHistory, setDeleteHistory } =
     useContext(GlobalStateContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +30,7 @@ const DeletionHistory = () => {
   const [mouseEntered, setMouseEntered] = useState(false);
   const [mouseEnteredId, setMouseEnteredId] = useState("");
 
-  useEffect(() => {
+  useEffect(() => { 
     // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -129,7 +129,7 @@ const DeletionHistory = () => {
       </Text>
     ),
     Quater: (
-      <Text
+      <Text 
         justifyContent={slideFromRight ? "right" : "left"}
         as={"span"}
         color={"gray.600"}
